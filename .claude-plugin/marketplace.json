@@ -10,7 +10,7 @@
       "license": "MIT",
       "category": "developer-tools",
       "tags": ["bi", "data-engineering", "orientation", "knowledge-base", "ssis", "sql"],
-      "source": "."
+      "source": "./"
     }
   ]
 }
