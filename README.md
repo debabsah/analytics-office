@@ -84,12 +84,12 @@ The first instrument on the board: pre-flight. Point it at an unfamiliar estate:
 
 ```mermaid
 flowchart TD
-    IN["Inherited estate · vague ticket · partial docs · a conversation"] --> GW["groundwork"]
-    GW -->|reads code and text only, never live data| GAP{"Gap engine<br/>completeness · loose threads · Socratic · cross-check"}
-    GAP --> Q["Interview the highest-value gaps"]
+    IN["Inherited estate,<br/>vague ticket,<br/>partial docs,<br/>or a conversation"] --> GW["groundwork"]
+    GW -->|reads code and text only| GAP{"Gap engine<br/>completeness<br/>loose threads<br/>Socratic<br/>cross-check"}
+    GAP --> Q["Interview the<br/>highest-value gaps"]
     Q --> KB[("knowledge-base/")]
-    KB --> S["STATE: purpose · landscape · open questions · decisions"]
-    KB --> T["CONTINUITY: append-only timeline → 'catch me up'"]
+    KB --> S["STATE<br/>purpose, landscape,<br/>open questions,<br/>decisions"]
+    KB --> T["CONTINUITY<br/>append-only timeline<br/>catch me up"]
 ```
 
 Classify the project → ingest what you point it at (read-only) → run the four-mechanism gap engine → interview you for the highest-value gaps → write the knowledge base and append the timeline → report the picture, the open questions, and the single best next move.
