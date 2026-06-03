@@ -64,7 +64,28 @@ You don't run commands. You describe what you're dealing with, and the right cap
 - **A read-only bright line, by design.** It reads code, object definitions, docs, and static extracts you hand it, and never connects to a live system or computes the deliverable itself. That one rule is what makes it safe inside a regulated, on-prem, no-egress shop.
 - **Memory is the product, not a side effect.** Everything it learns lands in a knowledge base in your repo (`state` plus an append-only `timeline`), pointed at by an `AGENTS.md`, so the next agent (or the next you) resumes instead of restarting cold.
 
-## Live now: `groundwork`
+## How it fits together
+
+The bench is one system. Each skill is a phase of delivery, and they compose through a single shared knowledge base: each one reads what the skills before it learned, and writes back what it found, so the project's memory accretes instead of resetting. The skills below are the spine, left to right; the dashed lines are every skill reading from and writing to that shared memory.
+
+```mermaid
+flowchart TD
+    GW["groundwork<br/>Understand"] --> RI["requirements-interrogator<br/>Define"]
+    RI --> KC["kpi-contract<br/>Define / Design"]
+    KC --> RQ["review-my-query<br/>Build / Validate"]
+    RQ --> DN["defend-my-number<br/>Validate"]
+    DN --> BF["brief-my-findings<br/>Deliver"]
+    GW -.-> KB[("knowledge-base/<br/>shared memory")]
+    RI -.-> KB
+    KC -.-> KB
+    RQ -.-> KB
+    DN -.-> KB
+    BF -.-> KB
+```
+
+The spine reads end to end: validate the ask, pin the metric, review the build, defend the number, brief the room. Each skill has its own "how it works" below.
+
+## Skill: `groundwork`
 
 The first instrument on the board: pre-flight. Point it at an unfamiliar estate: inherited pipelines, stored procedures, scheduled jobs, reports, a vague ticket, or nothing at all. Reading code and text only, it interrogates what's missing and leaves a living knowledge base behind.
 
@@ -99,7 +120,7 @@ flowchart TD
 
 Classify the project → ingest what you point it at (read-only) → run the four-mechanism gap engine → interview you for the highest-value gaps → write the knowledge base and append the timeline → report the picture, the open questions, and the single best next move.
 
-## Live now: requirements-interrogator
+## Skill: `requirements-interrogator`
 
 The second skill to go live. When a stakeholder hands you a solution (named KPIs, a dashboard, a report) instead of a decision, it interrogates the request down to the decision that solution is meant to serve, then shows the gap between what was asked for and what the decision actually needs.
 
@@ -108,7 +129,18 @@ The second skill to go live. When a stakeholder hands you a solution (named KPIs
 
 A capable assistant already defines metrics carefully and checks feasibility, then builds the thing it was handed. This runs the move it skips: validate the problem first, so you build the right thing once.
 
-## Live now: kpi-contract
+### How it works
+
+```mermaid
+flowchart TD
+    REQ["A solution-shaped ask<br/>(dashboard, KPIs,<br/>a report)"] --> RI["requirements-interrogator<br/>decision-backwards,<br/>XY split, re-derive"]
+    KB[("knowledge-base/")] -. warm start .-> RI
+    RI --> V{"Verdict<br/>proceed /<br/>reframe /<br/>wrong-problem"}
+    V --> BR["requirements-brief.md<br/>the delta:<br/>requested vs derived"]
+    BR --> KB
+```
+
+## Skill: `kpi-contract`
 
 The metric pinner. You're about to define a metric, lock it for a build team, or settle two reports that disagree on "the same" number. It walks every choice the definition silently makes, forces each to be pinned by the owner or flagged as an open decision, ties the metric to its source of record, and locks it as a versioned contract.
 
@@ -117,7 +149,18 @@ The metric pinner. You're about to define a metric, lock it for a build team, or
 
 A capable assistant already writes a plausible definition and even recommends defaults. This runs the move it skips: surface every fork, let the owner pin it, and never let the data you happen to have define the metric.
 
-## Live now: defend-my-number
+### How it works
+
+```mermaid
+flowchart TD
+    M["A metric to pin<br/>(or two reports<br/>that disagree)"] --> KC["kpi-contract<br/>walk every fork,<br/>owner pins each"]
+    KB[("knowledge-base/")] -. the brief .-> KC
+    KC --> FL["The fork log<br/>each fork pinned, or<br/>[needs decision]"]
+    FL --> CON["kpi-contract.md<br/>versioned, with the<br/>source reconciliation"]
+    CON --> KB
+```
+
+## Skill: `defend-my-number`
 
 The sparring partner. You have a number, finding, or recommendation you'll have to defend in a room. It role-plays the skeptic you're about to face (the steamrolling exec, the data-method skeptic, the political pressurer who wants a different answer), drills you under escalating pressure one attack at a time, grades each answer honestly (held, wobbled, cracked), and leaves a committable Defense Sheet of the attacks, your best answers, and the holes still to fix.
 
@@ -126,7 +169,18 @@ The sparring partner. You have a number, finding, or recommendation you'll have 
 
 This is the move no human reliably runs with you: the freeze in the room is a practiced failure, and so is its cure.
 
-## Live now: review-my-query
+### How it works
+
+```mermaid
+flowchart TD
+    NUM["A number to defend<br/>before the room"] --> DN["defend-my-number<br/>in-character skeptic,<br/>escalating drill"]
+    KB[("knowledge-base/")] -. ammunition .-> DN
+    DN --> G{"Grade each answer<br/>held / wobbled /<br/>cracked"}
+    G --> DS["defense-sheet.md<br/>+ readiness verdict"]
+    DS --> KB
+```
+
+## Skill: `review-my-query`
 
 The query reviewer. You wrote or inherited the code behind a number (a SQL query, view, or proc, a dbt or semantic model, a measure or RLS rule) and you want it checked before it ships or gets defended. It reads the code as text, checks it fork by fork against the locked KPI contract, hunts the bugs that quietly ship the wrong number, grades each finding, and leaves a committable review. It never runs the code and never rewrites it.
 
@@ -135,7 +189,18 @@ The query reviewer. You wrote or inherited the code behind a number (a SQL query
 
 A capable assistant, shown a flawed query, rewrites it for you, often on guessed column names. This runs the move it skips: locate the defect, name the failure mode, grade it by whether it ships a wrong number, and leave the fix to you.
 
-## Live now: brief-my-findings
+### How it works
+
+```mermaid
+flowchart TD
+    CODE["The code behind a number<br/>SQL, model, measure, RLS"] --> RQ["review-my-query<br/>conformance fork-by-fork<br/>+ failure-mode taxonomy"]
+    KB[("knowledge-base/")] -. kpi-contract.md .-> RQ
+    RQ --> F{"Graded findings<br/>Blocking / Latent /<br/>Advisory"}
+    F --> QR["query-review.md<br/>findings, never<br/>a rewrite"]
+    QR --> KB
+```
+
+## Skill: `brief-my-findings`
 
 The findings writer. Your analysis is done and you have to communicate it: write up the results, put together the brief, draft the readout for a board, an exec, or a VP. It composes the brief from the evidence on hand, forces every claim to carry its provenance and a status (Supported, Directional-only, open, or inferred), keeps the open questions open, and carries the analysis's verdict instead of smoothing it into a confident story. It writes the brief, not the final deck or email.
 
@@ -143,6 +208,17 @@ The findings writer. Your analysis is done and you have to communicate it: write
 **After:** instead of a confident "retention is healthy, invest in growth," it returns a brief that grades the 108% as directional (not yet reconciled), keeps the Finance gap and the missing cohort cut quarantined as open items, and carries the verdict as "not yet": do not present the recommendation until those close. No number computed, no gap explained away, no deck rendered.
 
 A capable assistant writes a clean, confident brief and, under the pull to make it land, smooths: it explains away an open gap, states a not-yet verdict as the answer, slips in a benchmark nobody measured. This runs the move it skips: source every claim, keep the open questions open, and carry the verdict honestly.
+
+### How it works
+
+```mermaid
+flowchart TD
+    FIN["Finished findings<br/>to communicate"] --> BF["brief-my-findings<br/>claim ledger:<br/>provenance + status"]
+    KB[("knowledge-base/")] -. the evidence .-> BF
+    BF --> OPEN["Open stays open,<br/>verdict carried,<br/>nothing smoothed"]
+    OPEN --> FB["findings-brief.md<br/>the board readout"]
+    FB --> KB
+```
 
 ## See the six compose: a worked example
 
