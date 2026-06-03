@@ -8,7 +8,6 @@ EXPECTED = [
     ".claude-plugin/marketplace.json",
     "LICENSE",
     "README.md",
-    "skills/bi-copilot-router/SKILL.md",
     "skills/groundwork/SKILL.md",
     "skills/groundwork/references/completeness-models.md",
     "skills/groundwork/references/kb-core-templates.md",
@@ -42,7 +41,7 @@ def check_skill(rel):
     n = len(body.strip().splitlines())
     if n > 200: fail(f"{rel}: body {n} lines > 200 (move depth to references/)")
 
-for rel in ("skills/bi-copilot-router/SKILL.md", "skills/groundwork/SKILL.md"):
+for rel in ("skills/groundwork/SKILL.md",):
     check_skill(rel)
 
 if fails:
