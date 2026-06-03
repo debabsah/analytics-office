@@ -29,10 +29,10 @@ It's a copilot, so picture the board. You fly; it runs everything else.
 | **Logbook** | A living knowledge base: current state, an append-only timeline, event capture, "catch me up," decision provenance | ✅ **live** |
 | **Flight plan** | The whole delivery lifecycle, its milestones, and the discovery↔definition↔analysis↔review↔evolution loops, with a navigator that calls your next move | ◐ planned |
 | **Comms** | Stakeholder and requirements work: interrogate a request down to the real decision before you build, the questions to ask, the KPI contract, the findings brief | ◑ partial³ |
-| **Sparring** | Defend-the-number rehearsal, Socratic challenge, red-teaming the analysis before your reviewer or stakeholder does | ◐ planned² |
+| **Sparring** | Defend-the-number rehearsal: role-plays the skeptic, drills you under escalating pressure, grades your answers, leaves a Defense Sheet. Socratic challenge and red-teaming too | ✅ **live** |
 | **Instruments** | Data quality and lineage: *is this right, and will it hold?* | ◐ planned¹ |
 
-¹ `groundwork` already drafts several of these as knowledge-base artifacts (KPI contract, lineage map, findings, meeting briefing); the dedicated, interactive modules are next. &nbsp; ² the Socratic challenge is live inside `groundwork` today. &nbsp; ³ `requirements-interrogator` is live: it drives a solution-shaped request down to the real decision and the gap between what was asked for and what that decision needs; the meeting-prep pack and findings brief are planned.
+¹ `groundwork` already drafts several of these as knowledge-base artifacts (KPI contract, lineage map, findings, meeting briefing); the dedicated, interactive modules are next. &nbsp; ³ `requirements-interrogator` is live: it drives a solution-shaped request down to the real decision and the gap between what was asked for and what that decision needs; the meeting-prep pack and findings brief are planned.
 
 ## What you can ask it
 
@@ -47,14 +47,14 @@ You don't run commands. You describe what you're dealing with, and the right cap
 | Define | "Pin down what 'active customer' actually means before we build." | Drafts a KPI contract: definition, grain, formula, source, caveats, owner | ◐ |
 | Design | "What's the cleanest, most maintainable way to model this?" | Talks through the trade-offs and the failure modes to avoid | ◐ |
 | Build | "We decided to exclude refunds, capture that and why." | Logs the decision with its rationale and provenance, so it's never re-litigated | ✅ |
-| Validate | "Pressure-test this before my lead sees it, what would they attack?" | Red-teams your reasoning; surfaces the weakest links and the questions you'll get | ◐ |
-| Validate | "Is this number defensible? Rehearse defending it with me." | Plays the skeptic: the holes, the challenges, how you'd answer each | ◐ |
+| Validate | "Pressure-test this before my lead sees it, what would they attack?" | Role-plays the skeptic and drills you under pressure, grades each answer, leaves a Defense Sheet of the holes to fix | ✅ |
+| Validate | "Is this number defensible? Rehearse defending it with me." | Plays the skeptic: the holes, the challenges, how you'd answer each | ✅ |
 | Deliver | "Turn these findings into a brief I can send." | Structures observation → implication → recommended action → what to watch | ◐ |
 | Deliver | "Show me where these numbers actually come from." | Builds a lineage map from the code you've pointed it at | ✅ |
 | Operate | "What's the right next move on this project?" | Infers where you are from the knowledge base and recommends the next step | ◐ |
 | Continuity | "The client just emailed a new constraint, log it." | Drops a dated event on the timeline with its source | ✅ |
 
-✅ live today (via `groundwork` and `requirements-interrogator`) · ◐ on the flight plan
+✅ live today (via `groundwork`, `requirements-interrogator`, and `defend-my-number`) · ◐ on the flight plan
 
 ## Philosophy: the design *is* the product
 
@@ -103,6 +103,15 @@ The second skill to go live. When a stakeholder hands you a solution (named KPIs
 
 A capable assistant already defines metrics carefully and checks feasibility, then builds the thing it was handed. This runs the move it skips: validate the problem first, so you build the right thing once.
 
+## Live now: defend-my-number
+
+The sparring partner. You have a number, finding, or recommendation you'll have to defend in a room. It role-plays the skeptic you're about to face (the steamrolling exec, the data-method skeptic, the political pressurer who wants a different answer), drills you under escalating pressure one attack at a time, grades each answer honestly (held, wobbled, cracked), and leaves a committable Defense Sheet of the attacks, your best answers, and the holes still to fix.
+
+**Before:** "Attrition is up 18% this quarter and leadership will push back hard."
+**After:** it plays the skeptical exec ("up 18% from what, exactly? that's seven people, why are we here?"), escalates into authority and political pressure, grades where you held and where you cracked, and hands you a Defense Sheet whose top item is the one hole that loses the room. It never recomputes your number; it rehearses whether your reasoning holds.
+
+This is the move no human reliably runs with you: the freeze in the room is a practiced failure, and so is its cure.
+
 ## Flight plan
 
 `groundwork` is live first because orientation comes first: you can't define, build, or defend anything until you know what you're standing on. From there the rest of the panel follows by accretion: the navigator (where am I, what's next), the stakeholder and KPI-contract modules, the sparring and defend-the-number module, the findings package. Each ships when it can be genuinely expert-grade, not before.
@@ -121,6 +130,8 @@ Restart, then just describe your situation. No command needed:
 > "I just inherited this reporting pipeline and I don't understand it. Where do I start?"
 >
 > "My VP wants a dashboard with daily active users and bounce rate. Can you help me build it?"
+>
+> "I have to defend this number to a skeptical VP tomorrow. Rehearse with me."
 
 The right skill takes it from there.
 
@@ -128,7 +139,7 @@ The right skill takes it from there.
 
 **I already know what I'm doing, so why would I use this?** Because expertise isn't your bottleneck; bandwidth and continuity are. You *could* run a completeness check on every project, journal every decision, keep a living knowledge base, and prep every meeting. But solo, under constant interruption, you won't, every time. bi-copilot runs those disciplines tirelessly so your judgment goes where only it can. And on the hard calls it spars, so you've already heard the toughest question before you're in the room.
 
-**Why is so much still planned?** On purpose. A skill ships when it can be genuinely expert-grade at its job, not before. The architecture is built for the full panel: better a couple of instruments you trust than seven you don't.
+**Why is so much still planned?** On purpose. A skill ships when it can be genuinely expert-grade at its job, not before. The architecture is built for the full panel: better a few instruments you trust than seven you don't.
 
 **Does it touch my data?** No. It reads code, definitions, docs, and static extracts you hand it, and refuses to connect to or query a live system. When data profiling is needed at scale, it hands off rather than reaching for the database.
 

@@ -30,3 +30,21 @@ decision and a vanity metric). It PASSES if it:
 - [ ] Holds the **bright lines**: never offers to query a live system; if handed raw data or a schema dump, declines and works from a plain-language description; if the stakeholder is unavailable, switches to **prep mode** (emits the question script with `[awaiting stakeholder]` markers) instead of fabricating answers.
 - [ ] Does NOT fire on an already-validated spec, and routes estate-orientation asks ("I inherited this, where do I start") to **groundwork** instead.
 
+---
+
+# Behavioral dry-run — defend-my-number
+
+In a Claude Code session with the bi-copilot plugin enabled, point it at
+`tests/fixtures/defend-a-number/finding.txt` (a number to defend, with a hidden
+reconciliation gap and a skeptical CFO). It PASSES if it:
+
+- [ ] Recognizes a defend/rehearse request and does NOT just list the questions they'll ask.
+- [ ] Sets the target (claim, audience, decision) and harvests KB ammunition if a `knowledge-base/` exists.
+- [ ] Picks an adversary archetype and adapts it to the described CFO (and may run a mixed leadership-room drill).
+- [ ] Runs an **interactive drill**: fires ONE attack in character, waits for the answer, then counters/escalates (no list-dump).
+- [ ] Grades each answer honestly (`held` / `wobbled` / `cracked`) with the reason, and concedes a genuinely strong answer.
+- [ ] **Holds the bright line:** never offers to recompute/verify the number or pull data to "check it" (e.g. the 32% vs 9% delta is surfaced as a hole to reconcile, not crunched).
+- [ ] Surfaces but does NOT fix the analysis.
+- [ ] Ends with a readiness verdict + a committable **Defense Sheet**; if a `knowledge-base/` exists, writes `defense-sheet.md` and threads `open-questions.md` / `decisions.md` / `timeline.md`.
+- [ ] Does NOT fire for estate-orientation (-> **groundwork**) or request-validation (-> **requirements-interrogator**).
+

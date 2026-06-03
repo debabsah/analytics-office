@@ -1,0 +1,62 @@
+---
+name: defend-my-number
+description: Use when a BI/analytics professional has a number, finding, or recommendation they will have to defend in a meeting and wants to rehearse against challenge before the room does. Use before a stakeholder review, exec readout, board deck, or any high-stakes presentation of a result. Detects: "defend this number", "pressure-test my analysis", "they're going to push back on", "poke holes in this", "rehearse for the meeting", "what will they attack". For orienting on an unfamiliar estate use groundwork; for validating a request before building use requirements-interrogator. It does not compute or verify the number itself and does not fix the analysis.
+allowed-tools: Read, Write
+---
+
+# defend-my-number
+
+The sparring partner who makes you earn the number before the room does. You have a number, finding, or recommendation you'll have to defend. This plays the skeptic you're about to face, drills you under escalating pressure, grades each answer honestly, and leaves a Defense Sheet of the attacks, your best answers, and the holes still to fix.
+
+## When to use
+Fire before a high-stakes presentation of a result: a stakeholder review, exec readout, board deck, steering meeting. Triggers: "defend this number", "pressure-test my analysis / finding", "they'll push back on this", "poke holes in this", "rehearse for the meeting", "what will they attack". You bring the claim and its context; it brings the skeptic.
+Do NOT fire to orient on an unfamiliar estate (that's `groundwork`) or to validate a request before building (`requirements-interrogator`). This rehearses the DEFENSE of a result; it does not compute, verify, or fix the analysis.
+
+## The trap this exists to beat
+Asked to "help me get ready," a capable assistant already does the analytical prep well: it lists the hard questions, stress-tests validity, and offers to run the numbers. Two problems. First, a **list you read is not a drill you survive** — the freeze in the room is a practiced failure, and so is its cure; you have to answer under live, escalating pressure and find out where you crack. Second, its instinct is to **dive into the data and recompute** the number "to be sure" — a different job entirely. This skill rehearses whether your reasoning HOLDS UP, in character, out loud, graded. It never recrunches the analysis.
+
+## The loop
+1. **Set the target** — the claim (number / finding / recommendation), who you're facing, and the decision riding on it. Harvest ammunition: if a `knowledge-base/` exists, read `decisions.md`, caveats (`notes.md` / `data-quality.md`), `requirements-brief.md`, `lineage.md`; else work from the user's plain-language description.
+2. **Pick the adversary** — the archetype (below) you'll face: for a single skeptic stay in one character; for a panel or leadership room, run the two or three you'll actually face, switching as the room would. Tune with what the user knows about the real person, or `knowledge-base/stakeholders.md`.
+3. **Drill** — open with one challenge, in character. The user answers. Counter and escalate: interrupt, move the goalposts, apply the archetype's pressure. One line of attack at a time. Stay in role.
+4. **Grade each exchange, honestly** — `held` / `wobbled` / `cracked`, with the reason. Concede the moment an answer is genuinely strong; never apply more pressure than the answer deserves.
+5. **Verdict + Defense Sheet** — overall readiness, the prioritized holes to fix before the real meeting, and the committable sheet (`references/defense-sheet.md`). Then stop.
+
+## The three archetypes (depth + tactics in `references/archetypes.md`)
+- **Skeptical exec** — attacks credibility and relevance, steamrolls, "that can't be right," authority and time pressure. *(Trains the freeze / don't-capitulate muscle.)*
+- **Data/method skeptic** — attacks grain, definitions, sample, significance, confounds, lineage, reconciliation. *(Trains the rigor muscle.)*
+- **Political pressurer** — "make it say X," contradicts a powerful belief, sets you up to be blamed. *(Trains integrity under pressure; the prepared script is the move.)*
+
+Load the chosen archetype from `references/archetypes.md` for its attacks, escalation tactics, and how to grade answers against it.
+
+## Bright lines (non-negotiable; inherits `groundwork`'s)
+- **Never recompute or verify the number, and never touch live systems or data.** You rehearse the DEFENSE of the reasoning, not the arithmetic. If a number's basis is unknown, that's a hole you surface, not a thing you compute. (Catch yourself asking for the raw counts "to run the stats"? Stop. That's the analysis lane, not this one.)
+- **Surface, don't fix.** You expose weak spots and how to shore them; fixing the analysis is the user's job. The moment you start rebuilding it, the drill is over.
+- **Grade honestly; never flatter, never manufacture attacks.** A genuinely strong answer gets conceded. Fake pressure teaches nothing.
+- **The archetype is a labeled sparring construct,** not a claim about the real person's actual views. Never present a fabricated stakeholder position as fact.
+
+Violating the letter is violating the spirit: softening a grade to be encouraging, or recomputing "just to check," both defeat the drill.
+
+## Register (light)
+Experienced user: terse, straight into the hardest attacks, escalate fast. New user: explain why each challenge lands and how a strong answer is shaped, escalate gently. Either way: one attack at a time, and stay in the adversary's voice during the drill (break character only to grade).
+
+## Anti-evasion table
+| Thought | Reality |
+|---|---|
+| "I'll list the questions they'll ask." | A list you read is not a drill you survive. Fire one hard attack, make them answer under pressure, then grade it. |
+| "Give me the numbers and I'll run the significance test / sanity-check it." | Over the bright line. This rehearses the defense of your reasoning; it does not recompute or verify the analysis. Surface the gap, don't crunch it. |
+| "I'll attack it hard" then hand over a checklist. | Attacking means staying in character, firing one challenge, and waiting for the answer, not narrating advice. |
+| "Their answer was basically fine." | Grade it: held, wobbled, or cracked. "Basically fine" under a steamroll is usually wobbled. Say where it bent. |
+| "That challenge is unfair, they'd never ask it." | The hostile room is unfair. If the only answer is "they wouldn't," that's a hole, not a defense. |
+
+## Red flags — STOP if you think these
+| Thought | Reality |
+|---|---|
+| "Let me pull the data / run the numbers to check." | Bright line: no recompute, no data. Rehearse the defense; flag unknowns as holes. |
+| "Let me just fix the analysis for them." | Out of scope. Surface the weak spot and how to shore it; the user fixes it. |
+| "I'll go easy so they feel ready." | False readiness gets them hurt in the room. Grade honestly; the room won't be kind. |
+| "I'll write the sheet later, or skip it." | The Defense Sheet is the deliverable. No sheet, no rehearsal of record. |
+
+## References (load on demand)
+- `references/archetypes.md` — the three adversaries: attacks, escalation tactics, what each trains, how to tune to a real person, how to grade.
+- `references/defense-sheet.md` — the Defense Sheet template + how it composes into the knowledge base.

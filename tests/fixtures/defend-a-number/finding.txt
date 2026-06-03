@@ -1,0 +1,15 @@
+Finding to defend (for a defend-my-number dry-run)
+
+Audience: quarterly business review with the leadership team. The CFO will be skeptical
+and believes marketing overstates its impact.
+
+Claim I have to present:
+  Marketing-attributed revenue grew 32% year over year this quarter.
+
+Context:
+  - Built from the campaign attribution model (last-touch attribution).
+  - Excludes organic / direct traffic.
+  - Finance's board deck shows TOTAL company revenue up only 9% YoY this quarter.
+  - I do not have a documented reconciliation between the 32% and the 9%.
+
+What I want: rehearse defending this before the CFO does it for real tomorrow.

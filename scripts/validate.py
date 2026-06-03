@@ -14,6 +14,9 @@ EXPECTED = [
     "skills/groundwork/references/kb-catalog.md",
     "skills/requirements-interrogator/SKILL.md",
     "skills/requirements-interrogator/references/frameworks.md",
+    "skills/defend-my-number/SKILL.md",
+    "skills/defend-my-number/references/archetypes.md",
+    "skills/defend-my-number/references/defense-sheet.md",
 ]
 fails = []
 
