@@ -103,7 +103,7 @@ Classify the project → ingest what you point it at (read-only) → run the fou
 In Claude Code:
 
 ```text
-/plugin marketplace add <git-url-or-path-to-this-repo>
+/plugin marketplace add debabsah/bi-copilot
 /plugin install bi-copilot@bi-copilot
 ```
 
