@@ -51,3 +51,13 @@ _End of each session, append: what happened, decided, next, blocked. Drop extern
   cohort cut; rehearse again.
 - blocked / waiting on: Finance + RevOps sign-off (blocking the 2026-06-10 board meeting).
 - event: board meeting scheduled 2026-06-10 (per Priya's request).
+
+## 2026-06-02  [Deliver]
+- happened: composed the board findings brief from the KB (contract, query-review,
+  defense-sheet, open-questions). Wrote `findings-brief.md`.
+- decided: brief the board honestly, lead with the "not yet" verdict, present NRR 108%
+  as directional (not reconciled), and keep the two open items visible rather than
+  smoothing them into a confident story.
+- next: close the Finance reconciliation and build the early-life cohort cut, then update
+  the brief and re-rehearse before the 2026-06-10 meeting.
+- blocked / waiting on: Finance + RevOps reconciliation; the early-life cohort cut.

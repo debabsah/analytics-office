@@ -1,10 +1,10 @@
-# Worked example: the five skills on one project
+# Worked example: the six skills on one project
 
 This is the bi-copilot bench run end to end on a single project, so you can watch
-the five skills **compose through a shared knowledge base** instead of just reading
-that they do. One skill notices something while reading inherited SQL. Five skills
-and a full lifecycle later, that same something is what stops a bad number from
-reaching the board.
+the six skills **compose through a shared knowledge base** instead of just reading
+that they do. One skill notices something while reading inherited SQL. Six skills
+and a full lifecycle later, that same something is what keeps a bad number out of
+the board readout.
 
 > **Meridian is a fictional B2B SaaS company.** Every account, name, and number here
 > is invented for this example. Nothing is queried or computed; the skills read text
@@ -14,7 +14,7 @@ The reader-facing artifacts are real files you can open:
 
 - [`inputs/`](inputs/) - the raw material you start with (an inherited SQL view, a
   departed analyst's notes, a stakeholder request, a number to defend).
-- [`knowledge-base/`](knowledge-base/) - what the five skills produced and kept
+- [`knowledge-base/`](knowledge-base/) - what the six skills produced and kept
   updating. Start at [`knowledge-base/README.md`](knowledge-base/README.md).
 
 ---
@@ -38,6 +38,7 @@ Hold onto that line. The bench does.
 | 3 | kpi-contract | Define / Design | the reframed metrics | NRR + gross revenue churn, locked v1.0, with a fork log | kpi-contract, open-questions, decisions, timeline |
 | 4 | review-my-query | Build / Validate | the inherited `vw_monthly_churn` + the locked contract | 8 graded findings (4 Blocking); the view implements neither contracted metric | query-review, open-questions, decisions, data-quality, timeline |
 | 5 | defend-my-number | Validate | the 108% NRR claim + the board context | a rehearsal that cracks, and a "not yet" verdict | defense-sheet, open-questions, decisions, timeline |
+| 6 | brief-my-findings | Deliver | the locked contract, the query review, the defense sheet | a board readout that carries the "not yet" and keeps the gaps open | findings-brief, decisions, timeline |
 
 Each skill was pointed only at its own input. None was told "read the knowledge base."
 They read it because that is what the skills instruct, and because `groundwork` left an
@@ -84,6 +85,15 @@ method skeptic. It harvested the locked contract and the query review as ammunit
 which is exactly what held up under two of the attacks. But the unresolved reconciliation
 was still unresolved, and that is the attack that cracked. Verdict: **not yet.**
 
+**6. brief-my-findings (Deliver).** Composed the board readout from the evidence already
+in the knowledge base: the locked contract, the query review, and the defense sheet. The
+easy move, the one a confident pass makes, is "NRR is 108%, retention is healthy, invest
+in growth." It did the disciplined thing instead: graded the 108% as **directional**
+because it is not yet reconciled, kept the Finance gap and the missing cohort cut as open
+items, and carried the rehearsal's **not yet** verdict into the brief rather than
+smoothing it away. It wrote `findings-brief.md`, not the board slides. The honest readout
+is the one that does not blow up in the room.
+
 ## The money shot: one gap, traced across the whole spine
 
 The single most important thing this example shows is not any one skill. It is what
@@ -111,6 +121,11 @@ review-my-query (Build/Validate)   The inherited view, reviewed against the cont
 defend-my-number (Validate)        "Finance says revenue grew 2%, you say 108%. Which is
                                    wrong?" The presenter cannot answer. CRACKED.
                                    Verdict: not yet. Do not present until it is closed.
+        |
+        v
+brief-my-findings (Deliver)        The board readout carries the gap as an open item and
+                                   the verdict as "not yet", not "retention is healthy."
+                                   The honest brief is the one that survives the room.
 ```
 
 A throwaway line in a departed analyst's notes, read on day one, is what stops a
@@ -126,7 +141,7 @@ not one.)
 
 - **Composition is consumption plus accretion.** Each skill read what came before and
   *extended* the knowledge base; none restated or overwrote another's work. The timeline
-  reads as one continuous project, not five disconnected runs.
+  reads as one continuous project, not six disconnected runs.
 - **State is current truth.** The interrogator did not just append a note that the goal
   changed; it edited `purpose.md` and closed the stale question. A knowledge base that
   contradicts itself is worse than one that stayed quiet.
@@ -134,11 +149,13 @@ not one.)
   or wrote the production SQL. `groundwork` profiled a static file, `kpi-contract` pinned
   what the metric *means* and flagged what it could not know, `review-my-query` reviewed
   the inherited view without running it and pointed the fix direction instead of handing
-  back a rewrite, and `defend-my-number` surfaced the gap instead of crunching it. The
-  number 108% is never calculated here; it is defined, contracted, reviewed, and
-  pressure-tested.
+  back a rewrite, `defend-my-number` surfaced the gap instead of crunching it, and
+  `brief-my-findings` wrote the readout without computing a number or rendering the board
+  deck. The number 108% is never calculated here; it is defined, contracted, reviewed,
+  pressure-tested, and briefed.
 - **The honest ending is the feature.** The chain ends in "reframe," two `[needs
-  decision]` forks, and a "not yet." That is the bench doing its job: surfacing what a
+  decision]` forks, and a "not yet" that the findings brief carries into the board readout
+  itself rather than smoothing away. That is the bench doing its job: surfacing what a
   single confident pass would have shipped straight to the board.
 
 ## Run it yourself
@@ -152,6 +169,8 @@ With the bi-copilot plugin enabled in Claude Code, from a copy of this folder:
 4. Ask **review-my-query** to review `inputs/vw_monthly_churn.sql` against the locked
    contract: "is this query right?" It grades the findings, no rewrite.
 5. Give **defend-my-number** the claim in `inputs/the-number.md` and rehearse.
+6. Ask **brief-my-findings** to "write up the findings brief for the board" from the
+   knowledge base. It carries the "not yet" verdict instead of smoothing it.
 
 Each skill self-routes from how you phrase the ask; there is no router to configure. The
 knowledge base you end with should look like the one in [`knowledge-base/`](knowledge-base/).

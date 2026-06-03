@@ -21,3 +21,9 @@ _Each: the decision, rationale, rejected alternatives, date, source event._
 - 2026-06-01 - **Hold the board recommendation** ("invest in growth, not onboarding")
   pending the Finance reconciliation and an early-life cohort cut. Rationale: the
   rehearsal cracked on the unreconciled gap. (per timeline: defense rehearsal.)
+- 2026-06-02 - **Brief the board honestly: carry the "not yet" verdict.** The findings
+  brief presents NRR 108% as directional (not reconciled), keeps the Finance bridge and
+  the early-life cohort cut as open items, and does not assert the recommendation.
+  Rationale: a confident "retention is healthy, invest in growth" readout would over-state
+  an unreconciled number and an unevidenced recommendation. Rejected: smoothing the open
+  gap, or stating the recommendation as the answer. (per timeline: `findings-brief.md`.)

@@ -139,11 +139,11 @@ The findings writer. Your analysis is done and you have to communicate it: write
 
 A capable assistant writes a clean, confident brief and, under the pull to make it land, smooths: it explains away an open gap, states a not-yet verdict as the answer, slips in a benchmark nobody measured. This runs the move it skips: source every claim, keep the open questions open, and carry the verdict honestly.
 
-## See the five compose: a worked example
+## See the six compose: a worked example
 
-Reading what each skill does is one thing; watching them hand off through a shared knowledge base is another. [`examples/saas-retention/`](examples/saas-retention/) runs all five end to end on one fictional SaaS project, with the knowledge base accreting at every step.
+Reading what each skill does is one thing; watching them hand off through a shared knowledge base is another. [`examples/saas-retention/`](examples/saas-retention/) runs all six end to end on one fictional SaaS project, with the knowledge base accreting at every step.
 
-Follow one thread. `groundwork` notices a throwaway line in a departed analyst's notes, that the churn view "never lines up" with Finance, and logs it. `requirements-interrogator` reframes the dashboard request to net revenue retention. `kpi-contract` formalizes that same Finance gap as a `[needs decision]`. `review-my-query` reviews the inherited view against the contract and finds the code-level root cause: it counts logos, not dollars. Then `defend-my-number` gets cracked by exactly that unresolved gap and returns a "not yet" before a plausible-looking 108% reaches the board. One caveat, read on day one, five skills and a full lifecycle later, is what stops a bad number. No single skill carries that; the knowledge base does.
+Follow one thread. `groundwork` notices a throwaway line in a departed analyst's notes, that the churn view "never lines up" with Finance, and logs it. `requirements-interrogator` reframes the dashboard request to net revenue retention. `kpi-contract` formalizes that same Finance gap as a `[needs decision]`. `review-my-query` reviews the inherited view against the contract and finds the code-level root cause: it counts logos, not dollars. `defend-my-number` gets cracked by exactly that unresolved gap and returns a "not yet." Then `brief-my-findings` carries that "not yet" into the board readout instead of smoothing it into "retention is healthy." One caveat, read on day one, six skills and a full lifecycle later, is what keeps a bad number out of the board readout. No single skill carries that; the knowledge base does.
 
 Start at [the walkthrough](examples/saas-retention/README.md). Everything is synthetic: no real data, no number computed.
 
