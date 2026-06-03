@@ -22,18 +22,16 @@ bi-copilot runs those disciplines for you, tirelessly and every time, so your ex
 
 It's a copilot, so picture the board. You fly; it runs everything else.
 
-| System | What bi-copilot does | Status |
-|---|---|---|
-| **Pre-flight** | Orient on an undocumented or inherited system before you touch it; build the knowledge base | ✅ **live** |
-| **Checklists** | Completeness models per project type plus a four-way gap engine, so rigor doesn't depend on your memory | ✅ **live** |
-| **Logbook** | A living knowledge base: current state, an append-only timeline, event capture, "catch me up," decision provenance | ✅ **live** |
-| **Flight plan** | The whole delivery lifecycle, its milestones, and the discovery↔definition↔analysis↔review↔evolution loops, with a navigator that calls your next move | ◐ planned |
-| **Comms** | Stakeholder and requirements work: interrogate a request down to the real decision before you build, the questions to ask, the KPI contract, the findings brief | ◑ partial³ |
-| **Review** | Read the query, model, or measure that computes a number and check it against its locked definition before it ships: catch the bugs that quietly ship the wrong number | ✅ **live** |
-| **Sparring** | Defend-the-number rehearsal: role-plays the skeptic, drills you under escalating pressure, grades your answers, leaves a Defense Sheet. Socratic challenge and red-teaming too | ✅ **live** |
-| **Instruments** | Data quality and lineage: *is this right, and will it hold?* | ◐ planned¹ |
-
-¹ `groundwork` already drafts several of these as knowledge-base artifacts (lineage map, findings, meeting briefing); the dedicated, interactive modules are next. &nbsp; ³ `requirements-interrogator` and `kpi-contract` are live: the first drives a solution-shaped request down to the real decision and the gap between what was asked for and what that decision needs; the second pins a metric's exact definition (every fork, plus the source-of-record reconciliation) and locks it as a versioned contract. The findings brief is live too (`brief-my-findings`); the stakeholder meeting-prep pack is planned.
+| System | What bi-copilot does | Powered by | Status |
+|---|---|---|---|
+| **Pre-flight** | Orient on an undocumented or inherited system before you touch it; build the knowledge base | `groundwork` | ✅ **live** |
+| **Checklists** | Completeness models per project type plus a four-way gap engine, so rigor doesn't depend on your memory | `groundwork` | ✅ **live** |
+| **Logbook** | A living knowledge base: current state, an append-only timeline, event capture, "catch me up," decision provenance | `groundwork` | ✅ **live** |
+| **Flight plan** | The whole delivery lifecycle, its milestones, and the discovery↔definition↔analysis↔review↔evolution loops, with a navigator that calls your next move | navigator *(planned)* | ◐ planned |
+| **Comms** | Stakeholder and requirements work: interrogate a request down to the real decision before you build, the questions to ask, the KPI contract, the findings brief | `requirements-interrogator`, `kpi-contract`, `brief-my-findings` | ✅ **live** |
+| **Review** | Read the query, model, or measure that computes a number and check it against its locked definition before it ships: catch the bugs that quietly ship the wrong number | `review-my-query` | ✅ **live** |
+| **Sparring** | Defend-the-number rehearsal: role-plays the skeptic, drills you under escalating pressure, grades your answers, leaves a Defense Sheet. Socratic challenge and red-teaming too | `defend-my-number` | ✅ **live** |
+| **Instruments** | Data quality and lineage: *is this right, and will it hold?* | `groundwork` drafts these; dedicated modules *(planned)* | ◐ planned |
 
 ## What you can ask it
 
