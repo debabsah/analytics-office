@@ -12,4 +12,4 @@ Beyond the always-on core, propose ONLY the artifacts this project actually need
 | Status / roadmap | `status.md` | the project spans weeks | done / next / parked; phase position |
 | Data quality | `data-quality.md` | trust/defensibility matters | coverage, known issues, validation evidence |
 
-Each artifact entry is phase-tagged like the core files.
+When you create an artifact file, phase-tag its heading the same way as the core files (e.g., `# KPI Contract  [Define]`).
