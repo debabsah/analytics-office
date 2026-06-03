@@ -9,7 +9,9 @@ _Rehearsed 2026-06-01, ahead of the 2026-06-10 board meeting._
   closely.
 - **Adversary rehearsed:** data / method skeptic (the ex-CFO board member).
 - **Ammunition harvested:** the locked `kpi-contract.md` (its fork log and its
-  reconciliation statement) and `data-quality.md`.
+  reconciliation statement), `data-quality.md`, and `query-review.md` (the inherited
+  view reviewed against the contract, which confirmed at the code level why it cannot
+  reconcile to Finance).
 
 ## Attacks and answers
 | Attack raised | Your best answer | Grade |

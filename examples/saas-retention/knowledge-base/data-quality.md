@@ -13,3 +13,7 @@ _Why retention numbers here are not yet board-trustworthy._
 > Bottom line at orientation: do not present `vw_monthly_churn` as revenue
 > retention. The number the board actually needs (NRR) does not exist in this estate
 > yet, and the gap between the view and Finance has never been explained.
+
+These orientation caveats were later formalized as graded, code-level findings in
+`query-review.md`, which reviewed the view line by line against the locked contract
+(4 Blocking, 3 Latent, 1 Advisory).

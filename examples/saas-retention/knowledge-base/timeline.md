@@ -29,9 +29,22 @@ _End of each session, append: what happened, decided, next, blocked. Drop extern
 - blocked / waiting on: two `[needs decision]` forks open, the Finance reconciliation
   bridge and the win-back cohort rule.
 
+## 2026-05-28  [Build / Validate]
+- happened: reviewed the inherited `vw_monthly_churn` view (as text, not run) against
+  the locked contract. Walked each pinned fork, then the failure-mode taxonomy. Wrote
+  `query-review.md`: 8 findings, 4 Blocking.
+- decided: retire the view as a board-number source; it implements neither contracted
+  metric (it is logo churn, not MRR retention). Build NRR fresh from billing.
+- next: build the NRR cohort model from the contract; resolve the cohort-grain bug
+  before it ships.
+- blocked / waiting on: the trial marker field, the grain of `subscriptions`, and the
+  identity of the five excluded accounts (all open, asked of the owner).
+- note: the review confirms at the code level why the view never lined up with Finance,
+  finding #1, logos vs dollars. The forward reconciliation bridge stays a contract `[needs decision]`.
+
 ## 2026-06-01  [Validate]
 - happened: rehearsed the board readout vs a data/method skeptic (ex-CFO). Harvested
-  the locked contract as ammunition. Wrote `defense-sheet.md`.
+  the locked contract and `query-review.md` as ammunition. Wrote `defense-sheet.md`.
 - decided: not ready; hold the recommendation pending the Finance reconciliation and
   an early-life cohort cut.
 - next: close the reconciliation [needs decision] with Finance + RevOps; build the

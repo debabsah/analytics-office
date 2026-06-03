@@ -1,8 +1,8 @@
-# Worked example: the four skills on one project
+# Worked example: the five skills on one project
 
 This is the bi-copilot bench run end to end on a single project, so you can watch
-the four skills **compose through a shared knowledge base** instead of just reading
-that they do. One skill notices something while reading inherited SQL. Four skills
+the five skills **compose through a shared knowledge base** instead of just reading
+that they do. One skill notices something while reading inherited SQL. Five skills
 and a full lifecycle later, that same something is what stops a bad number from
 reaching the board.
 
@@ -14,7 +14,7 @@ The reader-facing artifacts are real files you can open:
 
 - [`inputs/`](inputs/) - the raw material you start with (an inherited SQL view, a
   departed analyst's notes, a stakeholder request, a number to defend).
-- [`knowledge-base/`](knowledge-base/) - what the four skills produced and kept
+- [`knowledge-base/`](knowledge-base/) - what the five skills produced and kept
   updating. Start at [`knowledge-base/README.md`](knowledge-base/README.md).
 
 ---
@@ -36,7 +36,8 @@ Hold onto that line. The bench does.
 | 1 | groundwork | Understand | the inherited view + Dana's notes | the knowledge base, classified estate, the loose threads | purpose, landscape, open-questions, decisions, notes, data-quality, timeline, AGENTS |
 | 2 | requirements-interrogator | Define | "build me a churn dashboard" + Priya's answers | a reframe verdict and the metrics the decision actually needs | requirements-brief, **purpose (updated)**, open-questions (one closed), decisions, timeline |
 | 3 | kpi-contract | Define / Design | the reframed metrics | NRR + gross revenue churn, locked v1.0, with a fork log | kpi-contract, open-questions, decisions, timeline |
-| 4 | defend-my-number | Validate | the 108% NRR claim + the board context | a rehearsal that cracks, and a "not yet" verdict | defense-sheet, open-questions, decisions, timeline |
+| 4 | review-my-query | Build / Validate | the inherited `vw_monthly_churn` + the locked contract | 8 graded findings (4 Blocking); the view implements neither contracted metric | query-review, open-questions, decisions, data-quality, timeline |
+| 5 | defend-my-number | Validate | the 108% NRR claim + the board context | a rehearsal that cracks, and a "not yet" verdict | defense-sheet, open-questions, decisions, timeline |
 
 Each skill was pointed only at its own input. None was told "read the knowledge base."
 They read it because that is what the skills instruct, and because `groundwork` left an
@@ -66,10 +67,22 @@ contraction counts, trials, timezone, late data. Two forks could not be resolved
 spot, so they were marked `[needs decision]` with named owners rather than guessed. One
 of them is the Finance reconciliation.
 
-**4. defend-my-number (Validate).** Rehearsed the board readout against a data and
-method skeptic. It harvested the locked contract as ammunition, which is exactly what
-held up under two of the attacks. But the unresolved reconciliation was still unresolved,
-and that is the attack that cracked. Verdict: **not yet.**
+**4. review-my-query (Build / Validate).** Read the inherited `vw_monthly_churn` as text,
+without running it, against the locked contract. Walked each pinned fork, then the
+failure-mode taxonomy, and graded what it found: 8 findings, 4 of them Blocking. The
+headline finding is that the view counts logos while the contract pins MRR, so it is the
+wrong metric, not a fixable one, and that unit mismatch is exactly why it never lined up
+with Finance. It also caught quieter bugs the eye skips: trials leaking into the base via
+`status = 'active'`, UTC truncation against a fiscal Pacific calendar, and a cohort CTE
+that buckets by the month a period started rather than membership at month start. It
+**did not rewrite the view or invent the missing trial flag** to make a fix runnable; it
+located each defect, named the failure mode, graded it, pointed the direction, and left
+`query-review.md`. Verdict on the inherited view: retire it as a board source.
+
+**5. defend-my-number (Validate).** Rehearsed the board readout against a data and
+method skeptic. It harvested the locked contract and the query review as ammunition,
+which is exactly what held up under two of the attacks. But the unresolved reconciliation
+was still unresolved, and that is the attack that cracked. Verdict: **not yet.**
 
 ## The money shot: one gap, traced across the whole spine
 
@@ -87,6 +100,12 @@ requirements-interrogator (Define) Reframing to NRR makes the board-vs-Finance c
         v
 kpi-contract (Design)              The gap is formalized as a contract [needs decision]:
                                    "Finance + RevOps to confirm the exact bridge."
+        |
+        v
+review-my-query (Build/Validate)   The inherited view, reviewed against the contract,
+                                   counts logos, not dollars. That unit mismatch is the
+                                   code-level root cause of the gap (Blocking #1). The
+                                   old view is retired; the forward bridge stays open.
         |
         v
 defend-my-number (Validate)        "Finance says revenue grew 2%, you say 108%. Which is
@@ -107,15 +126,17 @@ not one.)
 
 - **Composition is consumption plus accretion.** Each skill read what came before and
   *extended* the knowledge base; none restated or overwrote another's work. The timeline
-  reads as one continuous project, not four disconnected runs.
+  reads as one continuous project, not five disconnected runs.
 - **State is current truth.** The interrogator did not just append a note that the goal
   changed; it edited `purpose.md` and closed the stale question. A knowledge base that
   contradicts itself is worse than one that stayed quiet.
 - **The read-only line held the whole way.** No skill queried a database, computed NRR,
   or wrote the production SQL. `groundwork` profiled a static file, `kpi-contract` pinned
-  what the metric *means* and flagged what it could not know, and `defend-my-number`
-  surfaced the gap instead of crunching it. The number 108% is never calculated here; it
-  is defined, contracted, and pressure-tested.
+  what the metric *means* and flagged what it could not know, `review-my-query` reviewed
+  the inherited view without running it and pointed the fix direction instead of handing
+  back a rewrite, and `defend-my-number` surfaced the gap instead of crunching it. The
+  number 108% is never calculated here; it is defined, contracted, reviewed, and
+  pressure-tested.
 - **The honest ending is the feature.** The chain ends in "reframe," two `[needs
   decision]` forks, and a "not yet." That is the bench doing its job: surfacing what a
   single confident pass would have shipped straight to the board.
@@ -128,7 +149,9 @@ With the bi-copilot plugin enabled in Claude Code, from a copy of this folder:
    "I inherited this, help me get oriented." It builds the knowledge base.
 2. Hand **requirements-interrogator** the request in `inputs/vp_request.md`.
 3. Ask **kpi-contract** to lock the metrics the brief reframed to.
-4. Give **defend-my-number** the claim in `inputs/the-number.md` and rehearse.
+4. Ask **review-my-query** to review `inputs/vw_monthly_churn.sql` against the locked
+   contract: "is this query right?" It grades the findings, no rewrite.
+5. Give **defend-my-number** the claim in `inputs/the-number.md` and rehearse.
 
 Each skill self-routes from how you phrase the ask; there is no router to configure. The
 knowledge base you end with should look like the one in [`knowledge-base/`](knowledge-base/).

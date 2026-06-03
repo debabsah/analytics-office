@@ -9,7 +9,8 @@ Start here. This is the living understanding of the project, for me and for AI a
   - [Requirements Brief](requirements-brief.md) - the interrogation of the dashboard request (verdict: reframe)
   - [KPI Contract](kpi-contract.md) - Net Revenue Retention + Gross Revenue Churn, locked v1.0
   - [Data Quality](data-quality.md) - why the inherited churn view is not board-trustworthy
+  - [Query Review](query-review.md) - the inherited view reviewed against the contract (4 Blocking)
   - [Defense Sheet](defense-sheet.md) - board readout rehearsal (verdict: not yet)
 
 > Meridian is a fictional B2B SaaS company. Every number, account, and name in this
-> example is invented to show the four skills working together.
+> example is invented to show the five skills working together.

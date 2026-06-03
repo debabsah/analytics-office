@@ -132,11 +132,11 @@ The query reviewer. You wrote or inherited the code behind a number (a SQL query
 
 A capable assistant, shown a flawed query, rewrites it for you, often on guessed column names. This runs the move it skips: locate the defect, name the failure mode, grade it by whether it ships a wrong number, and leave the fix to you.
 
-## See the four compose: a worked example
+## See the five compose: a worked example
 
-Reading what each skill does is one thing; watching them hand off through a shared knowledge base is another. [`examples/saas-retention/`](examples/saas-retention/) runs all four end to end on one fictional SaaS project, with the knowledge base accreting at every step.
+Reading what each skill does is one thing; watching them hand off through a shared knowledge base is another. [`examples/saas-retention/`](examples/saas-retention/) runs all five end to end on one fictional SaaS project, with the knowledge base accreting at every step.
 
-Follow one thread. `groundwork` notices a throwaway line in a departed analyst's notes, that the churn view "never lines up" with Finance, and logs it. `requirements-interrogator` reframes the dashboard request to net revenue retention. `kpi-contract` formalizes that same Finance gap as a `[needs decision]`. Then `defend-my-number` gets cracked by exactly that unresolved gap and returns a "not yet" before a plausible-looking 108% reaches the board. One caveat, read on day one, four skills and a full lifecycle later, is what stops a bad number. No single skill carries that; the knowledge base does.
+Follow one thread. `groundwork` notices a throwaway line in a departed analyst's notes, that the churn view "never lines up" with Finance, and logs it. `requirements-interrogator` reframes the dashboard request to net revenue retention. `kpi-contract` formalizes that same Finance gap as a `[needs decision]`. `review-my-query` reviews the inherited view against the contract and finds the code-level root cause: it counts logos, not dollars. Then `defend-my-number` gets cracked by exactly that unresolved gap and returns a "not yet" before a plausible-looking 108% reaches the board. One caveat, read on day one, five skills and a full lifecycle later, is what stops a bad number. No single skill carries that; the knowledge base does.
 
 Start at [the walkthrough](examples/saas-retention/README.md). Everything is synthetic: no real data, no number computed.
 

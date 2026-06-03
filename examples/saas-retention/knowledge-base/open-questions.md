@@ -15,3 +15,10 @@ _What we don't know yet. Each: the gap, why it matters, who or where to resolve 
   silently dropped from every current figure. Owner: whoever inherits Dana's access.
 - [ ] Are trials actually excluded from the active base? Inflates the base if not.
   Owner: billing / RevOps.
+- [ ] **Cohort-grain bug in `vw_monthly_churn`:** the `active_start` CTE buckets by the
+  month a billing period started, not by "active at month start," so accounts on annual
+  or multi-month plans drop out of the denominator. Surfaced by `query-review.md`
+  (Blocking #4); confirm the grain of `subscriptions` before any rebuild reuses this
+  logic. Owner: whoever builds the NRR model.
+- [ ] Full graded defect list for the inherited view: see `query-review.md` (4 Blocking,
+  3 Latent, 1 Advisory). The Blocking ones gate any board number from this view.
