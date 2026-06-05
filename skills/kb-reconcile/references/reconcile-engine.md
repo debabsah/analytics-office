@@ -71,7 +71,7 @@ That is **partial-update drift**: the closure landed in the story files but neve
 > Run: compute start-of-period cohort billing MRR and end-of-period MRR for the same cohort (expansion minus contraction minus churn); NRR = end / start. Same query for the prior-year cohort for the 102%.
 > Confirms if the result is 108% (+/- rounding); contradicts otherwise.
 
-**Step 6/7 — grade + emit.** One Blocking partial-update drift, one unverified headline number, plus the standing open item (first-90-day cohort, on which the funding recommendation depends — already open in the KB, do not re-flag as drift). Write `reconcile.md`; escalate the Blocking row to `open-questions.md`; append `timeline.md`; cross-ref the contradicting files. Edit none of them.
+**Step 6/7 — grade + emit.** One Blocking partial-update drift, one unverified headline number, plus the standing open item (first-90-day cohort, on which the funding recommendation depends — already open in the KB, do not re-flag as drift). Write `reconcile.md` (your only output); in it, recommend the escalations as actions — the `open-questions.md` entry for the Blocking row, the `timeline.md` line, the cross-refs — for the user to apply. Edit none of the audited files.
 
 **Graded reconcile.md excerpt:**
 

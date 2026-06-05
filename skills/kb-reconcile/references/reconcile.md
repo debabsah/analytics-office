@@ -25,10 +25,10 @@ _Run <date>. Scope: <load-bearing first / exhaustive>. For: <the decision/readou
 ```
 
 ## Composition with the knowledge base
-When a `knowledge-base/` exists, thread the result in rather than leaving it stranded — and never edit the audited files themselves:
-- Every **Blocking** drift -> append to `open-questions.md` with the contradiction (both `file:line`) and the suggested reconciliation action.
-- Append the reconcile as a dated event in `timeline.md` (happened: reconciled the KB for <the readout>; found <N> Blocking, <M> unverified; next: resolve the top Blocking drift / run the paste-back checks).
-- Cross-ref the contradicting files so the next reader sees the conflict from either side; do NOT rewrite them to agree — that is the user's call once they confirm which side is true.
-- A definition gap the reconcile exposes (a claim whose contract is silent or stale) -> route back toward `kpi-contract.md`; a wrong-code finding -> `review-my-query`; a single number whose cause is unknown -> `triage-my-number`.
+`reconcile.md` is the only file you write. Everything below is RECOMMENDED to the user inside that report — kb-reconcile never edits the audited files itself (you cannot audit a record you are also rewriting):
+- For every **Blocking** drift, recommend the `open-questions.md` entry to add (the contradiction, both `file:line`, and the reconciliation action) for the user to paste in.
+- Recommend a dated `timeline.md` line (happened: reconciled the KB for <the readout>; found <N> Blocking, <M> unverified; next: resolve the top Blocking drift / run the paste-back checks).
+- Cross-ref the contradicting files in the report so the next reader sees the conflict from either side; do NOT rewrite them to agree — that is the user's call once they confirm which side is true.
+- Route a definitional gap back toward `kpi-contract.md`, a wrong-code finding toward `review-my-query`, a single number whose cause is unknown toward `triage-my-number`.
 
 A reconcile is the backward/audit counterpart to the seven capture skills: they write the record forward, this checks it before its conclusions are leaned on. If no `knowledge-base/` exists, write the reconcile next to the work and note that `groundwork` can stand up a KB so the record is auditable next time.
