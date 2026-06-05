@@ -16,8 +16,8 @@ This ledger keeps two things honest (see `tests/COVERAGE-AUDIT.md` for the full 
 |---|---|---|
 | kb-reconcile | ✅ banked RED + GREEN + injection (block below + `archive/poison-red/`) | latent |
 | audit-my-experiment | ✅ banked GREEN on Sonnet (`archive/ab-frontier-probe/green-audit-my-experiment.md`) | latent — subtle / glaring + clean control |
-| review-my-query | ⬜ specified-only | latent — **de-narrated 2026-06-05**: stripped 2 giveaway SQL comments (`trials also carry status='active'`, `??? inherited this list`); all 6 defects now latent |
-| brief-my-findings | ⬜ specified-only | latent — **de-narrated 2026-06-05**: `Caveat:`/`Open item:` labels removed; over-crediting + the $2.4M-vs-$2.05M reconciliation gap now presented as neutral facts to catch |
+| review-my-query | ✅ banked RED×2 Sonnet 2026-06-05 — **deflation** (GREEN deferred: confound) | latent — **de-narrated 2026-06-05**: stripped 2 giveaway SQL comments (`trials also carry status='active'`, `??? inherited this list`); all 6 defects now latent |
+| brief-my-findings | ✅ banked RED×4 + GREEN Sonnet 2026-06-05 — **deflation** | latent — **de-narrated 2026-06-05**: `Caveat:`/`Open item:` labels removed; over-crediting + the $2.4M-vs-$2.05M reconciliation gap now presented as neutral facts to catch |
 | groundwork | ⬜ specified-only | latent |
 | requirements-interrogator | ⬜ specified-only | latent |
 | kpi-contract | ⬜ specified-only | latent |
@@ -25,9 +25,19 @@ This ledger keeps two things honest (see `tests/COVERAGE-AUDIT.md` for the full 
 | triage-my-number | ⬜ specified-only | latent |
 | defend-my-number | ⬜ specified-only | semi-narrated by design — the 32%-vs-9% gap is stated because defend *uses* it as the adversary's ammunition; it is not a detection target |
 
-`archive/` = `~/bi-copilot-design-archive/`. **Not yet measured:** 8/10 skills have no banked
-run; 0/10 have a precision/clean control (false-positive rate unmeasured — COVERAGE-AUDIT move #1).
-Those are the next moves, not claims this file should imply are done.
+`archive/` = `~/bi-copilot-design-archive/`.
+
+**Measured 2026-06-05 (Sonnet, `archive/bench-de-narration/`):** review-my-query + brief-my-findings
+both **deflate** — bare Sonnet catches the latent defects (all 6 in the SQL; the reconciliation gap
++ last-touch over-crediting in the brief, even with the deception pressure stripped) and refuses to
+smooth. The skills add **structure / a graded artifact / don't-rewrite discipline, not detection.**
+Consistent with the session thesis: detection lift concentrates on **invisible/computational** checks
+(the SRM chi-square → audit-my-experiment), not **legible** ones whose severity is on the page.
+
+**Not yet measured:** 6/10 skills have no banked run; 0/10 have a precision/clean control
+(false-positive rate unmeasured — COVERAGE-AUDIT move #1, the highest-leverage remaining gap). A fair
+review-my-query GREEN also needs a held-out query (its worked example IS this fixture). Those are the
+next moves, not claims this file should imply are done.
 
 ---
 
