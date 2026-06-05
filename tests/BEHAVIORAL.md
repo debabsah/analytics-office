@@ -35,8 +35,9 @@ Consistent with the session thesis: detection lift concentrates on **invisible/c
 (the SRM chi-square → audit-my-experiment), not **legible** ones whose severity is on the page.
 
 **Precision measured 2026-06-05** (Sonnet GREEN-on-clean; Precision-controls section below): 3 of 4
-auditors PASS (kb-reconcile, triage-my-number, defend-my-number); **review-my-query FAILS** — it
-over-grades schema-conditional concerns to Blocking on a conformant query (cries wolf on clean code).
+auditors PASS (kb-reconcile, triage-my-number, defend-my-number); **review-my-query FAILED → FIXED +
+re-verified** — over-graded schema-conditional concerns to Blocking on a conformant query; rubric fixed
+(Blocking only when established), conformant query now returns no-Blocking (2/2) with recall preserved.
 **Still open:** 6/10 skills have no recall (RED/GREEN) run; a fair review-my-query *recall* GREEN still
 needs a held-out query (its trap-fixture is the skill's own worked example). These are the next moves,
 not claims this file should imply are done.
@@ -123,7 +124,7 @@ In a Claude Code session with the analytics-office plugin enabled, point it at
 - [ ] Recognizes a **review-this-code** request and does **NOT rewrite the query** - no corrected `CREATE VIEW` / `SELECT`, no "Option A / Option B" menu of finished queries.
 - [ ] **Harvests the locked `kpi-contract.md`** and runs the **conformance check fork by fork** (revenue unit, window, trials, timezone, contraction, late-data, source of record).
 - [ ] Runs the **failure-mode taxonomy** (`references/failure-modes.md`) beyond the obvious: grain/cardinality, filter/context, NULL, time, set logic, SCD, RLS, determinism.
-- [ ] Catches the planted defects: **logo-vs-MRR conformance breach** (Blocking - the view answers a different question than the contract), **UTC-vs-fiscal/Pacific** (Blocking), **trials counted as active** (Blocking), the **magic `NOT IN` list** (Latent), **no late-cancel restatement** (Latent), **divide-by-zero** (Advisory).
+- [ ] Catches the planted defects: **logo-vs-MRR conformance breach** (Blocking - the view answers a different question than the contract), **UTC-vs-fiscal/Pacific** (Blocking), **trials not explicitly excluded** (Latent/verify — Blocking once confirmed `status='active'` includes trials), the **magic `NOT IN` list** (Latent), **no late-cancel restatement** (Latent), **divide-by-zero** (Advisory).
 - [ ] **Grades each finding Blocking / Latent / Advisory** by ship-impact, each with location · failure mode · what wrong result it produces · fix direction.
 - [ ] **Holds the bright lines under pressure** ("just fix it for me", "run it to check"): never executes / connects / profiles; **never invents schema** (unknown trial marker, fiscal calendar, excluded IDs flagged as questions or open assumptions, not assumed); **never writes the corrected production query** (a tiny illustrative fragment like `NULLIF(...)` is fine; a drop-in rewrite is not); and does not offer to write sanity-check queries to run.
 - [ ] Emits a committable **`query-review.md`**; if a `knowledge-base/` exists, escalates Blocking findings to `open-questions.md`, routes definition gaps to `kpi-contract.md`, appends `timeline.md`, and indexes it in `README.md`.
@@ -287,16 +288,18 @@ cold-run dirs).
   "real, not broken" line.
 - **defend-my-number — PASS (opening).** Fair, grounded attack; no fabricated hole; no recompute.
   (Interactive — the full drill was not run here.)
-- **review-my-query — FAIL (the finding this control exists to surface).** On the conformant query it
-  returned **3 Blocking "do not ship"** findings (reproduced across two runs), over-grading
-  schema-conditional concerns (table grain, integer division, an edge case) that its own bright line
-  says to raise as *questions*. The concerns are defensible to RAISE; grading them Blocking is the
-  precision miss — it cannot return "conforms, ship it" and will cry wolf on clean code. Fix direction
-  (in the skill): grade unverified-schema concerns Latent/verify; reserve Blocking for established defects.
+- **review-my-query — FAIL → FIXED (2026-06-05).** Initially returned **3 Blocking "do not ship"**
+  findings on the conformant query (over-grading schema-conditional concerns to Blocking — cries wolf on
+  clean code), reproduced across two runs. **Fixed the grading rubric** (SKILL.md + failure-modes.md):
+  Blocking only when established from what's in hand; schema-conditional concerns → Latent/verify + the
+  discriminating check. **Re-verified:** conformant query now returns **no Blocking (2/2 runs)**, and
+  recall is preserved — the de-narrated trap fixture still gets **3 established Blockings** (logo-vs-MRR,
+  missing contraction, broken cohort grain) + 4 Latent/verify, correct "do not ship" verdict. Verdict:
+  `archive/review-my-query-precision-fix/`.
 
-Net: precision good for 3 of 4 auditors; review-my-query over-escalates to Blocking. The contrast IS
-the lesson — kb-reconcile graded definitional uncertainty Advisory/Latent (right), review-my-query
-graded schema uncertainty Blocking (wrong).
+Net: after the fix, all 4 auditors hold precision. The lesson the control drew is now closed — schema/
+definitional uncertainty is graded Latent/verify (like kb-reconcile), Blocking reserved for an
+established wrong number.
 
 ## review-my-query — `tests/fixtures/conformant-query/`
 Point it at `vw_gross_revenue_churn.sql` + `kpi-contract.md` with "review it". PASSES if it:

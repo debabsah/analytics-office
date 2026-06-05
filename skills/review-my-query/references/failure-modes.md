@@ -2,10 +2,12 @@
 
 Load when running the engine (loop step 3). Two layers: **conformance** (does the code implement each pinned fork of `kpi-contract.md`?) and the **taxonomy** below (the classic analytics defects). Comprehensive thinking, lean output: hunt all of it; record only the findings that bite.
 
-## Severity rubric — grade by ship-impact, not by taste
-- **Blocking** — ships a wrong number. A conformance breach (the code computes a different thing than the contract pins) or a correctness bug that is wrong *now*. Escalates to `open-questions.md`.
-- **Latent** — correct today, will break under conditions: an unhandled edge, an SCD that will move, late-arriving data, a magic filter that will rot, a NULL path not yet hit.
+## Severity rubric — grade by ship-impact, not by taste, and Blocking only when established
+- **Blocking** — ships a wrong number you can demonstrate **from what's in hand**, with no plausible reading of the unseen schema under which the code is correct: a conformance breach (computes a different thing than the contract pins), an omitted contract-required transformation, or a logic error visible in the code itself. Escalates to `open-questions.md`.
+- **Latent / verify** — real ship-impact that is **conditional**: either correct-today-will-break (an unhandled edge, an SCD that will move, late-arriving data, a magic filter that will rot, a NULL path not yet hit), *or* a potential defect that hinges on a fact you cannot see (a table's grain, a column's type/nullability, whether a `status` value includes trials). State the discriminating check and what it becomes if confirmed ("→ Blocking if …"). A resolve-before-ship item — but never graded Blocking on an assumption.
 - **Advisory** — correct and robust, but unclear or unmaintainable: naming, structure, a missing comment on a non-obvious choice.
+
+**The Blocking bar, sharply:** if whether the number is wrong depends on a schema fact you can't see — and there is a plausible world where the code conforms — it is **Latent / verify**, not Blocking. Over-blocking a conformant query (a wall of Blockings that are really "verify X") makes every real Blocking suspect; a clean query must be allowed to come back "conforms — no Blocking."
 
 Each finding records: **location · failure mode · what wrong result it produces · fix direction.** The fix direction is words, optionally one *tiny* illustrative fragment — never a finished, drop-in query.
 
@@ -56,7 +58,7 @@ The inherited board-churn view (counts canceled logos / accounts active at month
 | # | Location | Failure mode | What it produces | Severity | Fix direction |
 |---|---|---|---|---|---|
 | 1 | whole view | conformance: revenue unit — counts logos, contract pins MRR | a logo-churn number standing in for revenue retention; can look flat while MRR bleeds | Blocking | this can't be patched into NRR; rebuild against billing MRR per the contract (start-of-period cohort MRR, expansion/contraction/churn) |
-| 2 | `WHERE s.status='active'` | conformance + filter: trials carry status='active'; contract excludes trials | denominator inflated with non-paying trials | Blocking | exclude trials by the real trial marker (confirm the field with the user) |
+| 2 | `WHERE s.status='active'` | conformance/filter: contract excludes trials; this filter doesn't *explicitly* exclude them | **if** `status='active'` includes trials → denominator inflated with non-paying trials (wrong number); if trials carry a different status → conforms | Latent / verify (→ Blocking if confirmed) | confirm whether trials carry `status='active'`; if so, exclude by the real trial marker — don't assume either way |
 | 3 | `DATE_TRUNC('month', period_start/canceled_at)` | time: UTC truncation, contract pins fiscal US/Pacific | cancellations near month-end land in the wrong period | Blocking | truncate in the reporting timezone on the fiscal calendar before grouping |
 | 4 | `active_start` CTE | grain: buckets by the month a period *started*, not "active at month start"; join then requires same month | denominator is "started this month"; prior-cohort cancellations silently drop → churn undercounted | Blocking | define the start cohort as a point-in-time membership test (active on the period's first instant), independent of the cancel month |
 | 5 | `NOT IN (4471, 4472, 5012, 5013, 5014)` | filter: unexplained magic list ("no idea who these are") | silently removes accounts no one can identify; provenance lost | Latent | identify and document, or remove; if real, move to a documented exclusion table with a reason |
@@ -65,10 +67,10 @@ The inherited board-churn view (counts canceled logos / accounts active at month
 | 8 | `1.0 * lost / start` | determinism: no zero guard | divide-by-zero / NULL on an empty cohort month | Advisory | guard the denominator, e.g. `NULLIF(..., 0)` |
 
 ## Verdict
-- **Blocking:** 4 — must resolve before this feeds the board or gets defended (most fundamentally, it answers a different question than the contract).
-- **Latent:** 3 — will distort or drift under real data.
+- **Blocking:** 3 — established from the code + contract (#1 wrong unit, #4 wrong cohort grain, #3 missing timezone handling); must resolve before this feeds the board or gets defended (most fundamentally, it answers a different question than the contract).
+- **Latent / verify:** 4 — real impact, but each hinges on a fact not in hand (#2 trials-in-`active`, #5 the magic IDs, #6 NULL `plan_code`, #7 the close rule); each carries its discriminating check and becomes Blocking once confirmed.
 - **Advisory:** 1.
-- **Assumptions this review depends on:** trial marker field, fiscal-calendar definition, and the identity of the excluded account IDs all remain open (asked of the user; not assumed).
+- **Assumptions this review depends on:** trial marker field, fiscal-calendar definition, and the identity of the excluded account IDs all remain open (asked of the user; not assumed) — which is exactly why #2 is graded Latent / verify, not Blocking. Asserting Blocking on an unconfirmed schema fact is the over-blocking failure mode.
 ```
 
 Note what the review does NOT do: it never rewrites the view, never writes the MRR rebuild, and never invents the trial flag or MRR column names to make a fix runnable. It locates, names, grades, and points — the user makes the change.
