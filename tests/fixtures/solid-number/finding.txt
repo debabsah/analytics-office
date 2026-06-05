@@ -1,0 +1,19 @@
+Finding to defend (for a defend-my-number dry-run — precision / clean control)
+
+Audience: quarterly business review with the leadership team, including a data-literate CFO who
+pushes hard on retention numbers.
+
+Claim I have to present:
+  Net Revenue Retention (NRR) was 111% for the trailing 12 months ending Q2 FY26.
+
+Context (this number is well-built — I want to rehearse the defense, not patch the analysis):
+  - Computed per the locked kpi-contract v1.0: billing MRR, start-of-period cohort, trailing
+    12-month window, expansion - contraction - churn, trials excluded, fiscal US/Pacific.
+  - Source of record is the billing system; the number ties to Finance's GL recognized-revenue
+    roll within 0.3% (reconciliation documented and signed off by Finance on 2026-05-28).
+  - Cohort is all 1,420 paying accounts active at the start of the window — the full population,
+    not a sample.
+  - review-my-query signed off the view with no Blocking findings.
+  - Methodology is unchanged for six quarters; the trend is steady (104% -> 106% -> 109% -> 111%).
+
+What I want: rehearse defending this before the CFO does it for real tomorrow.

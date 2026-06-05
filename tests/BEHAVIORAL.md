@@ -34,10 +34,12 @@ smooth. The skills add **structure / a graded artifact / don't-rewrite disciplin
 Consistent with the session thesis: detection lift concentrates on **invisible/computational** checks
 (the SRM chi-square → audit-my-experiment), not **legible** ones whose severity is on the page.
 
-**Not yet measured:** 6/10 skills have no banked run; 0/10 have a precision/clean control
-(false-positive rate unmeasured — COVERAGE-AUDIT move #1, the highest-leverage remaining gap). A fair
-review-my-query GREEN also needs a held-out query (its worked example IS this fixture). Those are the
-next moves, not claims this file should imply are done.
+**Not yet measured:** 6/10 skills have no banked run. **Precision / clean controls now BUILT** for the
+four auditor skills (kb-reconcile, review-my-query, triage-my-number, defend-my-number — 2026-06-05;
+audit-my-experiment already had `clean.txt`) — see the Precision-controls section below — but NOT yet
+measured (the GREEN/RED-on-clean false-positive run is the next move). A fair review-my-query GREEN
+still needs a held-out query (its trap-fixture IS the skill's own worked example). These are the next
+moves, not claims this file should imply are done.
 
 ---
 
@@ -263,4 +265,40 @@ readout with a latent sample-ratio mismatch) with "write up the rollout readout.
   does **NOT** false-alarm (balanced, fixed-horizon, CI excludes 0) → `ship-ready` (false-alarm control).
 - [ ] Does NOT fire to write up a validated result (-> `brief-my-findings`), review ONE query
   (-> `review-my-query`), diagnose ONE moved number (-> `triage-my-number`), or audit a KB (-> `kb-reconcile`).
+
+---
+
+# Precision / clean controls (the false-positive rate)
+
+Every other fixture in this file is a TRAP (it measures recall — does the skill CATCH the planted
+defect). These four are deliberately CLEAN **hard negatives** — clean but engineered to *look*
+suspicious — and the PASS condition is that the skill **STAYS QUIET**: it clears the record with its
+checks shown and manufactures NO problem. They measure the **false-positive rate**, the trust-defining
+number for the auditor skills (the confusion matrix's untested column). Built 2026-06-05; each
+`tests/fixtures/<dir>/FIXTURE.md` documents the planted hard-negatives (answer keys — keep out of
+cold-run dirs).
+
+## review-my-query — `tests/fixtures/conformant-query/`
+Point it at `vw_gross_revenue_churn.sql` + `kpi-contract.md` with "review it". PASSES if it:
+- [ ] Concludes **conforms to the contract — no Blocking findings**, clearing it with the conformance walk shown.
+- [ ] Does NOT manufacture a Blocking defect: not the verbose-but-correct `AT TIME ZONE` Pacific
+  conversion, not the governed-exclusions `NOT IN` (a documented table, not a magic literal list), not the signed `CASE` loss flip.
+- [ ] At most an **Advisory** (verify `governed_exclusions.account_id` is non-null for the `NOT IN`; readability; the redundant period predicate).
+
+## triage-my-number — `tests/fixtures/explained-movement/`
+Point it at `symptom.txt` with "why did GRC move?". PASSES if it:
+- [ ] Runs the differential and **rules out code / data / pipeline / definition** by their checks (no deploys, billing ties out, definition unchanged).
+- [ ] Lands on **real change** — the two confirmed Enterprise accounts (Northwind cancel, Globex downgrade) — as the leading explanation.
+- [ ] Manufactures **NO confirmed artifact** (no fabricated grain/dedup/late-data bug); gives a calibrated line ("real, concentrated loss — not a measurement artifact").
+
+## defend-my-number — `tests/fixtures/solid-number/`
+Point it at `finding.txt` (NRR 111%, fully buttressed) with "rehearse defending this". PASSES if it:
+- [ ] Fires **fair, grounded** attacks (drilling is the job) but **concedes the documented strengths** — grades strong answers `held`.
+- [ ] Reaches verdict **ready**; does NOT fabricate holes the context already closes (e.g. "reconciliation undocumented" when Finance signed off ±0.3%), and does NOT grade a strong answer `cracked` to seem rigorous.
+
+## kb-reconcile — `tests/fixtures/consistent-kb/`
+Point it at the KB with "reconcile it before the board". PASSES if it:
+- [ ] Finds **no Blocking drift** — confirms `kpi-contract.md` (RECONCILED) ↔ `findings-brief.md` (board-ready) ↔ `decisions.md`/`timeline.md` agree (the `drifted-kb` partial-update is RESOLVED here).
+- [ ] Marks NRR 108% **sourced / verified per `nrr-reconciliation.md`** (at most "re-run to confirm freshness"); does NOT flag it unsourced / no-source.
+- [ ] Invents NO contradiction; leaves the correctly-tracked APAC `[Open]` item open (does not escalate it as drift). Clears with the per-claim checks shown.
 

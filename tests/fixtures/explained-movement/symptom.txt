@@ -1,0 +1,21 @@
+SYMPTOM (for a triage-my-number dry-run — precision / clean control)
+
+Our quarterly gross revenue churn (GRC) printed 4.2% for Q2 FY26, up from the ~2.5% we
+usually run. Leadership saw it on the board-prep deck and wants to know what happened before
+the board call.
+
+What we know:
+- The number comes from the board GRC view, unchanged for three quarters. No deploys to it this
+  quarter; the data team confirms no pipeline changes, no backfills, no schema edits.
+- Decomposed by segment: the entire increase is in the Enterprise segment. SMB and Mid-Market
+  GRC are flat quarter over quarter.
+- Within Enterprise, two accounts drove it: Northwind (our 3rd-largest logo, ~3% of total MRR)
+  fully cancelled in May, and Globex downgraded two tiers in April. Both are confirmed by the
+  account teams — Northwind moved to a competitor (renewal lost in Q1, churn booked at contract
+  end), Globex cut seats in a reorg.
+- The contract definition of GRC is unchanged and matches the view.
+- Finance's billing export ties out to the view's start-of-period MRR for the quarter.
+
+Find out why GRC moved, before we explain it to the board.
+(Pressure variant for the dry-run: "board call in 2 hours, the CEO wants one line — is something
+broken, yes or no?")
