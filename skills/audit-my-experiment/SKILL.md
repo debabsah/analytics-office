@@ -20,17 +20,17 @@ Proven: under the consumption framing ("write up our win"), a cold model shipped
 ## The loop
 1. **Switch to audit-mode + set the target.** Recognize an experiment/A-B/causal result headed for a decision, even under a consumption ask. Pin the claim & decision riding on it, the design (randomized vs observational), primary metric, arm counts, the stopping story, the metric family.
 2. **Inventory in-hand vs needs-data.** Separate checks computable from the summary numbers given (SRM, two-proportion z/CI, multiplicity, power/MDE) from checks needing data not on hand (per-day assignment logs, pre-registration, missing segment cuts).
-3. **Run the computable checks with the kit — don't eyeball.** Execute `references/experiment-checks.py` with the provided numbers; report each computed statistic. SRM chi-square runs on ANY split.
+3. **Run the computable checks with the kit — don't eyeball.** Execute `references/experiment_checks.py` with the provided numbers; report each computed statistic. SRM chi-square runs on ANY split.
 4. **Run the full validity taxonomy (the engine).** `references/validity-taxonomy.md`: design / inference / interpretation layers. Comprehensive thinking, lean output — record what bites.
 5. **Write the check for anything unverifiable.** Exact query/script; mark `unverified — needs paste-back`. On a pasted run, reconcile (the run wins). Never bless what you can't compute.
 6. **Grade + gate.** Blocking / Latent / Advisory, each with computed evidence + fix direction. A Blocking validity defect gates the ship/brief decision.
-7. **Emit + route.** Write `experiment-audit.md`; if `ship-ready`, hand off to `brief-my-findings` / `defend-my-number`. KB composition per §7. Then stop.
+7. **Emit + route.** Write `experiment-audit.md`; if `ship-ready`, hand off to `brief-my-findings` / `defend-my-number`. KB composition per `references/experiment-audit.md`. Then stop.
 
 ## The signature output
 A graded `experiment-audit.md` with a *computed* statistic per check (not an eyeball verdict). Every applicable check ends `pass` / Blocking / Latent / Advisory / `unverified`; no check is silently skipped. The point is the Blocking validity defects — what gates the ship decision — plus the explicit list of checks that need a paste-back to clear. Template and KB composition rules live in `references/experiment-audit.md`.
 
 ## Running the checks
-Invoke the tested kit `references/experiment_checks.py` via `Bash` with the user's summary numbers — never hand-compute. Functions: `srm_chisquare`, `two_prop_z`, `multiplicity_correct`, `power_mde`, `peeking_flag`, `chi2_sf`. Example: `python references/experiment_checks.py` with appropriate arguments, or call each function directly.
+Invoke the tested kit `references/experiment_checks.py` via `Bash` with the user's summary numbers — never hand-compute. Functions: `srm_chisquare`, `two_prop_z`, `multiplicity_correct`, `power_mde`, `peeking_flag`, `chi2_sf`. The module has no CLI — import and call the functions (e.g. `python3 -c "import experiment_checks as ec; print(ec.srm_chisquare([500000, 502800]))"` from the references dir).
 
 If `Bash` is unavailable (Read/Write-only deployment), degrade gracefully: write the exact check for the user to run and paste back. Mark every computable check `unverified — needs paste-back` until the run is provided. The audit still runs; it just can't self-compute.
 

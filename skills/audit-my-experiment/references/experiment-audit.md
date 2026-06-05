@@ -5,6 +5,7 @@ Write at the end of every audit. Lives at `knowledge-base/experiment-audit.md` i
 ```markdown
 # Experiment Audit — <name> [Audit]
 _Audited <date>. Experiment: <name / ticket / link>.
+Decision it gates: <ship / rollout / budget call>.
 Design: <randomized / observational>. Primary metric: <metric>. Arm counts: <control n / treatment n>.
 Read-only: computed on provided summary numbers; no live system or raw data touched._
 
