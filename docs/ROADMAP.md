@@ -29,9 +29,10 @@ _Cross-cutting (off-ladder): **defend-my-number** — rehearse defending a finis
 
 ## Parked engineering threads (not new skills)
 - ~~**Bench de-narration + honest `BEHAVIORAL.md`**~~ — **DONE (2026-06-05).** Audit found only 2 of 10 fixtures actually narrated their own trap (review-my-query, brief-my-findings — the rest were already latent). De-narrated both; added a verified-vs-specified + narration ledger to `BEHAVIORAL.md`. Banked RED/GREEN on Sonnet: **both deflate** — bare Sonnet catches the legible defects and refuses to smooth; the skills add structure/discipline, not detection. Verdict: `archive/bench-de-narration/`.
-- **Precision / clean controls** — *now the highest-value unactioned item.* 0/10 skills test staying QUIET on a clean record → the false-positive rate (the trust-defining number for the auditor skills) is unmeasured. COVERAGE-AUDIT move #1.
-- **Held-out query for a fair review-my-query GREEN** — its worked example IS the current fixture (`vw_monthly_churn`), so GREEN there is teaching-to-the-test.
-- **RED-test the remaining skills on the Sonnet deployment tier.**
+- ~~**Precision / clean controls**~~ — **DONE + MEASURED (2026-06-05).** Built a hard-negative clean fixture per auditor skill (`conformant-query/`, `explained-movement/`, `solid-number/`, `consistent-kb/`) and ran GREEN-on-clean on Sonnet. **3/4 PASS** (kb-reconcile, triage-my-number, defend-my-number — stay quiet / well-graded Advisory). **review-my-query FAILS** — over-grades schema-conditional concerns to Blocking on a conformant query (cries wolf on clean code). Verdict: `archive/precision-controls/`.
+- **Fix `review-my-query`'s grading rubric** — *now the highest-value actionable item, surfaced by the precision control.* Grade unverified-schema concerns Latent/verify; reserve **Blocking** for an established defect that ships a wrong number. Re-measure precision after; add RED-on-clean for the skill-vs-base delta.
+- **Held-out query for a fair review-my-query *recall* GREEN** — its worked example IS the current trap-fixture (`vw_monthly_churn`), so GREEN there is teaching-to-the-test.
+- **RED-test the remaining (spec-only) skills on the Sonnet deployment tier.**
 
 ## Method note
 Probes use cold `general-purpose` subagents with the fixture + skill pasted **inline** (hermetic — no filesystem, so no repo answer-keys leak), on the deployment model. Default probe/RED target: **Opus** for the "is even the strongest model weak here?" go/no-go; **Sonnet** to measure deployment-tier value (Opus holding never clears Sonnet).
@@ -42,4 +43,5 @@ Probes use cold `general-purpose` subagents with the fixture + skill pasted **in
 - audit-my-experiment: spec `docs/superpowers/specs/2026-06-05-audit-my-experiment-design.md` · plan `docs/superpowers/plans/2026-06-05-audit-my-experiment.md`
 - Forecasting-frontier probe (9 runs → no-build): `~/bi-copilot-design-archive/forecasting-frontier-probe/2026-06-05-verdict.md`
 - Bench de-narration + payoff (7 runs → both deflate): `~/bi-copilot-design-archive/bench-de-narration/2026-06-05-verdict.md`
-- agentmemory: `mem_mq16a302` (session-wrap B — forecasting no-build + de-narration done) · `mem_mq0tpabz` (session-wrap A) · `mem_mq0ta6pm` (A/B resolved + shipped) · `mem_mq0oiwou` (validation lessons)
+- Precision / clean controls (built + measured, 3/4 pass): `~/bi-copilot-design-archive/precision-controls/2026-06-05-verdict.md`
+- agentmemory: `mem_mq17h3up` (session-wrap C — precision controls + review-my-query over-grades) · `mem_mq16a302` (B — forecasting no-build + de-narration) · `mem_mq0tpabz` (A) · `mem_mq0ta6pm` (A/B resolved + shipped) · `mem_mq0oiwou` (validation lessons)
