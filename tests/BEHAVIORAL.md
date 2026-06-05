@@ -16,7 +16,7 @@ This ledger keeps two things honest (see `tests/COVERAGE-AUDIT.md` for the full 
 |---|---|---|
 | kb-reconcile | ✅ banked RED + GREEN + injection (block below + `archive/poison-red/`) | latent |
 | audit-my-experiment | ✅ banked GREEN on Sonnet (`archive/ab-frontier-probe/green-audit-my-experiment.md`) | latent — subtle / glaring + clean control |
-| review-my-query | ✅ banked RED×2 Sonnet 2026-06-05 — **deflation** (GREEN deferred: confound) | latent — **de-narrated 2026-06-05**: stripped 2 giveaway SQL comments (`trials also carry status='active'`, `??? inherited this list`); all 6 defects now latent |
+| review-my-query | ✅ recall: RED×2 Sonnet 2026-06-05 — **deflates** (base catches legible dirt). **precision: RED-on-clean×2 + GREEN-on-clean×2 — base over-blocks a clean query 2/2 → skill LIFT** (`archive/review-my-query-red-on-clean/`) | latent — **de-narrated 2026-06-05**: stripped 2 giveaway SQL comments (`trials also carry status='active'`, `??? inherited this list`); all 6 defects now latent. Clean control: `conformant-query/` |
 | brief-my-findings | ✅ banked RED×4 + GREEN Sonnet 2026-06-05 — **deflation** | latent — **de-narrated 2026-06-05**: `Caveat:`/`Open item:` labels removed; over-crediting + the $2.4M-vs-$2.05M reconciliation gap now presented as neutral facts to catch |
 | groundwork | ⬜ specified-only | latent |
 | requirements-interrogator | ⬜ specified-only | latent |
@@ -38,6 +38,11 @@ Consistent with the session thesis: detection lift concentrates on **invisible/c
 auditors PASS (kb-reconcile, triage-my-number, defend-my-number); **review-my-query FAILED → FIXED +
 re-verified** — over-graded schema-conditional concerns to Blocking on a conformant query; rubric fixed
 (Blocking only when established), conformant query now returns no-Blocking (2/2) with recall preserved.
+**RED-on-clean (2026-06-05) upgrades that result:** bare Sonnet ALSO over-blocks the clean query 2/2
+("do not ship", falls for the planted structural-filter trap, writes drop-in fixes), so the fixed skill
+isn't at parity — it has a **measured precision lift** (prevents the base model's false "do not ship").
+review-my-query thus deflates on *recall* but lifts on *precision* — invisibility cuts both ways (the
+truth being clean here is invisible in join structure; see the Precision-controls section).
 **Still open:** 6/10 skills have no recall (RED/GREEN) run; a fair review-my-query *recall* GREEN still
 needs a held-out query (its trap-fixture is the skill's own worked example). These are the next moves,
 not claims this file should imply are done.
@@ -297,9 +302,27 @@ cold-run dirs).
   missing contraction, broken cohort grain) + 4 Latent/verify, correct "do not ship" verdict. Verdict:
   `archive/review-my-query-precision-fix/`.
 
+**RED-on-clean for review-my-query — MEASURED 2026-06-05 (verdict `archive/review-my-query-red-on-clean/`).**
+The control question: does bare Sonnet (no skill) ALSO return no-Blocking on the conformant query, i.e.
+is the fixed skill merely at parity with the base model, or better? **Answer: better — a measured
+precision lift.** Bare Sonnet, conformant query, natural "review before it ships" ask, hermetic inline,
+**2/2 → "DO NOT SHIP."** Both base runs fell for the planted false-positive trap (the numerator's
+exclusion is enforced *structurally* by `LEFT JOIN cohort_mrr`, which already drops `governed_exclusions`)
+— reading "denominator CTE filters, numerator CTE doesn't" off the page and grading it **Must-fix**, each
+**writing a drop-in `NOT IN` "fix"** (also over the read-only line). Run 1 even contradicted itself (its
+Issue 2 traced the join, concluded "actually fine structurally," yet kept Issue 1 as the headline
+must-fix); Run 2 invented a *second* must-fix (COALESCE "masks missing data"). The fixed skill returned
+"conforms — no Blocking" 2/2, one run explicitly defusing that exact trap → Advisory. So on this fixture
+the skill PREVENTS a base-model false "do not ship" — real failure-prevention, not just structure.
+
 Net: after the fix, all 4 auditors hold precision. The lesson the control drew is now closed — schema/
 definitional uncertainty is graded Latent/verify (like kb-reconcile), Blocking reserved for an
-established wrong number.
+established wrong number. **And review-my-query is NOT fully deflated:** it deflates on *recall* (bare
+Sonnet catches legible defects in the dirty fixture) but has a genuine **precision lift** — because the
+*cleanliness* here is invisible (it lives in join structure, not on the line) while the apparent-defect
+is legible, so the base model cries wolf and the skill's "Blocking only when established" discipline
+forces the trace that clears it. Invisibility cuts both ways: lift exists wherever the truth — clean *or*
+dirty — requires a trace the base model eyeballs past.
 
 ## review-my-query — `tests/fixtures/conformant-query/`
 Point it at `vw_gross_revenue_churn.sql` + `kpi-contract.md` with "review it". PASSES if it:
