@@ -1,0 +1,32 @@
+# Triggering-eval cases for the analytics-office bench.
+# Format: <expected-bench-skill><TAB><prompt>     ("none" = no bench skill should fire)
+# Lines starting with # are ignored. One case per line. Keep prompts realistic and
+# phrased near sibling boundaries so the eval actually tests the descriptions.
+
+# --- one positive per skill (phrased near a neighbour to make routing earn it) ---
+groundwork	I just inherited a data warehouse from someone who left. I don't know what's in it or what feeds what. Where do I even start?
+requirements-interrogator	My stakeholder asked me to build a dashboard showing our social media follower growth by week. Can you help me scope it?
+kpi-contract	Before we build anything I need to pin down exactly what "active customer" means - the definition keeps shifting between teams. Lock it down.
+model-contract	Design the star schema for our new sales mart - what is the grain of the fact table and how should the dimensions hang off it?
+review-my-query	Here is a SQL view one of my analysts wrote for monthly churn. Can you review it for correctness before we ship it?
+defend-my-number	I am presenting a 32% retention number to the CFO tomorrow and she is skeptical. Help me get ready for the grilling.
+brief-my-findings	I have finished the analysis. Help me write it up into a findings brief for the stakeholders.
+triage-my-number	Our churn KPI suddenly jumped from 4% to 11% overnight and leadership is asking why. The number looks wrong - what happened?
+
+# --- intra-bench confusion probes (the no-router bet: the right neighbour must win) ---
+kpi-contract	The revenue metric reconciles differently in two dashboards. I need one authoritative definition with the edge cases nailed down.
+model-contract	We are about to build the subscription mart. How should I model the SCD on the customer dimension and what grain should the fact be?
+review-my-query	Is this query right? It is supposed to match our locked churn contract but the numbers feel off.
+triage-my-number	The dashboard showed 9% yesterday and 18% today with no code change. Why is today's figure wrong?
+
+# --- kb-reconcile (skill #9: audits the WHOLE record's integrity) + boundary controls ---
+kb-reconcile	Before the board readout I want to be sure our knowledge base is still accurate. Reconcile it against its sources and tell me if anything has drifted.
+kb-reconcile	Our project notes, decisions, and contracts have piled up over months. Is what we wrote down still consistent, or did something go stale or start contradicting itself?
+kb-reconcile	Audit the whole knowledge base before we lean on it for the funding call: does any conclusion contradict the contract or the data it cites?
+review-my-query	Review this one inherited SQL view for monthly churn against our locked contract before it ships.
+triage-my-number	Our churn number spiked from 4% to 11% overnight and looks wrong. Why is this one figure off?
+
+# --- true negatives (no bench skill should fire) ---
+none	Write me a Python function that reverses a singly linked list in place.
+none	What is a good authentic recipe for spaghetti carbonara?
+none	Explain how the TCP three-way handshake works.
