@@ -7,6 +7,8 @@ Cover the analytics ladder **where the base model reliably fails** — failure-p
 
 Recurring shape of a high-lift skill: a **consumption→audit switch** (kb-reconcile, audit-my-experiment) that forces the *check* the model skips — especially the **computational checks it eyeballs**, not the conceptual defects it already recites.
 
+**Confirmed 2026-06-05 (forecasting probe + bench de-narration, from both directions):** lift exists only where the defect is **invisible** — where a computed check is needed to surface it (the SRM chi-square). Where the defect is **legible** (its severity is on the page: a thin forecast margin, two mismatched revenue numbers, a code-vs-contract conformance breach) the base model catches it unaided and the skill only adds **structure**. So forecasting-audit deflated; review-my-query and brief-my-findings deflated. **Build for invisibility, not legibility.**
+
 ## Coverage map (the ladder)
 
 | Layer | Question | Coverage | Status |
@@ -15,18 +17,20 @@ Recurring shape of a high-lift skill: a **consumption→audit switch** (kb-recon
 | Diagnostic | why did it move | triage-my-number | ✅ |
 | Governance | can we trust the record | kb-reconcile, groundwork, requirements-interrogator | ✅ |
 | Inferential / causal | does X cause Y | **audit-my-experiment** — experiment validity; also flags observational-causal traps | 🟡 partial |
-| Predictive | what will happen | — | ⬜ open |
+| Predictive | what will happen | — _(forecasting-audit probed → no-build, 2026-06-05)_ | ⬜ open |
 | Prescriptive | what should we do | — | ⬜ open |
 
 _Cross-cutting (off-ladder): **defend-my-number** — rehearse defending a finished number; companion to brief-my-findings. Bench = **10 skills**._
 
 ## Open frontier (prioritized by likely green-red gap)
-1. **Forecasting / backtest hygiene** (Predictive) — *best next candidate; unprobed.* Likely a **computational** gap (train/test leakage, no out-of-sample validation, ignored regime change) — the same shape as SRM. Probe latent, on Sonnet, before designing.
+1. **Forecasting / backtest hygiene** (Predictive) — **PROBED → no-build (2026-06-05, 9 runs).** The hypothesised SRM-shaped computational gap did NOT survive: the defect's severity (thin margin, config spread, no out-of-sample) is **legible in the reported numbers**, so bare Sonnet's caution tracks it rather than eyeballing past. Only residual corner: a truly-invisible latent leakage (a *trace-the-lineage* gap, not *run-the-check*) — lower-probability, unprobed. Verdict: `archive/forecasting-frontier-probe/`.
 2. **Causal-inference-from-observational** (Inferential) — partially covered by audit-my-experiment's interpretation checks (confounding / Simpson's / regression-to-mean). A *dedicated* skill is likely **low-lift** — probe evidence shows conceptual causal defects are base-model-robust at both tiers. Probe before building.
 3. **Prescriptive** (what should we do — optimization / decision policy) — unprobed; furthest from the bench's current "get the number right and defensible" identity. Possibly a sibling product.
 
 ## Parked engineering threads (not new skills)
-- **Bench de-narration + honest `BEHAVIORAL.md`** — *highest-value unactioned item.* The existing non-auditor fixtures **narrate their own traps**, so they test compliance, not detection, and can't show failure-prevention lift. De-narrate (bury the landmine so the model must detect it), re-bank RED/GREEN on the Sonnet tier, and update `BEHAVIORAL.md` to mark verified-vs-specified and record the deployment-tier reality.
+- ~~**Bench de-narration + honest `BEHAVIORAL.md`**~~ — **DONE (2026-06-05).** Audit found only 2 of 10 fixtures actually narrated their own trap (review-my-query, brief-my-findings — the rest were already latent). De-narrated both; added a verified-vs-specified + narration ledger to `BEHAVIORAL.md`. Banked RED/GREEN on Sonnet: **both deflate** — bare Sonnet catches the legible defects and refuses to smooth; the skills add structure/discipline, not detection. Verdict: `archive/bench-de-narration/`.
+- **Precision / clean controls** — *now the highest-value unactioned item.* 0/10 skills test staying QUIET on a clean record → the false-positive rate (the trust-defining number for the auditor skills) is unmeasured. COVERAGE-AUDIT move #1.
+- **Held-out query for a fair review-my-query GREEN** — its worked example IS the current fixture (`vw_monthly_churn`), so GREEN there is teaching-to-the-test.
 - **RED-test the remaining skills on the Sonnet deployment tier.**
 
 ## Method note
@@ -36,4 +40,6 @@ Probes use cold `general-purpose` subagents with the fixture + skill pasted **in
 - Inferential-frontier probe (17 runs): `~/bi-copilot-design-archive/ab-frontier-probe/2026-06-05-verdict.md`
 - Sonnet deployment sweep + latent-fixture probe: `~/bi-copilot-design-archive/sonnet-deployment-sweep/`
 - audit-my-experiment: spec `docs/superpowers/specs/2026-06-05-audit-my-experiment-design.md` · plan `docs/superpowers/plans/2026-06-05-audit-my-experiment.md`
-- agentmemory: `mem_mq0ta6pm` (A/B resolved + shipped) · `mem_mq0p0ceo` (handoff) · `mem_mq0oiwou` (validation lessons)
+- Forecasting-frontier probe (9 runs → no-build): `~/bi-copilot-design-archive/forecasting-frontier-probe/2026-06-05-verdict.md`
+- Bench de-narration + payoff (7 runs → both deflate): `~/bi-copilot-design-archive/bench-de-narration/2026-06-05-verdict.md`
+- agentmemory: `mem_mq16a302` (session-wrap B — forecasting no-build + de-narration done) · `mem_mq0tpabz` (session-wrap A) · `mem_mq0ta6pm` (A/B resolved + shipped) · `mem_mq0oiwou` (validation lessons)
