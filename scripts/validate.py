@@ -30,6 +30,9 @@ EXPECTED = [
     "skills/triage-my-number/references/triage.md",
     "skills/model-contract/SKILL.md",
     "skills/model-contract/references/modelling-forks.md",
+    "skills/kb-reconcile/SKILL.md",
+    "skills/kb-reconcile/references/reconcile-engine.md",
+    "skills/kb-reconcile/references/reconcile.md",
 ]
 fails = []
 
