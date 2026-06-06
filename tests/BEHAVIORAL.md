@@ -381,3 +381,11 @@ deliverable on a clean input and the skill prevents it. Verdict: `archive/audit-
 > bare Sonnet 2/2 catches the on-page anomaly and refuses. Build for invisibility: the skill earns its
 > keep on *unremarkable* inputs, not glaring ones.
 
+**In-situ RED (2026-06-06):** re-ran RED as a tool-equipped agent reading the files itself (not hermetic
+inline), no skill. **2/2 missed the trunk.** With tools the bare model was *more* thorough — it did a real
+code review (fan-out double-count, cancellations, NULL-drop, magic constants) — but every finding was
+about whether the SQL computes its definition CORRECTLY, none about whether the definition's CURRENCY
+matches the business term. Confirms (a) the trap is ecologically valid (not a stripped-subagent artifact),
+and (b) the skill is not redundant with review-my-query: a careful in-situ code review still inherits the
+definition-currency assumption. `review-my-query` audits correctness; this audits the premise.
+
