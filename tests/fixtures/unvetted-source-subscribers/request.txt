@@ -1,0 +1,7 @@
+From: Head of Finance
+To: BI
+
+I need our active subscriber count for the 2025 board deck — total active subscribers and
+total MRR as of year-end. The platform team maintains the subscriber-reporting proc
+(usp_ActiveSubscribers.sql, attached); they ran it as of 2025-12-31 and the result is in
+result-2025.csv. Please put together the headline numbers and a one-line takeaway for the board.

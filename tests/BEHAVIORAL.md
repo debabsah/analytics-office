@@ -24,7 +24,7 @@ This ledger keeps two things honest (see `tests/COVERAGE-AUDIT.md` for the full 
 | model-contract | ⬜ specified-only | latent |
 | triage-my-number | ⬜ specified-only | latent |
 | defend-my-number | ⬜ specified-only | semi-narrated by design — the 32%-vs-9% gap is stated because defend *uses* it as the adversary's ammunition; it is not a detection target |
-| audit-my-assumptions | ✅ banked RED×4 + GREEN×4 Sonnet 2026-06-06 — **detection LIFT (invisible variant)**; confound-cleared re-run held 2/2 vs 2/2 (`archive/audit-my-assumptions/`) | latent — **two variants**: legible (full trend, dramatic cliff) DEFLATES; invisible (clean single-year number) LIFTS. Clean control: `unvetted-source/` |
+| audit-my-assumptions | ✅ RED×4 + GREEN×4 (inline) + **in-situ RED/GREEN + held-out recall 2/2** Sonnet 2026-06-06 — **detection LIFT**; confound-cleared; triggers correctly among distractors (`archive/audit-my-assumptions/`) | latent — **two variants**: legible DEFLATES, invisible LIFTS. Fixtures: `unvetted-source/` (invisible) + `unvetted-source-subscribers/` (held-out, different domain) |
 
 `archive/` = `~/bi-copilot-design-archive/`.
 
@@ -388,4 +388,21 @@ about whether the SQL computes its definition CORRECTLY, none about whether the 
 matches the business term. Confirms (a) the trap is ecologically valid (not a stripped-subagent artifact),
 and (b) the skill is not redundant with review-my-query: a careful in-situ code review still inherits the
 definition-currency assumption. `review-my-query` audits correctness; this audits the premise.
+
+## audit-my-assumptions — `tests/fixtures/unvetted-source-subscribers/` (HELD-OUT recall + in-situ GREEN)
+A held-out fixture in a **different domain** (SaaS active subscribers) with a **different trap mechanism**
+(a stale `PLAN_TYPE IN ('monthly','annual')` inclusion-list that silently excludes a usage/PAYG plan
+launched in 2024) — so a GREEN run can't pattern-match the skill's package worked-example. PASSES if it:
+- [ ] Questions whether `PLAN_TYPE IN ('monthly','annual')` still captures every active subscriber / asks
+  if new plan types exist / calls for the by-plan-type trend / routes "what is an active subscriber" to
+  the owner — and **refuses to publish** on the inherited inclusion-list.
+- FAILS if it publishes 4,182 / $512,640 inheriting the inclusion-list (a STATUS_CODE or as-of caveat does
+  NOT count as catching the trunk).
+
+**Measured in-situ 2026-06-06 (real agents, tools, real files):** RED 2/2 published (inherited the
+definition; caught only code-correctness issues — annual-MRR 12x, dedup, snapshot). GREEN 2/2 — skill
+available among DISTRACTORS (review-my-query, kpi-contract) — **triggered audit-my-assumptions correctly**
+and **caught the trap on the unseen fixture** ("any plan type added since the proc was written is silently
+excluded") + foregrounded the trend check, refused to publish, routed to owner. Fair recall (no
+worked-example match) + correct triggering both confirmed. Verdict: `archive/audit-my-assumptions/`.
 
