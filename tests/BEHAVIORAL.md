@@ -404,5 +404,15 @@ definition; caught only code-correctness issues — annual-MRR 12x, dedup, snaps
 available among DISTRACTORS (review-my-query, kpi-contract) — **triggered audit-my-assumptions correctly**
 and **caught the trap on the unseen fixture** ("any plan type added since the proc was written is silently
 excluded") + foregrounded the trend check, refused to publish, routed to owner. Fair recall (no
-worked-example match) + correct triggering both confirmed. Verdict: `archive/audit-my-assumptions/`.
+worked-example match) confirmed. Verdict: `archive/audit-my-assumptions/`.
+
+**Real-harness triggering (2026-06-06) — gap found, fixed, confirmed.** The `./skills/`-simulated test
+above *told* the agent to consider skills; the LITERAL harness does not. Nested real CLI sessions found
+audit-my-assumptions UNDER-triggered on the realistic "turn this proc output into the board number" ask —
+brief-my-findings grabbed it and briefed the unvalidated number. Fixed (`3c8fe3f`): broadened
+audit-my-assumptions's description for consumption-framed asks + a behavioral provenance gate in
+brief-my-findings (stop + route to audit when inputs are unvetted → selection-proof). Enforced re-test
+0/1→3/3; **a real INTERACTIVE session confirmed PASS** (invoked the skill naturally, caught the PLAN_TYPE
+staleness, wrote platform-team checks, ran the trend check, routed to owner). Lesson banked: inline /
+`./skills`-scaffolded tests cannot surface a triggering gap — only the literal harness can.
 
