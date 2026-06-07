@@ -7,3 +7,6 @@ __pycache__/
 docs/superpowers/
 docs/ROADMAP.md
 docs/EVAL-BENCHMARK.md
+
+# Local-only working record - contains real-work provenance, never publish
+docs/OUTCOME-LEDGER.md
