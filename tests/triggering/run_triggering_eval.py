@@ -12,7 +12,7 @@ superpowers:brainstorming winning a "design" prompt).
 Design (settled empirically; see README.md):
   - Runs in your NORMAL logged-in environment. No config-dir or credential plumbing.
   - Each case runs in a fresh neutral temp dir (NOT this repo) so the model reads the
-    prompt as an end-user analytics ask, not as repo-development work in bi-copilot.
+    prompt as an end-user analytics ask, not as repo-development work in analytics-office.
   - Wandering tools are blocked and max-turns is 1, so the model's first action is the
     routing decision: cheap, and deterministic to parse from the stream-json.
 

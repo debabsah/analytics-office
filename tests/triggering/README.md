@@ -17,7 +17,7 @@ bench skill.
 Two design choices were settled empirically (and matter):
 
 1. **Neutral working directory.** Each case runs in a throwaway temp dir, never inside
-   this repo. Run from inside `bi-copilot/` and the model reads "design a data model"
+   this repo. Run from inside `analytics-office/` and the model reads "design a data model"
    as *repo-development work on this project* and starts exploring the codebase instead
    of routing. The runner handles this for you.
 2. **First action only.** Wandering tools are blocked and `--max-turns 1`, so the
