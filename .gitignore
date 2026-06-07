@@ -5,4 +5,5 @@ __pycache__/
 
 # Internal design / strategy docs - kept on local disk, not for the public repo
 docs/superpowers/
+docs/ROADMAP.md
 docs/EVAL-BENCHMARK.md
