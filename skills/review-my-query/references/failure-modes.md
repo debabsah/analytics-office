@@ -36,8 +36,10 @@ Not every mode applies to every object. Run the list, keep the ones that bite.
 
 **Time**
 - Timezone: truncating UTC when the report is in a local/reporting zone → boundary rows land in the wrong period.
-- Period off-by-one; calendar vs fiscal; as-of date vs transaction date; DST.
-- Late-arriving data not restated (or restated when it should be frozen).
+- Period off-by-one; calendar vs fiscal; as-of date vs transaction date.
+- **DST / offset arithmetic:** a fixed `UTC±N` or hardcoded "+8h" offset instead of a named, DST-aware zone double-/zero-counts the repeated or skipped local hour at a transition, and is wrong for half the year. → does the code use a named timezone or a fixed offset?
+- **Incremental watermark:** a high-watermark filter on load-time / `updated_at` drops rows whose *business event-time* predates the advanced watermark — late rows silently never loaded (distinct from the existing "loaded but not restated"). → is the watermark column the event-time grain the metric is keyed on? *(reads the predicate in the code, not the load schedule)*
+- Late-arriving data not restated (or restated when it should be frozen) — incl. a query that recomputes a "frozen" period live instead of reading the frozen snapshot.
 
 **Set logic**
 - `UNION` (dedups, often unintended) vs `UNION ALL`; `EXCEPT`/`INTERSECT` NULL handling.
