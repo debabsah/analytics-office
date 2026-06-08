@@ -18,6 +18,11 @@ Not every mode applies to every object. Run the list, keep the ones that bite.
 - Fan-out (1-to-many) join silently multiplying rows → sums and counts overstated.
 - Aggregation at the wrong grain; double-counting; missing dedup; accidental cross join.
 - Denominator/numerator built from misaligned populations → rows silently dropped or mismatched.
+- **Non-additive measure re-aggregated below/across its valid grain** — a correct measure summed or sliced where its math doesn't hold. **Tell: it ties to the grand total but is wrong per-slice — a total tie-out does NOT clear it.**
+  - *avg-of-ratios / average-of-averages* — sum the components and divide once at the slice; don't average the rates.
+  - *COUNT(DISTINCT) summed across slices* — distinct counts don't add; anything spanning slices double-counts.
+  - *semi-additive balance (MRR, headcount, inventory, AR) summed across time* — take period-end or average, don't sum months.
+  Text tells: `SUM`/`AVG` wrapping a ratio or already-aggregated measure; `COUNT(DISTINCT)` in a summed subtotal; a measure used at a grain ≠ its definition. Read-only check: re-derive at the breakdown grain from summed components and compare to the slice. Blocking only when the code text shows it; otherwise Latent / verify + that check. When a KB exists, anchor to the additivity class `model-contract` pinned.
 
 **Filter & context**
 - Filter at the wrong stage (WHERE vs HAVING vs the join's ON) → rows kept/dropped at the wrong time.
