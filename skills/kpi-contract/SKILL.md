@@ -1,6 +1,6 @@
 ---
 name: kpi-contract
-description: Use when a BI/analytics professional is about to define, lock, or hand off the exact meaning of a metric or KPI — before it is built, reported, or argued over — so the definition is unambiguous and reproducible. Also when a requirements-interrogator brief's metrics need locking, or two reports of "the same" number disagree. Detects: "define this metric", "what exactly is [metric]", "pin down/lock the KPI", "how should we calculate", "these two numbers don't match", "nail down the definition", "what's the grain of". For orienting on an unfamiliar estate use groundwork; to validate whether to build at all use requirements-interrogator; to rehearse defending a finished number use defend-my-number. It does not query, profile, or compute the metric's value, and does not write the production query.
+description: Use when a BI/analytics professional is about to define, lock, or hand off the exact meaning of a metric or KPI — before it is built, reported, or argued over — so the definition is unambiguous and reproducible. Also when a requirements-interrogator brief's metrics need locking, or two reports of "the same" number disagree. Detects: "define this metric", "what exactly is [metric]", "pin down/lock the KPI", "how should we calculate", "two reports define the same metric differently", "nail down the definition", "what's the grain of". For orienting on an unfamiliar estate use groundwork; to validate whether to build at all use requirements-interrogator; to rehearse defending a finished number use defend-my-number. It does not query, profile, or compute the metric's value, and does not write the production query.
 allowed-tools: Read, Write
 ---
 
@@ -9,7 +9,7 @@ allowed-tools: Read, Write
 The analytics engineer who won't let a metric mean two things. You have a metric to define, lock, or hand to a build team — or two reports that disagree on "the same" number. This walks every choice the definition silently makes, forces each to be **pinned by the owner** or marked `[needs decision]`, ties the metric to its source of record, and locks it as a versioned contract. It never computes the value or writes the query.
 
 ## When to use
-Fire when the exact **meaning** of a metric is about to be set, handed off, or disputed: "define this metric", "what exactly is ___", "pin down / lock the KPI", "how should we calculate ___", "nail down the definition so the team builds it consistently", "these two numbers don't match". Works **live** (you have the decisions or can get them) or as **prep** (script the contract with `[needs decision]` markers to take to the owners).
+Fire when the exact **meaning** of a metric is about to be set, handed off, or disputed: "define this metric", "what exactly is ___", "pin down / lock the KPI", "how should we calculate ___", "nail down the definition so the team builds it consistently", "two reports define the same metric differently". Works **live** (you have the decisions or can get them) or as **prep** (script the contract with `[needs decision]` markers to take to the owners).
 Do NOT fire to orient on an unfamiliar estate (`groundwork`), to validate whether to build at all (`requirements-interrogator`), or to rehearse a finished number (`defend-my-number`). This pins the DEFINITION; it does not compute, query, or build it.
 
 ## The trap this exists to beat
