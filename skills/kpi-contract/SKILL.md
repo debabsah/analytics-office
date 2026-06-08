@@ -69,6 +69,7 @@ Experienced user: terse; batch the forks into a confirm-the-defaults menu; skip 
 Capture the result as a committable **KPI Contract** (template in `references/fork-points.md`). If a `knowledge-base/` exists (from `groundwork`), append it to `knowledge-base/kpi-contract.md` (phase-tag `[Define]`) and thread it in; else write it next to the work and note that `groundwork` can stand up a full KB.
 - Open forks → `open-questions.md`; redefinition calls + rejected alternatives → `decisions.md`; the lock as a dated event in `timeline.md`; add it to the KB `README.md` index.
 - A pinned contract is the ammunition `defend-my-number` harvests — the reconciliation you state here is what survives the data/method skeptic.
+- The locked contract feeds `model-contract` (the dimensional model that serves these metrics is designed against it) and `review-my-query` (the build is later checked against it).
 
 ## References (load on demand)
 - `references/fork-points.md` — the definitional fork-point checklist, the KPI Contract template, and a worked example.
