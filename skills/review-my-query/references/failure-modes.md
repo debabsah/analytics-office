@@ -70,10 +70,11 @@ The inherited board-churn view (counts canceled logos / accounts active at month
 | 6 | `acct.plan_code <> 'internal'` | NULL: `NULL <> 'internal'` is NULL → falsy | accounts with a NULL plan_code silently dropped | Latent | decide intent; `plan_code IS DISTINCT FROM 'internal'` if NULLs should stay |
 | 7 | no close rule | time/late data: contract pins 5-business-day-then-freeze | a backdated cancellation silently changes an already-reported month | Latent | apply the close-then-freeze rule from the contract |
 | 8 | `1.0 * lost / start` | determinism: no zero guard | divide-by-zero / NULL on an empty cohort month | Advisory | guard the denominator, e.g. `NULLIF(..., 0)` |
+| 9 | emitted `churn_rate` (`1.0*lost/start`) | grain/additivity: a per-month ratio, non-additive across periods | correct per month, but averaging it to a quarter/year rate weights a 50-account month equally with a 5,000-account one → wrong blended rate; a grand-total tie-out won't catch it | Latent / verify (→ Blocking if a rollup averages the monthly rates) | flag the measure non-additive; for a period rate, sum `lost` and `start` across the window and divide once |
 
 ## Verdict
 - **Blocking:** 3 — established from the code + contract (#1 wrong unit, #4 wrong cohort grain, #3 missing timezone handling); must resolve before this feeds the board or gets defended (most fundamentally, it answers a different question than the contract).
-- **Latent / verify:** 4 — real impact, but each hinges on a fact not in hand (#2 trials-in-`active`, #5 the magic IDs, #6 NULL `plan_code`, #7 the close rule); each carries its discriminating check and becomes Blocking once confirmed.
+- **Latent / verify:** 5 — real impact, but each hinges on a fact not in hand (#2 trials-in-`active`, #5 the magic IDs, #6 NULL `plan_code`, #7 the close rule, #9 the non-additive rate-rollup); each carries its discriminating check and becomes Blocking once confirmed.
 - **Advisory:** 1.
 - **Assumptions this review depends on:** trial marker field, fiscal-calendar definition, and the identity of the excluded account IDs all remain open (asked of the user; not assumed) — which is exactly why #2 is graded Latent / verify, not Blocking. Asserting Blocking on an unconfirmed schema fact is the over-blocking failure mode.
 ```
