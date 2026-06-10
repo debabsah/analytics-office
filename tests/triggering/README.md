@@ -95,6 +95,11 @@ skills shift intra-bench ranking), not description defects. The "write up the wi
 persists everywhere (flaky on Sonnet) and stays filed; its behavioral provenance gate
 contains it downstream.
 
+Addendum (v0.18.0): `change-impact`'s two positives SHADOW to the co-installed `graphify`
+(the same environment class as map-my-estate — codebase/lineage vocabulary is its home
+turf here); zero intra-bench defects, and the Investigate stanza's new fourth clause
+passed its sibling regression probes (triage, explore both fire).
+
 Addendum (v0.16.0): `map-my-estate`'s two positives SHADOW to a co-installed `graphify`
 skill in this runner's environment (diagram vocabulary is its home turf) — zero intra-bench
 defects; same environment-dependent class as `superpowers:brainstorming` shadowing
