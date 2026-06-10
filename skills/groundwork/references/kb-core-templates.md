@@ -171,6 +171,7 @@ index when none exists.
 | map-my-estate | estate-map.md | append gaps/islands | never | append | never | add link | copy DDL/code |
 | change-impact | change-impact.md | append unknowns | never | append | never | add link | copy manifest/DDL |
 | review-my-dashboard | dashboard-review.md | append findings | never | append | never | add link | copy exports/definitions |
+| prove-my-parity | parity-proof.md | append residuals | never | append | never | add link | copy extracts |
 
 ## knowledge-base/README.md (the index — start here)
 ```markdown

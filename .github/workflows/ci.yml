@@ -27,3 +27,4 @@ jobs:
         run: python3 tests/test_forecast_checks.py
       - name: Triage-kit unit tests (rate decomposition / mix-vs-rate split)
         run: python3 tests/test_triage_checks.py
+          python3 tests/test_parity_checks.py

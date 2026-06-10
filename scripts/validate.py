@@ -61,6 +61,10 @@ EXPECTED = [
     "skills/review-my-dashboard/SKILL.md",
     "skills/review-my-dashboard/references/dashboard-engine.md",
     "skills/review-my-dashboard/references/dashboard-review.md",
+    "skills/prove-my-parity/SKILL.md",
+    "skills/prove-my-parity/references/parity-engine.md",
+    "skills/prove-my-parity/references/parity-proof.md",
+    "skills/prove-my-parity/references/parity_checks.py",
 ]
 fails = []
 
@@ -118,7 +122,7 @@ if os.path.isdir(skills_dir):
 # Description lints — the no-router bet, instrumented. Descriptions are the router AND a
 # permanent always-in-context token cost; growth must be a conscious cap raise, never drift.
 DESC_CHAR_CAP = 1800    # per-description ceiling (family-structure schema; max today: 1090)
-DESC_TOTAL_CAP = 14700  # whole-bench ceiling. Family-era growth is amortized (~750/skill)
+DESC_TOTAL_CAP = 15600  # whole-bench ceiling. Family-era growth is amortized (~750/skill)
                         # and BOUNDED: 4 families x 6 members caps the bench at 24 skills
                         # (~19-20k ultimate ceiling). Raised 13000->13800 for skill #16
                         # (change-impact), then 13800->14700 for #17 (review-my-dashboard).
@@ -141,7 +145,7 @@ FAMILIES = {
     },
     "Validate": {
         "stanza": "Use when a measured result — an experiment, a forecast, a number that must tie out — is about to drive a decision; the validity checks run before the decision does.",
-        "members": ["audit-my-experiment", "audit-my-forecast"],
+        "members": ["audit-my-experiment", "audit-my-forecast", "prove-my-parity"],
     },
     "Investigate": {
         "stanza": "Use when the work is hands-in-the-data right now — a number moved, an open question needs exploring, a picture of the estate needs drawing, a change needs its blast radius known.",
