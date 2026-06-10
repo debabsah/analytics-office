@@ -111,12 +111,35 @@ if os.path.isdir(skills_dir):
 
 # Description lints — the no-router bet, instrumented. Descriptions are the router AND a
 # permanent always-in-context token cost; growth must be a conscious cap raise, never drift.
-DESC_CHAR_CAP = 2600    # per-description ceiling (max today: 2449)
-DESC_TOTAL_CAP = 15800  # whole-bench ceiling — RAISE #2, 2026-06-10 (14000→14900→15800)
-                        # for skill #15 (map-my-estate). NO MORE RAISES without family
-                        # structure: the skill-count gate below is the wall.
-MAX_SKILLS_WITHOUT_FAMILIES = 15  # the 16th skill fails the build until family-structure
-                                  # routing (VNEXT §2.1.3) is implemented.
+DESC_CHAR_CAP = 1800    # per-description ceiling (family-structure schema; max today: 1090)
+DESC_TOTAL_CAP = 13000  # whole-bench ceiling — both 2026-06-10 raises UNDONE by the
+                        # family-structure compression (total today: 12599).
+
+# Family-structure routing (VNEXT §2.1.3, landed 2026-06-11): every skill belongs to
+# exactly ONE family; its description STARTS with the family stanza verbatim; a family
+# holds at most MAX_FAMILY_SIZE members (the wall: a 7th member forces a family-split
+# decision, never silent sprawl); cross-family sibling mentions are boundary pointers,
+# capped per description.
+MAX_FAMILY_SIZE = 6
+MAX_CROSS_FAMILY_MENTIONS = 2
+FAMILIES = {
+    "Shape": {
+        "stanza": "Use when the work itself is still being shaped — a new project, an incoming request, a metric, a model — before anything is built.",
+        "members": ["groundwork", "requirements-interrogator", "kpi-contract", "model-contract"],
+    },
+    "Audit": {
+        "stanza": "Use when a finished thing — a source, a result, code, or the record — is about to be trusted or consumed; the gate fires before the work leans on it.",
+        "members": ["audit-my-assumptions", "audit-my-experiment", "audit-my-forecast", "review-my-query", "kb-reconcile"],
+    },
+    "Investigate": {
+        "stanza": "Use when the work is hands-in-the-data right now — a number moved, an open question needs exploring, the estate needs seeing.",
+        "members": ["triage-my-number", "explore-my-data", "map-my-estate"],
+    },
+    "Deliver": {
+        "stanza": "Use when work is leaving the desk — findings, a status, or a number that must hold up in the room.",
+        "members": ["brief-my-findings", "defend-my-number", "status-truth"],
+    },
+}
 descs = {}
 if os.path.isdir(skills_dir):
     for name in sorted(os.listdir(skills_dir)):
@@ -132,8 +155,27 @@ for name, d in descs.items():
 total_desc = sum(len(d) for d in descs.values())
 if total_desc > DESC_TOTAL_CAP:
     fail(f"bench: total description budget {total_desc} chars > {DESC_TOTAL_CAP} cap — the always-in-context cost; trim before adding")
-if len(descs) > MAX_SKILLS_WITHOUT_FAMILIES:
-    fail(f"bench: {len(descs)} skills > {MAX_SKILLS_WITHOUT_FAMILIES} — family-structure routing (VNEXT §2.1.3) is required before the bench grows further")
+skill_to_family = {}
+for fam, spec in FAMILIES.items():
+    if len(spec["members"]) > MAX_FAMILY_SIZE:
+        fail(f"family {fam}: {len(spec['members'])} members > {MAX_FAMILY_SIZE} — split the family before adding a member")
+    for member in spec["members"]:
+        if member in skill_to_family:
+            fail(f"skill {member} appears in two families ({skill_to_family[member]}, {fam})")
+        skill_to_family[member] = fam
+for name, d in descs.items():
+    fam = skill_to_family.get(name)
+    if fam is None:
+        fail(f"skills/{name}: not registered in any family — new skills must join or found a family (FAMILIES in this script)")
+        continue
+    if not d.startswith(FAMILIES[fam]["stanza"]):
+        fail(f"skills/{name}: description must START with the {fam} family stanza verbatim")
+    cross = [s for s in descs if s != name and s in d and skill_to_family.get(s) != fam]
+    if len(cross) > MAX_CROSS_FAMILY_MENTIONS:
+        fail(f"skills/{name}: {len(cross)} cross-family sibling mentions ({', '.join(sorted(cross))}) > {MAX_CROSS_FAMILY_MENTIONS} — boundary pointers only")
+for member in skill_to_family:
+    if member not in descs:
+        fail(f"family registry names {member} but no such skill exists")
 phrases = {}
 for name, d in descs.items():
     for ph in re.findall(r'"([^"]{12,})"', d):
