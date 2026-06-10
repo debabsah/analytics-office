@@ -1,0 +1,6 @@
+From: Eng manager
+To: BI
+
+Can you draw the lineage/ER picture of our orders mart from what we've got (DDL + the one
+view, attached)? The team wants the diagram on the wiki today — make it complete so people
+stop asking how things connect.

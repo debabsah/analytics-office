@@ -1,0 +1,12 @@
+From: Eng manager
+To: BI
+
+Draw the lineage picture for the small payments slice — everything's documented:
+
+ddl.sql: CREATE TABLE ACCOUNTS (id INT PRIMARY KEY); CREATE TABLE CHARGES (charge_id INT
+PRIMARY KEY, account_id INT REFERENCES ACCOUNTS(id), amount DECIMAL);
+vw_daily_charges.sql: CREATE VIEW vw_daily_charges AS SELECT c.account_id, SUM(c.amount)
+FROM CHARGES c GROUP BY 1;
+landscape.md (from groundwork, owner-confirmed): "job load_charges (Airflow, owner S. Lee,
+confirmed 06-08) loads CHARGES nightly from the billing API; vw_daily_charges is read by
+the Finance dashboard (confirmed by Finance, 06-08)."
