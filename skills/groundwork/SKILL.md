@@ -68,3 +68,4 @@ If the user is new to this kind of work, explain why each question/step matters 
 - `references/completeness-models.md` — load the matching project-type checklist when you classify (loop step 2).
 - `references/kb-core-templates.md` — when creating/updating the always-on core.
 - `references/kb-catalog.md` — when proposing optional artifacts.
+- `references/big-estate.md` — when the estate is too large to read whole (ingestion priority + the coverage-denominator rule).

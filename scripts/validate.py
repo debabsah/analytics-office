@@ -12,6 +12,7 @@ EXPECTED = [
     "skills/groundwork/references/completeness-models.md",
     "skills/groundwork/references/kb-core-templates.md",
     "skills/groundwork/references/kb-catalog.md",
+    "skills/groundwork/references/big-estate.md",
     "skills/requirements-interrogator/SKILL.md",
     "skills/requirements-interrogator/references/frameworks.md",
     "skills/defend-my-number/SKILL.md",

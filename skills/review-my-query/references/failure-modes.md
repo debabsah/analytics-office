@@ -45,6 +45,15 @@ Not every mode applies to every object. Run the list, keep the ones that bite.
 - `UNION` (dedups, often unintended) vs `UNION ALL`; `EXCEPT`/`INTERSECT` NULL handling.
 - Anti-join via `NOT IN` vs `NOT EXISTS` (NULL trap) vs `LEFT JOIN ... IS NULL`.
 
+**Pandas / notebook (when the object under review is Python)**
+- Merge fan-out: `merge`/`join` on a non-unique key silently multiplies rows — the SQL fan-out disease in pandas clothing. → was key uniqueness checked *before* the merge, not after the sum?
+- Unmatched `how='left'` rows carry NaN into aggregates: `sum()` skips them silently, `mean()` quietly changes its denominator — the NULL family.
+- Chained indexing (`df[df.a > 0]['b'] = …`) writes to a copy or not depending on internals — the assignment that sometimes doesn't happen.
+- `groupby(...).apply` dtype/index surprises; `observed=False` on categoricals resurrecting empty groups into denominators.
+- Timezone-naive datetimes joined/compared against aware ones; truncation in the wrong zone — the Time family.
+- `dropna()` / `errors='coerce'` defaults silently shrinking the population — the filter family: who got dropped, and would the contract include them?
+- Notebook out-of-order state: the cell that ran last is not the cell that appears last. → review top-to-bottom as if executed fresh; flag any cell depending on later-edited state (the determinism family).
+
 **Dimensional / SCD**
 - Slowly-changing dimension not handled — current attribute used where as-of was needed (or vice-versa).
 - Point-in-time join wrong; late-binding dimension; many-to-many relationship ambiguity.
