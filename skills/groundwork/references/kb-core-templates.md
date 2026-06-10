@@ -64,6 +64,23 @@ Artifacts accrete; without a closure convention they rot. Three rules keep the r
   HAS been met is **expired**: it routes back to its audit instead of being carried, and
   `kb-reconcile` flags consumed-stale verdicts as `expired-verdict` drift.
 
+## The override protocol (logged disagreement)
+
+A bright line ends in a gate, not a wall. When the accountable owner decides to proceed
+over a gated verdict — ship over a Blocking, plan over a not-trustworthy — the harness's
+job flips from refusing to RECORDING:
+
+- The override goes to `decisions.md`: date, what was overridden, the **named owner**, the
+  **stated rationale**. No owner or no rationale = no override — it stays a refusal.
+- The overridden row gets the stamp `→ overridden <date> by <owner>`; the original verdict
+  is never edited or erased.
+- Every downstream consumer (brief, status, defense) carries the qualifier visibly —
+  *"shipped over an open Blocking (overridden by <owner>, <date>)"*. Smoothing it out is
+  laundering.
+
+Discipline preserved, agency respected — and the audit trail is exactly what a governance
+review asks for.
+
 ## Git-native by convention (team scale with zero infrastructure)
 
 The KB is plaintext in your repo, so git is its missing multiplayer layer — authorship,
@@ -175,6 +192,7 @@ _What I don't know yet. Each: the gap · why it matters · who/where to resolve 
 # Decisions & Assumptions  [all phases]
 _Each: the decision · rationale · rejected alternatives · date · source event._
 - <date> — Decided <X> because <Y>; rejected <Z>. (per timeline: <event>)
+- <date> — OVERRIDE: proceeded over <gate/finding> — owner <name>, rationale: <stated>. (original verdict stands in <artifact>)
 - Assumption: <A> — to confirm.
 ```
 

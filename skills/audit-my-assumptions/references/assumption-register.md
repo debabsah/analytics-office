@@ -39,6 +39,12 @@ A2, A5 must be answered by <owner> first. This register is the pre-flight, not t
 
 **Re-verify when:** <what invalidates the cleared foundation — the source proc changes, a
 new period lands, the recording process shifts. A cleared foundation has a shelf life.>
+
+**Owner override:** the owner may build past a gating trunk row. The skill records, never
+relitigates: log to `decisions.md` (`<date> — OVERRIDE: built past <row> — owner <name>,
+rationale: <stated>`; no named owner or rationale = no override), stamp the row
+`→ overridden <date> by <owner>`, never erase it — and every downstream brief/status
+carries "built over an open trunk assumption" visibly.
 ```
 
 ## How it composes into the knowledge base

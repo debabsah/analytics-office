@@ -29,6 +29,8 @@ Exact checks to run against data not on hand. Each remains `unverified` until a 
 
 **Re-audit when:** <the condition that invalidates this verdict — a refit, a regime change in the inputs, N new actuals, the horizon's midpoint. A verdict without an expiry is one that silently never expires.>
 
+**Owner override:** the owner may proceed over this gate. The skill records, never relitigates: log to `decisions.md` (`<date> — OVERRIDE: proceeded over <gate> — owner <name>, rationale: <stated>`; no named owner or rationale = no override), stamp the row `→ overridden <date> by <owner>`, never erase the verdict — and every downstream brief/status carries "shipped over <the open gate>" visibly.
+
 ## Routing
 - If `trustworthy`: hand to `brief-my-findings` (write up the forecast) or `defend-my-number` (rehearse).
 - If `hold-pending-checks`: list the exact paste-back runs needed.
