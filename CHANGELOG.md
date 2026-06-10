@@ -3,6 +3,21 @@
 Notable changes to the analytics-office bench. Versions follow the plugin manifest;
 commit-level detail lives in git history.
 
+## [0.18.0] — 2026-06-11
+
+- **change-impact** (16th skill, Investigate family's 4th member — the BI engineer's daily
+  fear, answered with evidence): before a change ships, walks the dependency evidence
+  (estate map, dbt manifest, code, contracts) transitively to the graded blast radius —
+  BREAKS with cites, SILENT-DRIFT risks (the cast that quietly rounds a locked contract's
+  metric outranks the view that loudly fails), unaffected only when evidenced, and
+  unmapped consumers held as UNKNOWN, never promoted to safe. Pre-flight and post-change
+  parity checks come written; deploy pressure is recorded, never obeyed; the migration is
+  never written. The Investigate stanza gained its fourth clause (measured, with sibling
+  regression probes), and the budget took its first family-era step (13,000 → 13,800 —
+  amortized at ~750/skill, bounded by the 24-member family ceiling). Banked evidence
+  recorded honestly: fifth consecutive detection deflation, but BOTH bare runs offered to
+  write the migration — the surface-don't-fix line remains the live discipline gap.
+
 ## [0.17.0] — 2026-06-11
 
 Structural release, no new skill — **family-structure routing** (the wall comes down):

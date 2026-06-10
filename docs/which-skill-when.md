@@ -13,7 +13,7 @@ stanza — the family carries the heavy discrimination, members discriminate wit
 |---|---|---|
 | **Shape** | the work itself is still being shaped, before anything is built | groundwork · requirements-interrogator · kpi-contract · model-contract |
 | **Audit** | a finished thing is about to be trusted; the gate fires first | audit-my-assumptions · audit-my-experiment · audit-my-forecast · review-my-query · kb-reconcile |
-| **Investigate** | hands-in-the-data right now | triage-my-number · explore-my-data · map-my-estate |
+| **Investigate** | hands-in-the-data right now | triage-my-number · explore-my-data · map-my-estate · change-impact |
 | **Deliver** | work is leaving the desk | brief-my-findings · defend-my-number · status-truth |
 
 ## The three gate questions
@@ -58,6 +58,7 @@ stanza — the family carries the heavy discrimination, members discriminate wit
 | The weekly status is due | `status-truth` | the provenance-graded status report — greens earn their color, slips carry their delta |
 | An open-ended "find insights" look at data | `explore-my-data` | pre-registered, cut-counted exploration; found ≠ confirmed |
 | The estate needs drawing (ER / lineage) | `map-my-estate` | the cited map — evidence-graded edges, honest gaps |
+| A change is about to ship | `change-impact` | the graded blast radius — silent drift outranks loud breakage |
 
 ## Common confusions, settled
 
