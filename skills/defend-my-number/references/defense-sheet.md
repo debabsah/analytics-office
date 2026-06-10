@@ -1,6 +1,6 @@
 # Defense Sheet — template + composition
 
-Write at the end of every drill. Lives at `knowledge-base/defense-sheet.md` if a KB exists, else next to the work. Phase-tag the heading `[Validate]`. Keep it one page; the holes are the point.
+Write at the end of every drill. Lives at `knowledge-base/defense-sheet.md`; no `knowledge-base/` anywhere up-tree → create it now with this artifact plus the stub `README.md` index (per the office convention in groundwork's kb-core-templates). Phase-tag the heading `[Validate]`. Keep it one page; the holes are the point.
 
 ```markdown
 # Defense Sheet — <claim>  [Validate]
@@ -27,4 +27,4 @@ When a `knowledge-base/` exists (from `groundwork`), thread the result in rather
 - Append the rehearsal as a dated event in `timeline.md` (happened: rehearsed defense of <claim> vs <archetype>; next: shore <top hole>).
 - Add the Defense Sheet to the KB `README.md` index.
 
-If no `knowledge-base/` exists, write the sheet next to the work and note that `groundwork` can stand up a full KB so the next rehearsal builds on this one.
+If no `knowledge-base/` exists anywhere up-tree, create it now with the sheet + stub `README.md` index (`groundwork` can flesh it out later) — the next rehearsal builds on this one.

@@ -1,6 +1,6 @@
 # reconcile.md — template + composition
 
-Write at the end of every reconcile. Lives at `knowledge-base/reconcile.md` if a KB exists (append per run, newest on top), else next to the work. Phase-tag the heading `[Operate]` (the audit-before-use pass), or `[Validate]` when it doubles as pre-readout QA. Keep it scannable; the Blocking drift and the unverified numbers are the point.
+Write at the end of every reconcile. Lives at `knowledge-base/reconcile.md` (append per run, newest on top) — a reconcile presupposes a KB to audit, so there is no lazy-create case here. Phase-tag the heading `[Operate]` (the audit-before-use pass), or `[Validate]` when it doubles as pre-readout QA. Keep it scannable; the Blocking drift and the unverified numbers are the point.
 
 ```markdown
 # Knowledge-Base Reconcile  [<phase>]
@@ -31,4 +31,4 @@ _Run <date>. Scope: <load-bearing first / exhaustive>. For: <the decision/readou
 - Cross-ref the contradicting files in the report so the next reader sees the conflict from either side; do NOT rewrite them to agree — that is the user's call once they confirm which side is true.
 - Route a definitional gap back toward `kpi-contract.md`, a wrong-code finding toward `review-my-query`, a single number whose cause is unknown toward `triage-my-number`.
 
-A reconcile is the backward/audit counterpart to the seven capture skills: they write the record forward, this checks it before its conclusions are leaned on. If no `knowledge-base/` exists, write the reconcile next to the work and note that `groundwork` can stand up a KB so the record is auditable next time.
+A reconcile is the backward/audit counterpart to the capture skills: they write the record forward, this checks it before its conclusions are leaned on. If no `knowledge-base/` exists, there is nothing to reconcile — point the user at `groundwork` (or any skill's first artifact, which creates the office) so the record is auditable next time.

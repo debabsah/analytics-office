@@ -1,6 +1,6 @@
 # Findings Brief — template + composition
 
-Write at the end of every briefing pass. Lives at `knowledge-base/findings-brief.md` if a KB exists (append per decision/audience briefed), else next to the work. Phase-tag the heading `[Deliver]`. Keep it scannable; the decision, the open items, and the carried verdict are the point.
+Write at the end of every briefing pass. Lives at `knowledge-base/findings-brief.md` (append per decision/audience briefed); no `knowledge-base/` anywhere up-tree → create it now with this artifact plus the stub `README.md` index (per the office convention in groundwork's kb-core-templates). Phase-tag the heading `[Deliver]`. Keep it scannable; the decision, the open items, and the carried verdict are the point.
 
 ```markdown
 # Findings Brief — <decision / topic>  [Deliver]
@@ -37,4 +37,4 @@ When a `knowledge-base/` exists (from `groundwork`), thread the result in rather
 
 The brief's **watch-for** items are the attacks `defend-my-number` should rehearse next: a number written up with its provenance and its open gaps is what survives the room, and the gaps named here are the holes the drill would otherwise expose live.
 
-If no `knowledge-base/` exists, write the brief next to the work, keep the provenance/status tags inline, and note that `groundwork` can stand up a full KB so the next brief (and the defense) builds on this one.
+If no `knowledge-base/` exists anywhere up-tree, create it now with the brief + stub `README.md` index, provenance/status tags inline (`groundwork` can flesh it out later) — the next brief (and the defense) builds on this one.

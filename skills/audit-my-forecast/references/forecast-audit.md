@@ -1,6 +1,6 @@
 # Forecast Audit — template + composition
 
-Write at the end of every audit. Lives at `knowledge-base/forecast-audit.md` if a KB exists (append per forecast audited), else next to the work. Phase-tag the heading `[Audit]`. Keep it scannable; the Blocking temporal-validity defects and the gate verdict are the point.
+Write at the end of every audit. Lives at `knowledge-base/forecast-audit.md` (append per forecast audited); no `knowledge-base/` anywhere up-tree → create it now with this artifact plus the stub `README.md` index (per the office convention in groundwork's kb-core-templates); the audited readout gets a dated copy in `inputs/`. Phase-tag the heading `[Audit]`. Keep it scannable; the Blocking temporal-validity defects and the gate verdict are the point.
 
 ```markdown
 # Forecast Audit — <name> [Audit]
@@ -39,4 +39,4 @@ When a `knowledge-base/` exists, thread the result in rather than leaving it str
 - Every **Blocking** temporal-validity defect → append to `open-questions.md` with the gate condition.
 - Append the audit as a dated event in `timeline.md` (audited <forecast> — gate verdict <verdict>).
 - Add the Forecast Audit to the KB `README.md` index.
-- No KB → write the one artifact and keep the routing notes inside it (`groundwork` can stand up a KB).
+- No KB anywhere up-tree → create `knowledge-base/` with this artifact + stub index, routing notes inside it (`groundwork` can flesh it out later).

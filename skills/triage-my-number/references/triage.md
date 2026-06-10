@@ -1,6 +1,6 @@
 # Triage artifact — triage-my-number
 
-The committable record of a diagnosis: the symptom, the decomposition, the ranked differential, what's confirmed vs still open, and the calibrated line for stakeholders. Write it to `knowledge-base/triage.md` when a KB exists; otherwise write the one file and keep the routing notes inside it.
+The committable record of a diagnosis: the symptom, the decomposition, the ranked differential, what's confirmed vs still open, and the calibrated line for stakeholders. Write it to `knowledge-base/triage.md` — no `knowledge-base/` anywhere up-tree? Create it now with this artifact plus the stub `README.md` index (per the office convention in groundwork's kb-core-templates), routing notes inside it.
 
 _Read-only: diagnosed from code, definitions, and what the user reports back; no query run, no live system touched, no data computed — including any pasted sample._
 
@@ -39,4 +39,4 @@ _Read-only: diagnosed from code, definitions, and what the user reports back; no
 - **Reads:** `kpi-contract.md` (what the number is supposed to be — the sharpest anchor for "wrong"), `query-review.md` (defects already found — a known one is a fast suspect, not a re-investigation), `data-quality.md` / `notes.md` (known issues), `landscape.md` (lineage / what feeds it), `decisions.md` (don't re-open settled calls).
 - **Writes:** `triage.md` (this artifact). On a **confirmed** cause, escalate it to `open-questions.md` (with the fix owner) and append a dated `[Validate]` entry to `timeline.md`.
 - **Hands off:** a confirmed code defect → `review-my-query` (which grades it and points the fix); a definition drift or reconciliation gap → `kpi-contract` (to re-pin / version); a pipeline or source issue → the relevant owner. The calibrated line is what feeds a stakeholder or a `defend-my-number` rehearsal.
-- **No KB?** Write `triage.md` alone and keep the hand-off notes inside it; `groundwork` can stand up a KB so the next triage builds on this one.
+- **No KB anywhere up-tree?** Create `knowledge-base/` now with `triage.md` + stub index, hand-off notes inside it (`groundwork` can flesh it out later) — the next triage builds on this one.

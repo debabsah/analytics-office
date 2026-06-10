@@ -1,6 +1,6 @@
 # Query Review — template + composition
 
-Write at the end of every review. Lives at `knowledge-base/query-review.md` if a KB exists (append per object reviewed), else next to the work. Phase-tag the heading `[Build]` (or `[Build][Validate]` when it doubles as the reconciliation / QA pass). Keep it scannable; the Blocking findings are the point.
+Write at the end of every review. Lives at `knowledge-base/query-review.md` (append per object reviewed); no `knowledge-base/` anywhere up-tree → create it now with this artifact plus the stub `README.md` index (per the office convention in groundwork's kb-core-templates); the reviewed code file gets a dated copy in `inputs/`. Phase-tag the heading `[Build]` (or `[Build][Validate]` when it doubles as the reconciliation / QA pass). Keep it scannable; the Blocking findings are the point.
 
 ```markdown
 # Query Review — <object name>  [Build]
@@ -32,4 +32,4 @@ When a `knowledge-base/` exists (from `groundwork`), thread the result in rather
 
 A reviewed build then feeds `defend-my-number`: a number whose query was checked against the contract is what survives the data/method skeptic, and the Blocking findings here are the holes the drill would otherwise expose live.
 
-If no `knowledge-base/` exists, write the review next to the work and note that `groundwork` can stand up a full KB so the next review (and the eventual defense) builds on this one.
+If no `knowledge-base/` exists anywhere up-tree, create it now with the review + stub `README.md` index (`groundwork` can flesh it out later) — the next review (and the eventual defense) builds on this one.

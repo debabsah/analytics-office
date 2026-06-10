@@ -40,6 +40,6 @@ A2, A5 must be answered by <owner> first. This register is the pre-flight, not t
 
 ## How it composes into the knowledge base
 - **Reads** (if a `knowledge-base/` exists): `kpi-contract.md` (a pinned definition retires the matching assumption), `decisions.md` (a settled call is not re-litigated), `landscape.md` / lineage (what the source actually is).
-- **Writes** the register beside the work; if a KB exists, escalate each **gating trunk** row to `open-questions.md`, route any definition gap to `kpi-contract`, and append `timeline.md`.
+- **Writes** the register to `knowledge-base/assumption-register.md`; escalate each **gating trunk** row to `open-questions.md`, route any definition gap to `kpi-contract`, and append `timeline.md`. The audited sources get dated copies in `inputs/` (`YYYY-MM-DD-<name>`) so the register's cites survive.
 - **Hands off**: once the trunk rows clear, the build proceeds — and a confirmed code-level concern goes to `review-my-query`, a wrong number that slips through to `triage-my-number`. This skill is the front door; those are downstream.
-- No KB? Write the one register and keep the routing notes inside it (`groundwork` can stand up a KB so the next build inherits this one's cleared foundation).
+- No KB anywhere up-tree? Create `knowledge-base/` now with the register + stub `README.md` index, routing notes inside it (`groundwork` can flesh it out later) — the next build inherits this one's cleared foundation.

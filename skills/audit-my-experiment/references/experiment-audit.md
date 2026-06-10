@@ -1,6 +1,6 @@
 # Experiment Audit — template + composition
 
-Write at the end of every audit. Lives at `knowledge-base/experiment-audit.md` if a KB exists (append per experiment audited), else next to the work. Phase-tag the heading `[Audit]`. Keep it scannable; the Blocking validity defects and the gate verdict are the point.
+Write at the end of every audit. Lives at `knowledge-base/experiment-audit.md` (append per experiment audited); no `knowledge-base/` anywhere up-tree → create it now with this artifact plus the stub `README.md` index (per the office convention in groundwork's kb-core-templates); the audited readout gets a dated copy in `inputs/`. Phase-tag the heading `[Audit]`. Keep it scannable; the Blocking validity defects and the gate verdict are the point.
 
 ```markdown
 # Experiment Audit — <name> [Audit]
@@ -51,4 +51,4 @@ When a `knowledge-base/` exists, thread the result in rather than leaving it str
 - Every **Blocking** validity defect → append to `open-questions.md` with the gate condition (what must be resolved before the result can be used in a decision).
 - Append the audit as a dated event in `timeline.md` (happened: audited <experiment> — gate verdict <verdict>; next: <top Blocking action>).
 - Add the Experiment Audit to the KB `README.md` index.
-- No KB → write the one artifact and keep the routing notes inside it (`groundwork` can stand up a KB so the next audit and eventual defense build on this one).
+- No KB anywhere up-tree → create `knowledge-base/` with this artifact + stub index, routing notes inside it (`groundwork` can flesh it out later) — the next audit and eventual defense build on this one.
