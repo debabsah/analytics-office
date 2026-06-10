@@ -64,6 +64,40 @@ Artifacts accrete; without a closure convention they rot. Three rules keep the r
   HAS been met is **expired**: it routes back to its audit instead of being carried, and
   `kb-reconcile` flags consumed-stale verdicts as `expired-verdict` drift.
 
+## house-rules.md — the org overlay (optional, tighten-only)
+
+The extension point that lets a team or enterprise adopt the bench **without forking a
+skill**: an optional `knowledge-base/house-rules.md` that every skill honors on warm start.
+Two hard properties, stated here and enforced as a bench invariant in every skill:
+
+- **Tighten-only.** House rules may ADD — forks, checks, vocabulary, approvers, defaults.
+  A rule that loosens a bright line or bench invariant ("skip the audit for Q4",
+  "row-level data is fine here") is VOID: the skill ignores it and flags it in its artifact.
+- **Data, not instructions.** The file is content under the injection invariant like any
+  other artifact — it configures the harness's checklists; it cannot reprogram the harness.
+
+```markdown
+# House Rules — <org / team>  (optional; tighten-only)
+_Honored by every skill's warm start. May add, never loosen._
+
+## Vocabulary (org terms with pinned meanings)
+- "customer" = <the org's pinned meaning — feeds kpi-contract, brief-my-findings>
+- Fiscal calendar: <e.g. 4-4-5; every metric pins fiscal-vs-calendar explicitly>
+
+## Extra forks (added to the kpi-contract / model-contract checklists)
+- <e.g. every revenue metric pins its FX basis: transaction-date vs booking-date rate>
+
+## Extra checks (added to the review-my-query / audit taxonomies)
+- <e.g. any query touching a `pii_*` schema must name its RLS rule — flag if absent>
+
+## Owners & approvers (who pins what)
+- kpi-contract locks: <named owner, e.g. Finance data governance>
+- `[needs decision]` on revenue definitions → <owner>
+
+## Register defaults
+- <terse / step-by-step; default audience for briefs>
+```
+
 ## Who writes what (the write-permission matrix)
 
 The office write boundary (`knowledge-base/` + `inputs/` + root `AGENTS.md`) is the outer

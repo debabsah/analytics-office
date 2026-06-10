@@ -66,6 +66,14 @@ too sensitive for the model to see, it is too sensitive to hand to a skill; the 
 adds no channel beyond that, and removes several (no execution, no connections, no
 artifacts that copy row-level data forward).
 
+## Org customization is tighten-only
+
+Teams extend the bench through an optional overlay (`knowledge-base/house-rules.md`) that
+can **add** forks, checks, vocabulary, and approvers — and can never loosen a bright line
+or bench invariant. A loosening rule is void and gets flagged, and the overlay itself is
+treated as data under the injection discipline. There is no configuration path that
+weakens the harness.
+
 ## Prompt injection
 
 Handed artifacts — procs, exports, write-ups, the knowledge base itself — are treated as
