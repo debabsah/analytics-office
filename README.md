@@ -60,7 +60,7 @@ That refusal-then-redirect is the whole product — eighteen skills and eight mo
 
 ## The bench
 
-Eighteen skills in **five families** — each family owns an ask-shape, and every member's description opens with its family's shared stanza (that structure is measured, not aesthetic; see *Engineered, not vibed*). Ordered here like a project — but **there is no pipeline**. Every skill fires independently, at any moment, with or without the others having run.
+Eighteen skills in **five families** — each family owns an ask-shape, and every member's description opens with its family's shared stanza (that structure is measured, not aesthetic; see *Engineered, not vibed*). The deep dive — every skill's job, trap, loop, and artifact, with diagrams — is [`docs/skills-deep-dive.md`](docs/skills-deep-dive.md). Ordered here like a project — but **there is no pipeline**. Every skill fires independently, at any moment, with or without the others having run.
 
 **Shape** — *the work itself is still being shaped, before anything is built*
 
@@ -223,7 +223,7 @@ The design principle that fell out of the measurements: **build for invisibility
 /plugin install analytics-office@analytics-office
 ```
 
-Then just talk to Claude Code the way you'd talk to a colleague. Any of these will route to the right skill on its own (the finer seams live in [`docs/which-skill-when.md`](docs/which-skill-when.md)):
+Then just talk to Claude Code the way you'd talk to a colleague. Any of these will route to the right skill on its own (the one-line routing map is [`docs/which-skill-when.md`](docs/which-skill-when.md); the full skill-by-skill tour with diagrams is [`docs/skills-deep-dive.md`](docs/skills-deep-dive.md)):
 
 ```text
 I just inherited a data warehouse from someone who left. Where do I even start?

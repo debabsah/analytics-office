@@ -24,6 +24,7 @@ gap first; let the maintainers and the rule decide the shape.
 
 ## What a new skill must ship with
 
+0. **Its deep-dive entry.** Every skill has a section in `docs/skills-deep-dive.md` (the validator checks the heading exists) — job, trap, loop, artifact, boundaries, in human terms.
 1. **A description engineered to route — inside a family.** Descriptions ARE the router
    (there is no dispatcher), organized in four families (Shape / Audit / Investigate /
    Deliver — see `docs/which-skill-when.md`). A new skill joins a family (or founds one)

@@ -71,6 +71,7 @@ EXPECTED = [
     "skills/brief-my-findings/references/brief-modes.md",
     "skills/defend-my-number/references/meeting-armament.md",
     "skills/groundwork/references/record-modes.md",
+    "docs/skills-deep-dive.md",
 ]
 fails = []
 
@@ -198,6 +199,12 @@ for name, d in descs.items():
 for member in skill_to_family:
     if member not in descs:
         fail(f"family registry names {member} but no such skill exists")
+dd_path = os.path.join(ROOT, "docs", "skills-deep-dive.md")
+if os.path.isfile(dd_path):
+    dd = open(dd_path, encoding="utf-8").read()
+    for name in descs:
+        if f"### `{name}`" not in dd:
+            fail(f"docs/skills-deep-dive.md: missing the entry for {name} — a skill ships with its deep-dive section")
 phrases = {}
 for name, d in descs.items():
     for ph in re.findall(r'"([^"]{12,})"', d):
