@@ -70,9 +70,12 @@ def check_skill(rel):
         if key not in fm: fail(f"{rel}: frontmatter missing {key}")
     at = [l for l in fm.splitlines() if l.strip().startswith("allowed-tools:")]
     if at and "*" in at[0]: fail(f"{rel}: allowed-tools must not grant '*'")
+    if at and "mcp" in at[0].lower(): fail(f"{rel}: allowed-tools must not grant MCP tools")
     INVARIANTS = [
         "writes only inside `knowledge-base/` and `inputs/` (creating them if absent), "
         "plus the root `AGENTS.md` pointer — never anywhere else.",
+        "the record carries conclusions, definitions, and aggregates — "
+        "never row-level or personal data.",
     ]
     for inv in INVARIANTS:
         if inv not in body:
