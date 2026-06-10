@@ -66,7 +66,7 @@ Experienced user: terse; batch the forks into a confirm-the-defaults menu; skip 
 | "Skip the fork log, the definition's clear." | The fork log is the deliverable that makes this more than a one-liner. No log, no contract. |
 
 ## Write it down (compose with the knowledge base)
-Capture the result as a committable **KPI Contract** (template in `references/fork-points.md`). If a `knowledge-base/` exists (from `groundwork`), append it to `knowledge-base/kpi-contract.md` (phase-tag `[Define]`) and thread it in; else write it next to the work and note that `groundwork` can stand up a full KB.
+Capture the result as a committable **KPI Contract** (template in `references/fork-points.md`). If a `knowledge-base/` exists (from `groundwork`), append it to `knowledge-base/kpi-contract.md` (phase-tag `[Define]`) and thread it in. **No `knowledge-base/` anywhere up-tree? Create it now containing this contract plus a stub `README.md` index** (title · "Start here — the living record of this project" · links to the files present) — that IS the knowledge base starting; `groundwork` can flesh it out later. A handed-over file you cite gets a dated copy in `inputs/` (`YYYY-MM-DD-<name>`); stray bench artifacts found outside the KB → offer to move them in.
 - Open forks → `open-questions.md`; redefinition calls + rejected alternatives → `decisions.md`; the lock as a dated event in `timeline.md`; add it to the KB `README.md` index.
 - A pinned contract is the ammunition `defend-my-number` harvests — the reconciliation you state here is what survives the data/method skeptic.
 - The locked contract feeds `model-contract` (the dimensional model that serves these metrics is designed against it) and `review-my-query` (the build is later checked against it).
