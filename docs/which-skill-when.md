@@ -44,6 +44,7 @@ two skills sound alike but do different jobs.
 | Findings need communicating | `brief-my-findings` | every claim carries provenance; open stays open |
 | The meeting will push back | `defend-my-number` | rehearse under escalating attack; defense sheet of what cracked |
 | The weekly status is due | `status-truth` | the provenance-graded status report — greens earn their color, slips carry their delta |
+| An open-ended "find insights" look at data | `explore-my-data` | pre-registered, cut-counted exploration; found ≠ confirmed |
 
 ## Common confusions, settled
 

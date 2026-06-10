@@ -3,6 +3,18 @@
 Notable changes to the analytics-office bench. Versions follow the plugin manifest;
 commit-level detail lives in git history.
 
+## [0.15.0] — 2026-06-10
+
+- **explore-my-data** (14th skill — the daily-est analyst moment, harnessed): open-ended
+  exploration with pre-registration before looking, the cut counter (N cuts ⇒ ~N/20
+  expected false hits, stated next to any striking pattern), magnitude-and-base before
+  significance, found-vs-confirmed via pre-specified hold-outs the user runs, robust-vs-
+  lucky tests, and dead ends recorded. Ships with the dredge-bait trap + robust-pattern
+  control and banked RED/GREEN evidence (recorded honestly: detection fully deflates on
+  the current frontier model — the lift is the registration/cut-log/pass-bar artifact
+  structure). Carries the bench's first deliberate description-budget raise (14,000 →
+  14,900); family-structure routing is due before ~skill 16.
+
 ## [0.14.0] — 2026-06-10
 
 - **status-truth** (13th skill — opens the BI Program Manager persona): composes the
