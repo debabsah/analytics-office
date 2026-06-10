@@ -25,3 +25,5 @@ jobs:
         run: python3 tests/test_experiment_checks.py
       - name: Forecast-kit unit tests (interval coverage / skill-vs-naive / error trend)
         run: python3 tests/test_forecast_checks.py
+      - name: Triage-kit unit tests (rate decomposition / mix-vs-rate split)
+        run: python3 tests/test_triage_checks.py

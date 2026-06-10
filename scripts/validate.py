@@ -44,6 +44,7 @@ EXPECTED = [
     "skills/audit-my-forecast/references/temporal-validity.md",
     "skills/audit-my-forecast/references/forecast_checks.py",
     "skills/audit-my-forecast/references/forecast-audit.md",
+    "skills/triage-my-number/references/triage_checks.py",
 ]
 fails = []
 
