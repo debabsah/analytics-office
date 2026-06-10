@@ -43,6 +43,7 @@ two skills sound alike but do different jobs.
 | The record itself needs trusting | `kb-reconcile` | reconcile every claim against its source; graded drift report |
 | Findings need communicating | `brief-my-findings` | every claim carries provenance; open stays open |
 | The meeting will push back | `defend-my-number` | rehearse under escalating attack; defense sheet of what cracked |
+| The weekly status is due | `status-truth` | the provenance-graded status report — greens earn their color, slips carry their delta |
 
 ## Common confusions, settled
 

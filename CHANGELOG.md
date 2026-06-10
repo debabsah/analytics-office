@@ -3,6 +3,18 @@
 Notable changes to the analytics-office bench. Versions follow the plugin manifest;
 commit-level detail lives in git history.
 
+## [0.14.0] — 2026-06-10
+
+- **status-truth** (13th skill — opens the BI Program Manager persona): composes the
+  status report from the record so the truth survives the pull to look green. The
+  provenance-graded ledger (Done-evidenced / In-progress-attributed / Slipped-with-delta /
+  Blocked-with-age / Risk-open / Unknown—asked), honest RAG against stated criteria with
+  the watermelon test, expired verdicts routed back to their audits, re-bases named as
+  re-bases, and positivity pressure recorded rather than obeyed. Ships with the
+  watermelon-status trap + healthy-status control fixtures and banked RED/GREEN evidence
+  (recorded honestly: detection deflates on a legible record; the lift is the ledger
+  structure and color discipline).
+
 ## [0.13.0] — 2026-06-10
 
 The "office" foundation — conventions that make the bench team-scale and enterprise-credible:
