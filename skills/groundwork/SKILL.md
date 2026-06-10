@@ -1,6 +1,6 @@
 ---
 name: groundwork
-description: Get oriented on an unfamiliar BI/data project and build a living knowledge base. Use at the START of a new or inherited project, or when you've lost the thread — point it at what you have (an inherited data/analytics estate — pipelines, stored procedures, scheduled jobs, reports, any stack — a vague ticket, partial docs, or nothing) and it reads what it can, interviews you for the rest, and surfaces what you don't know yet. Detects: "new project", "inherited", "took over", "where do I start", "don't understand this estate", "catch me up". Reads object definitions and static extracts you provide; never touches live systems and stops before running the analysis itself. Once the project is understood and a task is defined, proceed with the work directly instead.
+description: Use when the work itself is still being shaped — a new project, an incoming request, a metric, a model — before anything is built. Get oriented on an unfamiliar or inherited BI/data estate and build the living knowledge base: reads what you provide, interviews you for the rest, and surfaces what you don't know yet. Detects: "new project", "inherited", "took over", "where do I start", "don't understand this estate", "catch me up". Within this family: validating a specific request is requirements-interrogator; pinning a metric is kpi-contract; designing the mart is model-contract. Never touches live systems and stops before running the analysis itself.
 allowed-tools: Read, Write
 ---
 

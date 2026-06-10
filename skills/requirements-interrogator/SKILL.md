@@ -1,6 +1,6 @@
 ---
 name: requirements-interrogator
-description: Use when a stakeholder hands a BI/analytics professional a solution instead of a problem — a request for specific KPIs, a dashboard, a report, a chart, a column, or "can you also track/add ___" — and it needs validating before anyone scopes or builds. Detects: "build me a dashboard", "add these KPIs", "report on", "can you track that", "we need a metric for", "just add ___". Anchored in the XY Problem, Jobs-to-be-Done, and 5 Whys. For orienting on an unfamiliar or inherited estate use groundwork instead; does not fire on an already-validated spec and does not build the deliverable itself.
+description: Use when the work itself is still being shaped — a new project, an incoming request, a metric, a model — before anything is built. A stakeholder handed over a solution instead of a problem — specific KPIs, a dashboard, a report, a chart, a column, "can you also track ___" — and it needs validating before anyone scopes or builds. Anchored in the XY Problem, Jobs-to-be-Done, and 5 Whys. Detects: "build me a dashboard", "add these KPIs", "report on", "can you track that", "we need a metric for", "just add ___". Within this family: orienting on the estate is groundwork; locking the validated metric is kpi-contract. Does not fire on an already-validated spec and does not build the deliverable itself.
 allowed-tools: Read, Write
 ---
 
