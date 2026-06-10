@@ -12,7 +12,7 @@ stanza — the family carries the heavy discrimination, members discriminate wit
 | Family | The ask-shape | Members |
 |---|---|---|
 | **Shape** | the work itself is still being shaped, before anything is built | groundwork · requirements-interrogator · kpi-contract · model-contract |
-| **Audit** | a finished thing is about to be trusted; the gate fires first | audit-my-assumptions · audit-my-experiment · audit-my-forecast · review-my-query · kb-reconcile |
+| **Audit** | a finished thing is about to be trusted; the gate fires first | audit-my-assumptions · audit-my-experiment · audit-my-forecast · review-my-query · kb-reconcile · review-my-dashboard |
 | **Investigate** | hands-in-the-data right now | triage-my-number · explore-my-data · map-my-estate · change-impact |
 | **Deliver** | work is leaving the desk | brief-my-findings · defend-my-number · status-truth |
 
@@ -59,6 +59,7 @@ stanza — the family carries the heavy discrimination, members discriminate wit
 | An open-ended "find insights" look at data | `explore-my-data` | pre-registered, cut-counted exploration; found ≠ confirmed |
 | The estate needs drawing (ER / lineage) | `map-my-estate` | the cited map — evidence-graded edges, honest gaps |
 | A change is about to ship | `change-impact` | the graded blast radius — silent drift outranks loud breakage |
+| A dashboard ships Thursday | `review-my-dashboard` | the assembly review — additivity, defaults, the title test |
 
 ## Common confusions, settled
 

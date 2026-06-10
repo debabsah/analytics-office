@@ -3,6 +3,20 @@
 Notable changes to the analytics-office bench. Versions follow the plugin manifest;
 commit-level detail lives in git history.
 
+## [0.19.0] — 2026-06-11
+
+- **review-my-dashboard** (17th skill, the Audit family's 6th member — AT the family cap;
+  the next auditor forces a family split, by design): reviews the assembled surface
+  between the queries and the room, where dashboards actually fail — non-additive totals
+  (summed distinct counts, averaged averages), measure-filter interactions, default
+  filters as silent population claims, stale extracts behind "live" labels, and the title
+  test (every title is a claim the data must support). Three-layer walk (semantic / state
+  / presentation), findings graded Blocking/Latent/Advisory against the locked contracts,
+  what-passed stated plainly, the coverage boundary named. Never opens a live tool, never
+  edits the dashboard. Banked evidence recorded honestly: sixth consecutive detection
+  deflation; the measured lift is the Latent grade class (predictable future breaks) and
+  the canonical register form.
+
 ## [0.18.0] — 2026-06-11
 
 - **change-impact** (16th skill, Investigate family's 4th member — the BI engineer's daily
