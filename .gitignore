@@ -13,3 +13,9 @@ docs/OUTCOME-LEDGER.md
 
 # Session journal / research log - internal tracking of work ON the bench, never publish
 docs/journal/
+
+# README backups during the office-framing rewrite - local-only reference, never publish
+docs/README.backup-*.md
+
+# v-next adversarial review / strategy foundation - internal, never publish
+docs/VNEXT-FOUNDATION.md

@@ -3,7 +3,7 @@
 Notable changes to the analytics-office bench. Versions follow the plugin manifest;
 commit-level detail lives in git history.
 
-## [Unreleased]
+## [0.13.0] — 2026-06-10
 
 The "office" foundation — conventions that make the bench team-scale and enterprise-credible:
 
@@ -37,6 +37,11 @@ The "office" foundation — conventions that make the bench team-scale and enter
   free-hand, never the deliverable.
 - New README (discipline-harness landing page), CONTRIBUTING, issue templates, and this
   changelog.
+- **Routing re-baselined on the new default model** (full 31-case sweep): 18 pass, 3
+  misroutes documented as known seams (preserved in `cases.tsv`, details in
+  `tests/triggering/README.md`), 6 shadows / 4 misses (environment-dependent). Four
+  description-surgery rounds could not move the seams without regressing passing foils;
+  recorded honestly and filed for the next hardening pass.
 
 ## [0.12.0] — 2026-06-08
 

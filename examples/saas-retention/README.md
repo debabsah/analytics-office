@@ -1,10 +1,10 @@
-# Worked example: the seven skills on one project
+# Worked example: one project, end to end
 
 This is the analytics-office bench run end to end on a single project, so you can watch
-the seven skills **compose through a shared knowledge base** instead of just reading
-that they do. One skill notices something while reading inherited SQL. Seven skills
-and a full lifecycle later, that same something is what keeps a bad number out of
-the board readout.
+the disciplines **compose through a shared knowledge base** instead of just reading
+that they do. This walkthrough threads seven of the twelve disciplines on one project:
+one notices something while reading inherited SQL, and a full lifecycle later that same
+something is what keeps a bad number out of the board readout.
 
 > **Meridian is a fictional B2B SaaS company.** Every account, name, and number here
 > is invented for this example. Nothing is queried or computed; the skills read text
@@ -14,7 +14,7 @@ The reader-facing artifacts are real files you can open:
 
 - [`inputs/`](inputs/) - the raw material you start with (an inherited SQL view, a
   departed analyst's notes, a stakeholder request, a number to defend).
-- [`knowledge-base/`](knowledge-base/) - what the seven skills produced and kept
+- [`knowledge-base/`](knowledge-base/) - what those seven disciplines produced and kept
   updating. Start at [`knowledge-base/README.md`](knowledge-base/README.md).
 
 ---
