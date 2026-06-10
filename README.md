@@ -175,7 +175,7 @@ The design principle that fell out of the measurements: **build for invisibility
 /plugin install analytics-office@analytics-office
 ```
 
-Then just talk to Claude Code the way you'd talk to a colleague. Any of these will route to the right skill on its own:
+Then just talk to Claude Code the way you'd talk to a colleague. Any of these will route to the right skill on its own (the finer seams live in [`docs/which-skill-when.md`](docs/which-skill-when.md)):
 
 ```text
 I just inherited a data warehouse from someone who left. Where do I even start?
