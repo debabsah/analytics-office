@@ -137,7 +137,11 @@ FAMILIES = {
     },
     "Audit": {
         "stanza": "Use when a finished thing — a source, a result, code, or the record — is about to be trusted or consumed; the gate fires before the work leans on it.",
-        "members": ["audit-my-assumptions", "audit-my-experiment", "audit-my-forecast", "review-my-query", "kb-reconcile", "review-my-dashboard"],
+        "members": ["audit-my-assumptions", "review-my-query", "kb-reconcile", "review-my-dashboard"],
+    },
+    "Validate": {
+        "stanza": "Use when a measured result — an experiment, a forecast, a number that must tie out — is about to drive a decision; the validity checks run before the decision does.",
+        "members": ["audit-my-experiment", "audit-my-forecast"],
     },
     "Investigate": {
         "stanza": "Use when the work is hands-in-the-data right now — a number moved, an open question needs exploring, a picture of the estate needs drawing, a change needs its blast radius known.",
