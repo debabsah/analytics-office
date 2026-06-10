@@ -52,6 +52,9 @@ EXPECTED = [
     "skills/explore-my-data/SKILL.md",
     "skills/explore-my-data/references/exploration-engine.md",
     "skills/explore-my-data/references/exploration-log.md",
+    "skills/map-my-estate/SKILL.md",
+    "skills/map-my-estate/references/estate-engine.md",
+    "skills/map-my-estate/references/estate-map.md",
 ]
 fails = []
 
@@ -109,9 +112,11 @@ if os.path.isdir(skills_dir):
 # Description lints — the no-router bet, instrumented. Descriptions are the router AND a
 # permanent always-in-context token cost; growth must be a conscious cap raise, never drift.
 DESC_CHAR_CAP = 2600    # per-description ceiling (max today: 2449)
-DESC_TOTAL_CAP = 14900  # whole-bench ceiling — DELIBERATE RAISE 2026-06-10 (was 14000)
-                        # for skill #14 (explore-my-data). Family-structure (VNEXT §2.1.3)
-                        # is due before ~skill 16; the next raise should hurt.
+DESC_TOTAL_CAP = 15800  # whole-bench ceiling — RAISE #2, 2026-06-10 (14000→14900→15800)
+                        # for skill #15 (map-my-estate). NO MORE RAISES without family
+                        # structure: the skill-count gate below is the wall.
+MAX_SKILLS_WITHOUT_FAMILIES = 15  # the 16th skill fails the build until family-structure
+                                  # routing (VNEXT §2.1.3) is implemented.
 descs = {}
 if os.path.isdir(skills_dir):
     for name in sorted(os.listdir(skills_dir)):
@@ -127,6 +132,8 @@ for name, d in descs.items():
 total_desc = sum(len(d) for d in descs.values())
 if total_desc > DESC_TOTAL_CAP:
     fail(f"bench: total description budget {total_desc} chars > {DESC_TOTAL_CAP} cap — the always-in-context cost; trim before adding")
+if len(descs) > MAX_SKILLS_WITHOUT_FAMILIES:
+    fail(f"bench: {len(descs)} skills > {MAX_SKILLS_WITHOUT_FAMILIES} — family-structure routing (VNEXT §2.1.3) is required before the bench grows further")
 phrases = {}
 for name, d in descs.items():
     for ph in re.findall(r'"([^"]{12,})"', d):

@@ -14,6 +14,7 @@ Every finding is one of these. Name it, run its read-only check, take its action
 | Qualifier-erosion | a directional / `[needs decision]` claim re-cited bare | trace each cited status back to its origin | restore the qualifier |
 | Status-rot | open list lists closed items or omits real ones | reconcile `open-questions.md` against the timeline + decisions | correct the status |
 | Expired-verdict | a carried/consumed verdict whose `Re-audit when:` condition has since been met, or whose evidence post-dates it | compare each carried verdict's date + re-audit condition against the timeline and later artifacts | flag stale; recommend re-audit before the verdict is used again |
+| Map-staleness | an `estate-map.md` whose derived-from set predates changes to those files (or new topology in the record) | compare the map's derived-from dates against the current files + timeline | flag stale; recommend re-running map-my-estate |
 | Broken-provenance | a claim cites a source that is absent/renamed | resolve every citation | mark `unverified`; flag the dangling ref |
 | Unsourced-number | a quantitative claim with no checkable source on hand | look for the cited artifact in the tree | mark `unverified`; write the paste-back check |
 | Staleness / garbage-in / derivation-error | the KB is internally consistent but wrong vs the data | NOT read-only catchable | write the paste-back check (only re-derivation reaches it) |

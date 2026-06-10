@@ -168,6 +168,7 @@ index when none exists.
 | kb-reconcile | reconcile.md ONLY | never (recommends) | never (recommends) | never (recommends) | never | never | never |
 | status-truth | status-report.md | append new blockers/risks | never | append | never | add link | never |
 | explore-my-data | exploration-log.md | append new questions | never | append | never | add link | copy results tables |
+| map-my-estate | estate-map.md | append gaps/islands | never | append | never | add link | copy DDL/code |
 
 ## knowledge-base/README.md (the index — start here)
 ```markdown
