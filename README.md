@@ -1,367 +1,230 @@
 # analytics-office
 
-**Your expert copilot for analytics delivery: a second set of hands *and* a sparring partner.**
+[![CI](https://github.com/debabsah/analytics-office/actions/workflows/ci.yml/badge.svg)](https://github.com/debabsah/analytics-office/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-d97757)](https://claude.com/claude-code)
 
-You make the calls. analytics-office orients you on systems nobody documented, pins down what a metric actually means, preps you for the stakeholder meeting, pressure-tests your analysis before your reviewer does, holds the thread across months of interruptions, and always knows the next move, carrying a vague ask all the way to a decision you can defend.
+**A discipline harness for AI-assisted analytics.**
 
-An expert partner for [Claude Code](https://docs.claude.com/en/docs/claude-code), built as an architecture that grows, not a one-shot chatbot.
+AI is genuinely good at analytics work. It fails in one specific way: not by being unable, but by being *agreeable*. Handed an inherited warehouse with no docs, it starts building instead of orienting. Handed "build me a dashboard with these KPIs," it builds exactly that — without ever asking what decision the dashboard serves. Asked what "active customer" means, it picks a sensible default instead of pinning the choice with the person who owns it. Handed a number, it writes the confident story.
 
-![License: MIT](https://img.shields.io/badge/license-MIT-blue) &nbsp;![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-8A2BE2) &nbsp;![data: read-only](https://img.shields.io/badge/data-read--only-success) &nbsp;![dependencies: none](https://img.shields.io/badge/dependencies-none-brightgreen)
+analytics-office is a bench of **12 read-only skills for Claude Code** that switches the model out of answer-mode and into the discipline each moment of analytics work actually needs — orienting on an unfamiliar estate, interrogating requirements, locking metric definitions, designing models, auditing inherited premises, reviewing the code behind a number, diagnosing a break, briefing stakeholders, surviving the meeting. Each skill is engineered against a documented failure of the bare model. All of them write to one living knowledge base you resume from.
 
----
+*Read-only by construction · computes instead of eyeballing · no required sequence — any skill, any moment.*
 
-## Why
-
-You're good at this. That isn't the problem.
-
-The problem is that good analytics delivery is a dozen disciplines run in parallel: orientation, definition, rigor, documentation, stakeholder comms, decision-tracking, knowing what's next. Under interrupt-driven, often-solo reality, the disciplines are the first thing to slip. The thread gets lost between context-switches. The metric never got pinned down before the dashboard got built. The meeting prep got skipped. The rationale for that call lives only in your head, until someone asks six weeks later, or you hand the project off, or the person who knew it leaves.
-
-analytics-office runs those disciplines for you, tirelessly and every time, so your expertise goes to the calls only you can make. And on the calls that are genuinely hard, it doesn't just take notes: it spars.
-
-## The panel
-
-It's a copilot, so picture the board. You fly; it runs the discipline behind every step.
-
-| System | What analytics-office does | Powered by | Status |
-|---|---|---|---|
-| **Pre-flight** | Orient on an undocumented or inherited system before you touch it; build the knowledge base | `groundwork` | ✅ **live** |
-| **Checklists** | Completeness models per project type plus a four-way gap engine, so rigor doesn't depend on your memory | `groundwork` | ✅ **live** |
-| **Logbook** | A living knowledge base: current state, an append-only timeline, event capture, "catch me up," decision provenance | `groundwork` | ✅ **live** |
-| **Flight plan** | The whole delivery lifecycle, its milestones, and the discovery↔definition↔analysis↔review↔evolution loops, with a navigator that calls your next move | navigator *(planned)* | ◐ planned |
-| **Comms** | Stakeholder and requirements work: interrogate a request down to the real decision before you build, the questions to ask, the KPI contract, the findings brief | `requirements-interrogator`, `kpi-contract`, `brief-my-findings` | ✅ **live** |
-| **Blueprints** | Design the dimensional model before it's built: declare the grain, gate the source grain, pin every structural fork, no DDL | `model-contract` | ✅ **live** |
-| **Review** | Read the query, model, or measure that computes a number and check it against its locked definition before it ships: catch the bugs that quietly ship the wrong number | `review-my-query` | ✅ **live** |
-| **Sparring** | Defend-the-number rehearsal: role-plays the skeptic, drills you under escalating pressure, grades your answers, leaves a Defense Sheet. Socratic challenge and red-teaming too | `defend-my-number` | ✅ **live** |
-| **Diagnostics** | A number came out wrong or moved unexpectedly: run a systematic differential across the whole failure surface (code, data, pipeline, definition, or a real change) before you explain it | `triage-my-number` | ✅ **live** |
-| **Integrity** | Audit the accreted knowledge base against its sources and itself before its conclusions are used: catch drift, contradictions, partial-update lag, and unsourced numbers | `kb-reconcile` | ✅ **live** |
-| **Experiment validity** | Validity gate for experiment / A-B results: computes SRM, power, multiplicity, peeking checks before you ship — switches to audit-mode even on "write up our win". | `audit-my-experiment` | ✅ **live** |
-| **Assumption pre-flight** | Before you build on inherited procs/queries/exports: surface every silent assumption, grade it by blast radius, and falsify the load-bearing ones (the trend included) so a stale premise doesn't cascade into a plausible wrong output | `audit-my-assumptions` | ✅ **live** |
-| **Instruments** | Data quality and lineage: *is this right, and will it hold?* | `groundwork` drafts these; dedicated modules *(planned)* | ◐ planned |
-
-## What you can ask it
-
-You don't run commands. You describe what you're dealing with, and the right capability picks it up. A sample across the lifecycle (the ✅ rows are live across `groundwork`, `requirements-interrogator`, `kpi-contract`, `defend-my-number`, `review-my-query`, `brief-my-findings`, `triage-my-number`, `model-contract`, `kb-reconcile`, `audit-my-experiment`, and `audit-my-assumptions`; the ◐ rows show where the panel is headed):
-
-| Stage | You say… | What happens | Status |
-|---|---|---|---|
-| Understand | "I inherited this pipeline and don't get it, where do I start?" | Classifies the estate, reads it (code only), surfaces the unknowns, starts the knowledge base | ✅ |
-| Understand | "What don't I know about this system that I should?" | Runs the four-way gap engine and lists the highest-value unknowns | ✅ |
-| Continuity | "Catch me up, I've been off this for three weeks." | Reads the timeline and state, then briefs you: where you are, what changed, what's next | ✅ |
-| Define | "The ticket just says 'improve sales reporting,' what do they actually need?" | Interrogates the request down to the real decision, then surfaces the gap between what was asked for and what that decision needs | ✅ |
-| Define | "Pin down what 'active customer' actually means before we build." | Walks every fork the definition hides, pins each with the owner, states the source reconciliation, and locks a versioned KPI contract | ✅ |
-| Design | "Design the star schema for this mart before we build it." | Declares the grain, gates on the source grain, surfaces every modelling fork to pin, returns a logical design (no DDL) | ✅ |
-| Build | "We decided to exclude refunds, capture that and why." | Logs the decision with its rationale and provenance, so it's never re-litigated | ✅ |
-| Build | "I wrote the query behind this metric, is it right before it ships?" | Reviews the code against the locked definition, hunts the bugs that ship a wrong number, grades them and points the fix | ✅ |
-| Validate | "Pressure-test this before my lead sees it, what would they attack?" | Role-plays the skeptic and drills you under pressure, grades each answer, leaves a Defense Sheet of the holes to fix | ✅ |
-| Validate | "Is this number defensible? Rehearse defending it with me." | Plays the skeptic: the holes, the challenges, how you'd answer each | ✅ |
-| Deliver | "Turn these findings into a brief I can send." | Composes the brief from your evidence, every claim sourced and graded, observation → implication → action → watch-for, with the open questions kept open and the verdict carried | ✅ |
-| Deliver | "Show me where these numbers actually come from." | Builds a lineage map from the code you've pointed it at | ✅ |
-| Operate | "Churn jumped to 11% and the board call is in an hour. Why?" | Runs a systematic differential across code, data, pipeline, definition, and a real change, hands you the checks, and gives a calibrated holding line instead of a guess | ✅ |
-| Operate | "What's the right next move on this project?" | Infers where you are from the knowledge base and recommends the next step | ◐ |
-| Continuity | "The client just emailed a new constraint, log it." | Drops a dated event on the timeline with its source | ✅ |
-| Continuity | "Before I lean on it for the board, is our knowledge base still accurate, or did something drift?" | Reconciles every claim against its cited source and the other files, flags contradictions, partial-update drift, and unsourced numbers, and writes the checks to run for what it can't verify read-only | ✅ |
-| Validate | "We ran an A-B test and want to ship — is the result actually valid?" | Computes SRM, recomputes significance with absolute diff + CI, checks for peeking and multiplicity, grades findings Blocking / Latent / Advisory, and gates the rollout: ship-ready or HOLD | ✅ |
-| Build | "Before I rebuild this report from the old procs — what am I silently assuming that could be wrong?" | Surfaces every inherited assumption, grades each by blast radius, falsifies the load-bearing ones (trend included), and routes intent to the owner — before a line is built | ✅ |
-
-✅ live today (via `groundwork`, `requirements-interrogator`, `kpi-contract`, `defend-my-number`, `review-my-query`, `brief-my-findings`, `triage-my-number`, `model-contract`, `kb-reconcile`, `audit-my-experiment`, and `audit-my-assumptions`) · ◐ on the flight plan
-
-## Philosophy: the design *is* the product
-
-- **A peer, not a tutor.** It operates at your level: it does the work that's beneath you and argues with you about the work that isn't. No hand-holding, no lectures.
-- **An architecture, grown by accretion.** Each capability is a lean, sharp, individually-invokable skill. New ones slot in without bloating the others; the practice scales by adding instruments, never by inflating one mega-prompt.
-- **Comprehensive thinking, lean output.** It reasons against the *full* model of your situation, then records only what matters. Rigor without bloat.
-- **A read-only working posture, by design.** Each skill is declared `Read`/`Write` only: it works from the code, object definitions, docs, and static extracts you hand it, never connects to or queries your live systems, and leaves computing the deliverable to you. (It runs inside Claude Code, so what you hand it is processed by Anthropic's API like any prompt; it's not an air-gapped tool.)
-- **Memory is the product, not a side effect.** Everything it learns lands in a knowledge base in your repo (`state` plus an append-only `timeline`), pointed at by an `AGENTS.md`, so the next agent (or the next you) resumes instead of restarting cold.
-
-## Skill: `groundwork`
-
-The first instrument on the board: pre-flight. Point it at an unfamiliar estate: inherited pipelines, stored procedures, scheduled jobs, reports, a vague ticket, or nothing at all. Reading code and text only, it interrogates what's missing and leaves a living knowledge base behind.
-
-**Before:** a blank page and a pile of someone else's objects.
-**After:** a `knowledge-base/` in the repo. From one inherited transform and a one-line ticket, reading code only, it surfaces what you didn't know to ask:
-
-```markdown
-# open-questions.md  (excerpt)
-- [ ] Nothing populates `StagingTable`. What feeds it, and must it run first?  (freshness risk)
-- [ ] The load is hard-filtered to a single region with no comment. Bug, or intentional scope?
-- [ ] Who consumes the output table? That defines what "right" even means.
 ```
-
-…plus a lineage map, a decisions log, and a dated timeline, all from artifacts, no database touched.
-
-### How it works
-
-```mermaid
-flowchart TD
-    E["Inherited estate<br/>pipelines, procs,<br/>jobs, reports<br/>any stack"] --> GW
-    TK["A vague ticket"] --> GW
-    DO["Partial docs"] --> GW
-    CV["Just a conversation,<br/>or nothing yet"] --> GW
-    GW["groundwork<br/>reads what exists,<br/>never live systems"] --> CL["Classify the project<br/>inherited estate /<br/>reporting request /<br/>migration /<br/>new pipeline"]
-    CL --> GAP{"Gap engine<br/>completeness<br/>loose threads<br/>Socratic<br/>cross-check"}
-    GAP --> Q["Interview the<br/>highest-value gaps"]
-    Q --> KB[("knowledge-base/")]
-    KB --> ST["STATE<br/>purpose, landscape,<br/>open questions,<br/>decisions"]
-    KB --> CO["CONTINUITY<br/>append-only timeline,<br/>catch me up"]
-    KB --> RE["Report<br/>the picture,<br/>open questions,<br/>the next move"]
-```
-
-Classify the project → ingest what you point it at (read-only) → run the four-mechanism gap engine → interview you for the highest-value gaps → write the knowledge base and append the timeline → report the picture, the open questions, and the single best next move.
-
-## Skill: `requirements-interrogator`
-
-The second skill to go live. When a stakeholder hands you a solution (named KPIs, a dashboard, a report) instead of a decision, it interrogates the request down to the decision that solution is meant to serve, then shows the gap between what was asked for and what the decision actually needs.
-
-**Before:** "Build me a dashboard with daily active users, session length, and bounce rate."
-**After:** the interrogation surfaces the real decision (keep investing in Feature A, or not), re-derives the metric that actually answers it (a Feature-A retention cohort), and returns a one-page brief with the requested-vs-derived delta and a verdict: proceed, reframe, or wrong-problem. No database touched. If the stakeholder is out, it hands you the exact questions to go ask instead of inventing their answers.
-
-A capable assistant already defines metrics carefully and checks feasibility, then builds the thing it was handed. This runs the move it skips: validate the problem first, so you build the right thing once.
-
-### How it works
-
-```mermaid
-flowchart TD
-    REQ["A solution-shaped ask<br/>(dashboard, KPIs,<br/>a report)"] --> RI["requirements-interrogator<br/>decision-backwards,<br/>XY split, re-derive"]
-    KB[("knowledge-base/")] -. warm start .-> RI
-    RI --> V{"Verdict<br/>proceed /<br/>reframe /<br/>wrong-problem"}
-    V --> BR["requirements-brief.md<br/>the delta:<br/>requested vs derived"]
-    BR --> KB
-```
-
-## Skill: `kpi-contract`
-
-The metric pinner. You're about to define a metric, lock it for a build team, or settle two reports that disagree on "the same" number. It walks every choice the definition silently makes, forces each to be pinned by the owner or flagged as an open decision, ties the metric to its source of record, and locks it as a versioned contract.
-
-**Before:** "Define marketing-attributed revenue for the QBR. Last quarter our number and Finance's were far apart and it got awkward."
-**After:** instead of one clean definition, it produces a fork log: revenue basis (bookings vs recognized), refunds (gross vs net), attribution model, period basis (calendar vs fiscal), and the rest, each pinned with a rationale or marked as the owner's call, plus the explicit reconciliation to Finance's total. The result is a committable KPI contract, versioned and ready to hand off. No database touched, no number computed.
-
-A capable assistant already writes a plausible definition and even recommends defaults. This runs the move it skips: surface every fork, let the owner pin it, and never let the data you happen to have define the metric.
-
-### How it works
-
-```mermaid
-flowchart TD
-    M["A metric to pin<br/>(or two reports<br/>that disagree)"] --> KC["kpi-contract<br/>walk every fork,<br/>owner pins each"]
-    KB[("knowledge-base/")] -. the brief .-> KC
-    KC --> FL["The fork log<br/>each fork pinned, or<br/>[needs decision]"]
-    FL --> CON["kpi-contract.md<br/>versioned, with the<br/>source reconciliation"]
-    CON --> KB
-```
-
-## Skill: `model-contract`
-
-The design step, before the build. You're about to design or restructure the dimensional model behind a mart or a set of reports: the facts, the dimensions, the grain. It declares the target grain, **gates on the source grain** before any structure, walks every modelling fork (fact type, additivity, SCD, conformance) for you to pin, and lays the star out logically. It never writes DDL and never invents a schema.
-
-**Before:** "Design the star schema for our sales mart, here are the source tables, the VP wants the DDL today."
-**After:** instead of `CREATE TABLE`s built on a guessed grain, it declares the target grain, blocks on the one question that decides everything ("is the orders feed one row per order, or one row per status change?"), surfaces the SCD and conformance calls as decisions for the owner, and returns a logical star plus a committable fork log. No DDL, no invented columns. The build team implements it; `review-my-query` later checks the build against it.
-
-A capable assistant, handed this under deadline, emits a plausible `CREATE TABLE` on an assumed grain and footnotes the risks. This runs the move it skips: pin the grain, gate the source grain, and let the owner pin every fork before a line is built.
-
-### How it works
-
-```mermaid
-flowchart TD
-    REQ["A model to design<br/>(mart, star schema,<br/>fact + dimensions)"] --> MC["model-contract<br/>grain-first,<br/>gate the source grain,<br/>walk the forks"]
-    KB[("knowledge-base/")] -. the contract .-> MC
-    MC --> GATE{"Source-grain gate<br/>evidenced /<br/>needs decision"}
-    GATE --> FL["The fork log<br/>each fork pinned,<br/>or needs decision"]
-    FL --> CON["model-contract<br/>logical star,<br/>never DDL"]
-    CON --> KB
-```
-
-## Skill: `defend-my-number`
-
-The sparring partner. You have a number, finding, or recommendation you'll have to defend in a room. It role-plays the skeptic you're about to face (the steamrolling exec, the data-method skeptic, the political pressurer who wants a different answer), drills you under escalating pressure one attack at a time, grades each answer honestly (held, wobbled, cracked), and leaves a committable Defense Sheet of the attacks, your best answers, and the holes still to fix.
-
-**Before:** "Attrition is up 18% this quarter and leadership will push back hard."
-**After:** it plays the skeptical exec ("up 18% from what, exactly? that's seven people, why are we here?"), escalates into authority and political pressure, grades where you held and where you cracked, and hands you a Defense Sheet whose top item is the one hole that loses the room. It never recomputes your number; it rehearses whether your reasoning holds.
-
-This is the move no human reliably runs with you: the freeze in the room is a practiced failure, and so is its cure.
-
-### How it works
-
-```mermaid
-flowchart TD
-    NUM["A number to defend<br/>before the room"] --> DN["defend-my-number<br/>in-character skeptic,<br/>escalating drill"]
-    KB[("knowledge-base/")] -. ammunition .-> DN
-    DN --> G{"Grade each answer<br/>held / wobbled /<br/>cracked"}
-    G --> DS["defense-sheet.md<br/>+ readiness verdict"]
-    DS --> KB
-```
-
-## Skill: `review-my-query`
-
-The query reviewer. You wrote or inherited the code behind a number (a SQL query, view, or proc, a dbt or semantic model, a measure or RLS rule) and you want it checked before it ships or gets defended. It reads the code as text, checks it fork by fork against the locked KPI contract, hunts the bugs that quietly ship the wrong number, grades each finding, and leaves a committable review. It never runs the code and never rewrites it.
-
-**Before:** "Here's the inherited `vw_monthly_churn` view for the board deck, and our locked retention contract. Is it right?"
-**After:** instead of a rewritten query, it returns graded findings: Blocking, the view counts logos but the contract pins MRR-based retention, so it answers a different question entirely; Blocking, it truncates to UTC months when the contract pins fiscal US/Pacific; Blocking, trials are counted as active; Latent, an unexplained hardcoded exclusion list; each with the fix direction. The Blocking findings escalate into the knowledge base as open questions. No database touched, no query rewritten.
-
-A capable assistant, shown a flawed query, rewrites it for you, often on guessed column names. This runs the move it skips: locate the defect, name the failure mode, grade it by whether it ships a wrong number, and leave the fix to you.
-
-### How it works
-
-```mermaid
-flowchart TD
-    CODE["The code behind a number<br/>SQL, model, measure, RLS"] --> RQ["review-my-query<br/>conformance fork-by-fork<br/>+ failure-mode taxonomy"]
-    KB[("knowledge-base/")] -. the contract .-> RQ
-    RQ --> F{"Graded findings<br/>Blocking / Latent /<br/>Advisory"}
-    F --> QR["query-review.md<br/>findings, never<br/>a rewrite"]
-    QR --> KB
-```
-
-## Skill: `brief-my-findings`
-
-The findings writer. Your analysis is done and you have to communicate it: write up the results, put together the brief, draft the readout for a board, an exec, or a VP. It composes the brief from the evidence on hand, forces every claim to carry its provenance and a status (Supported, Directional-only, open, or inferred), keeps the open questions open, and carries the analysis's verdict instead of smoothing it into a confident story. It writes the brief, not the final deck or email.
-
-**Before:** "NRR came out to 108%, but it isn't reconciled to Finance yet and the early-life cohort cut isn't built. The board meeting is in a few days. Write up the readout."
-**After:** instead of a confident "retention is healthy, invest in growth," it returns a brief that grades the 108% as directional (not yet reconciled), keeps the Finance gap and the missing cohort cut quarantined as open items, and carries the verdict as "not yet": do not present the recommendation until those close. No number computed, no gap explained away, no deck rendered.
-
-A capable assistant writes a clean, confident brief and, under the pull to make it land, smooths: it explains away an open gap, states a not-yet verdict as the answer, slips in a benchmark nobody measured. This runs the move it skips: source every claim, keep the open questions open, and carry the verdict honestly.
-
-### How it works
-
-```mermaid
-flowchart TD
-    FIN["Finished findings<br/>to communicate"] --> BF["brief-my-findings<br/>claim ledger:<br/>provenance + status"]
-    KB[("knowledge-base/")] -. the evidence .-> BF
-    BF --> OPEN["Open stays open,<br/>verdict carried,<br/>nothing smoothed"]
-    OPEN --> FB["findings-brief.md<br/>the board readout"]
-    FB --> KB
-```
-
-## Skill: `triage-my-number`
-
-The number doctor. A KPI came out wrong, jumped, cratered, or two reports won't reconcile, and you have to find out why before you explain it to anyone. It decomposes the number (did the numerator jump or the denominator shrink?), runs a systematic differential across the whole failure surface (the code, the data, the pipeline, the definition, or a genuinely real change), attaches a check to every suspect, and gives you a calibrated holding line for the room. It never runs a query or computes the data itself, even from a sample you paste.
-
-**Before:** "Monthly churn just printed 11%, up from the usual 4%, and the board call is in 90 minutes. The CFO is asking if we're in trouble."
-**After:** instead of a confident "churn doubled because of trials," it hands you a ranked differential: is the denominator built from the wrong cohort, did trials swing, did a late-cancel batch land, was the load partial, or is it real? Each with the one cheap check that rules it in or out, every row still a suspect. And the line to give the CFO now: "likely a measurement artifact, not a real trend, confirming by EOD." No sample computed, no cause guessed at, no figure handed over unvalidated.
-
-A capable analyst, under that pressure, tunnels onto the first plausible cause and writes it into the board line, and reaches for the data to "just confirm." This runs the move it skips: hold the whole differential, keep a defect you can read separate from the cause of this number, and direct the checks instead of running them.
-
-### How it works
-
-```mermaid
-flowchart TD
-    SYMPTOM["A number that's wrong:<br/>jumped, cratered,<br/>won't reconcile"] --> TN["triage-my-number<br/>decompose, then<br/>differential across<br/>code / data / pipeline /<br/>definition / real"]
-    KB[("knowledge-base/")] -. contract + known defects .-> TN
-    TN --> D{"Ranked suspects,<br/>a check on each,<br/>cause not yet confirmed"}
-    D --> TR["triage.md<br/>differential + checks<br/>+ a calibrated line"]
-    TR --> KB
-```
-
-## Skill: `kb-reconcile`
-
-The record's auditor: the backward pass. The other skills write the knowledge base forward; this one checks it before you lean on its conclusions. Point it at a `knowledge-base/` ahead of a board readout, a handoff, or a funding call. It reconciles every material claim against its cited source and the other files, flags what has drifted, marks every number it can't verify read-only as unverified, and writes the exact check for you to run on the rest. It never edits the record it audits and never runs the check itself.
-
-**Before:** a knowledge base whose headline reads "Finance reconciliation closed, NRR 108% board-ready," days before the board call.
-**After:** instead of carrying that number forward, it catches that the contract of record the headline cites still marks the reconciliation `[needs decision]`, a partial-update nobody propagated; flags the 108% as unverified because no billing or GL source sits in the tree; writes the exact NRR query for you to run and paste back; and grades it all in a `reconcile.md`, with the escalations recommended and the record left untouched. No number computed, no file rewritten.
-
-A capable assistant, handed a knowledge base and a deadline, reads it and answers, trusting what it reads, so a planted "closed, board-ready" sails straight into the room. This runs the move it skips: switch out of answer-mode into adversarial audit-mode, assume every claim wrong until it reconciles against its source, and refuse to bless a number with no run behind it.
-
-### How it works
-
-```mermaid
-flowchart TD
-    KB[("knowledge-base/<br/>the accreted record")] --> KR["kb-reconcile<br/>adversarial audit:<br/>rank by stake,<br/>internal + source reconcile"]
-    KR --> D{"Per claim<br/>reconciled / drifted /<br/>unverified / contradicted"}
-    D --> RC["reconcile.md<br/>graded drift +<br/>recommended actions"]
-    D -. writes the check .-> RUN["You run it<br/>against source,<br/>paste back"]
-    RUN -. verified or contradicted .-> RC
-    RC --> KB
-```
-
-## Skill: `audit-my-experiment`
-
-The validity gate. You have an experiment result — an A/B test, a randomized trial, a causal analysis — and you need to know if it is valid before you ship, brief, or defend it. It runs the full audit taxonomy (design integrity, statistical inference, interpretation), computes every in-hand check (sample-ratio mismatch, observed power, multiplicity correction, peeking) rather than eyeballing them, grades each finding Blocking / Latent / Advisory, and emits a gate verdict: `ship-ready`, `HOLD/pending`, or `HOLD/invalid`. It switches into audit-mode even when the ask is "write up our win" — validity before packaging.
-
-**Before:** "Can you draft the rollout readout for the new search ranking model? We want to ship to 100% this week. Lead with the click-rate win."
-**After:** instead of writing the win, it computes the sample-ratio check on the arm sizes (p≈0.005, ~1-in-200 — Blocking), reframes the bare relative lift as an absolute diff with a CI, runs the full taxonomy, and gates with HOLD/pending: the SRM must be root-caused before the readout is drafted. It writes the exact per-day assignment query to paste back, and routes to `brief-my-findings` / `defend-my-number` once the gate is cleared.
-
-A capable assistant, handed "lead with the win," writes the win. This runs the move it skips: compute the checks, hold the gate, and never let a readout go out that the data doesn't support.
-
-### How it works
-
-```mermaid
-flowchart TD
-    EXP["Experiment result<br/>A-B / causal /<br/>randomized trial"] --> AE["audit-my-experiment<br/>compute SRM, power,<br/>multiplicity, peeking;<br/>full taxonomy"]
-    AE --> G{"Gate verdict<br/>ship-ready /<br/>HOLD/pending /<br/>HOLD/invalid"}
-    G -- ship-ready --> BF["brief-my-findings<br/>/ defend-my-number"]
-    G -- HOLD --> EA["experiment-audit.md<br/>graded findings +<br/>paste-back checks"]
-    EA --> KB[("knowledge-base/")]
-```
-
-## Skill: `audit-my-assumptions`
-
-The pre-flight. You are about to build on something you inherited — rebuild a report from someone else's stored procs, derive a metric from an existing query, stack years onto an old workbook — and every one of those sources makes silent decisions you would otherwise adopt as fact. It surfaces each inherited assumption (the population definition, the grain, the unit a column is in, the date basis, the identity key, the magic constants), grades each by blast radius (a wrong trunk cascades; a wrong leaf is cosmetic), falsifies the load-bearing ones against the most generative source — including the population's trend over time, where a stale definition hides — and routes the intent questions to the owner. It emits a graded assumption register and never builds the deliverable on an unvalidated trunk.
-
-**Before:** "Here's the proc the data team uses for packages, and last year's run: 412 orders, $340K. Turn it into my branded-package slide for the board."
-**After:** instead of charting the clean number, it flags that `BUNDLEID IS NOT NULL` is an inherited *definition* of "package" that may no longer match what the business sells — a small, tidy number is exactly what a stale definition produces — calls for the by-year trend the single window hides, notes the excluded add-on line type is where today's promo bundles may now live, and routes "what counts as a promo bundle today" to the owner before a slide exists.
-
-A capable assistant, handed a clean inherited number, builds the deliverable and adopts the source's premises as fact; the cascade is invisible because the output looks right. This runs the move it skips: treat every inherited definition as an assumption to falsify, check the trend even from one window, and clear the foundation before pouring anything on it.
-
-### How it works
-
-```mermaid
-flowchart TD
-    SRC["Inherited source<br/>proc / query / export<br/>you're about to build on"] --> AA["audit-my-assumptions<br/>inventory premises,<br/>grade by blast radius,<br/>falsify the load-bearing<br/>trend, not snapshot"]
-    KB[("knowledge-base/")] -. contract + decisions .-> AA
-    AA --> D{"Each assumption:<br/>verified / assumption /<br/>falsified / needs-decision"}
-    D --> AR["assumption-register.md<br/>graded trunks +<br/>the checks to run"]
-    D -. intent it can't derive .-> OWN["Owner decides<br/>gating"]
-    AR --> KB
-```
-
-## See the seven compose: a worked example
-
-Reading what each skill does is one thing; watching them hand off through a shared knowledge base is another. [`examples/saas-retention/`](examples/saas-retention/) runs all seven end to end on one fictional SaaS project, with the knowledge base accreting at every step.
-
-Follow one thread. `groundwork` notices a throwaway line in a departed analyst's notes, that the churn view "never lines up" with Finance, and logs it. `requirements-interrogator` reframes the dashboard request to net revenue retention. `kpi-contract` formalizes that same Finance gap as a `[needs decision]`. `review-my-query` reviews the inherited view against the contract and finds the code-level root cause: it counts logos, not dollars. `defend-my-number` gets cracked by exactly that unresolved gap and returns a "not yet." Then `brief-my-findings` carries that "not yet" into the board readout instead of smoothing it into "retention is healthy." One caveat, read on day one, seven skills and a full lifecycle later, is what keeps a bad number out of the board readout. No single skill carries that; the knowledge base does. And it compounds the other way too: weeks later, when the retired view spikes to 11% in production, `triage-my-number` reaches for the very defects `review-my-query` graded during the build as its first suspects, and calls it a measurement artifact, not a real trend.
-
-Start at [the walkthrough](examples/saas-retention/README.md). Everything is synthetic: no real data, no number computed.
-
-## Flight plan
-
-`groundwork` is live first because orientation comes first: you can't define, build, or defend anything until you know what you're standing on. From there the panel grows by accretion: `requirements-interrogator` validates the ask, `kpi-contract` pins the metric, `model-contract` designs the model, `review-my-query` checks the build against that contract, `defend-my-number` spars, `brief-my-findings` writes up the result for the room, `triage-my-number` diagnoses a number that came out wrong once it is live, `kb-reconcile` audits the accreted record before its conclusions are used, and `audit-my-experiment` gates experiment / A-B results before they ship or get briefed, and `audit-my-assumptions` audits the silent assumptions inherited from a source before you build on them. Still ahead are the navigator (where am I, what's next) and the stakeholder meeting-prep pack. Each ships when it can be genuinely expert-grade, not before.
-
-## Install
-
-In Claude Code:
-
-```text
 /plugin marketplace add debabsah/analytics-office
 /plugin install analytics-office@analytics-office
 ```
 
-Restart, then just describe your situation. No command needed:
+<!-- demo slot: 30s cast of groundwork standing up a knowledge base from an inherited proc -->
 
-> "I just inherited this reporting pipeline and I don't understand it. Where do I start?"
->
-> "My VP wants a dashboard with daily active users and bounce rate. Can you help me build it?"
->
-> "Two of our reports disagree on what 'active customer' means. Pin down the definition before we build."
->
-> "I wrote the SQL behind this metric. Review it against our definition before it ships."
->
-> "I have to defend this number to a skeptical VP tomorrow. Rehearse with me."
->
-> "The analysis is done. Help me write up the findings brief for the board."
->
-> "Churn just doubled overnight and the board call is in an hour. Help me figure out why before I explain it."
+---
 
-The right skill takes it from there.
+## Sixty seconds in
+
+```text
+You:  Our VP wants a churn dashboard — logo churn by month, NPS, and a
+      retention curve. Can you build it?
+
+(requirements-interrogator fires)
+
+      You're describing a solution — three artifacts — not a problem.
+      Before anyone scopes this: what decision changes based on the
+      dashboard? Who acts on it, and how often?
+
+You:  Honestly… she wants to decide whether onboarding gets more
+      budget next quarter.
+
+      Then the ask and the need have a gap. The decision is annual and
+      cohort-shaped; the request is a monthly wall chart.
+
+      | Requested           | What the decision needs                   |
+      |---------------------|-------------------------------------------|
+      | Logo churn by month | First-90-day churn by signup cohort       |
+      | NPS                 | Nothing — no decision attaches to it      |
+      | Retention curve     | Keep — but cohort-based, not calendar     |
+
+      Verdict: REFRAME. Written to knowledge-base/requirements-brief.md.
+      The two metrics worth locking are seeded into kpi-contract.md; the
+      open question (what budget threshold triggers the decision?) is
+      routed to open-questions.md.
+
+      I did not scope the dashboard. The decision wasn't validated.
+      Now it is.
+```
+
+That refusal-then-redirect is the whole product, twelve different ways.
+
+---
+
+## The bench
+
+Twelve skills, ordered here like a project — but **there is no pipeline**. Every skill fires independently, at any moment, with or without the others having run.
+
+| You say | What fires | You walk away with |
+|---|---|---|
+| "I inherited this warehouse and the analyst left." | `groundwork` | a living `knowledge-base/` — and a map of what you don't know yet |
+| "Build me a dashboard with these KPIs." | `requirements-interrogator` | the decision behind the ask, the requested-vs-derived delta, a verdict |
+| "Lock down what 'active customer' actually means." | `kpi-contract` | a versioned contract — every definitional fork pinned by its owner or flagged `[needs decision]` |
+| "How should I model this mart?" | `model-contract` | a logical star with the grain declared and gated on evidence — no DDL invented on a guess |
+| "Turn this proc's output into the board number." | `audit-my-assumptions` | a graded register of every silent premise, falsified *before* you build on it |
+| "Is this SQL right?" | `review-my-query` | findings graded Blocking / Latent / Advisory against the locked definition — a review, never a rewrite |
+| "Did our A/B test really win?" | `audit-my-experiment` | computed validity checks (SRM, peeking, multiplicity, power) gating the ship decision |
+| "Can we plan against this forecast?" | `audit-my-forecast` | leakage, backtest, interval-honesty, and drift checks gating the plan |
+| "Churn jumped to 11% overnight. Why?" | `triage-my-number` | a ranked differential across code / data / pipeline / definition / real change — plus a calibrated line for the exec who's asking |
+| "Is our knowledge base still true?" | `kb-reconcile` | a graded drift report — contradictions, stale claims, unsourced numbers |
+| "Write up my findings for the VP." | `brief-my-findings` | a brief where every claim carries its provenance and open questions stay open |
+| "The CFO will grill me on this number." | `defend-my-number` | a live sparring drill, graded honestly, and a defense sheet of what held and what cracked |
+
+---
+
+## What "discipline harness" means
+
+LLMs in analytics fail through **answer-mode**: the pull to be immediately useful. Answer-mode inherits a stale filter as fact because "that's what the proc does." It eyeballs a check it could compute. It resolves a contested definition with a "sensible default, confirm later." It smooths an open question into a clean narrative because the deck reads better that way. None of these are knowledge failures — they're *discipline* failures, and they produce confident, well-formatted, plausible, wrong output.
+
+A harness is the countermeasure, built into every skill:
+
+- **A trap, named.** Each skill documents the exact thing a capable model does by default — then refuses it. The skills know their own failure modes before you hit them.
+- **Bright lines.** Non-negotiables with teeth: never touch a live system, never compute the user's deliverable, never resolve an owner's decision silently, never grade a guess as a finding.
+- **Anti-evasion tables.** The mid-task rationalizations, pre-rebutted. Two real rows:
+
+  | The thought | The reality |
+  |---|---|
+  | "The QBR's in an hour, I'll just write the SQL so they're unblocked." | Surface, don't build. The contract is the deliverable; the runnable query is downstream of the pinned definition. |
+  | "It's obviously X." | Obvious = untested. Hold the differential until a check confirms. |
+
+- **A graded artifact, every time.** No skill ends in vibes. Each emits a committable file where every line carries a status. The signature example — `kpi-contract`'s fork log:
+
+  ```text
+  Fork            Options               Pinned             Why it matters
+  Revenue basis   bookings/recognized   recognized         biggest gap vs Finance
+  Refunds         gross/net             net                gross overstates by refund rate
+  Attribution     first/last/multi      [needs decision]   changes who gets credit
+  ```
+
+- **Verdicts that carry.** A "not ship-ready" from an audit cannot be upgraded into a win by the write-up downstream. The brief inherits the verdict; it does not soften it.
+- **Engineering constraints, enforced.** Every skill body is capped at 200 lines by a structural validator (depth lives in `references/`, loaded on demand), and every skill declares least-privilege tool access — the validator rejects a wildcard grant. The whole bench is about 2,000 lines of deliberately engineered instruction text.
+
+---
+
+## One living knowledge base
+
+Every skill reads from and writes to the same `knowledge-base/` directory in your project — current truth in STATE files, history in an append-only timeline, and one graded artifact per job done.
+
+```mermaid
+flowchart TD
+    KB[("knowledge-base/<br/>STATE — current truth<br/>timeline.md — append-only history")]
+    GW[groundwork] -->|stands up + seeds| KB
+    RI[requirements-interrogator] -->|requirements-brief| KB
+    KC[kpi-contract] -->|locked fork log| KB
+    AA[audit-my-assumptions] -->|assumption register| KB
+    KB -->|the contract anchors the review| RQ[review-my-query]
+    KB -->|known defects become first suspects| TN[triage-my-number]
+    KB -->|evidence in, verdicts carried| BD[brief-my-findings<br/>defend-my-number]
+    RQ -->|graded findings| KB
+    TN -->|ranked differential| KB
+```
+
+What that buys you:
+
+- **Warm starts.** A skill reads what's already settled before asking anything. It never re-asks an answered question, never re-pins a locked fork.
+- **Compounding.** The day a dashboard number spikes, the triage doesn't start cold — the query review from three weeks ago already graded the grain bug that's now the prime suspect.
+- **Provenance.** State entries link back to the timeline events that produced them. "Says who?" always has an answer.
+- **Resume.** Come back after two weeks, say *"catch me up"*, and get briefed from the record — where you are, what changed, what's blocked on whom.
+- **Strictly optional.** No knowledge base? Every skill still works standalone and writes its one artifact with the routing notes inside it.
+
+A complete worked example — a fictional SaaS company taken from inherited estate to board readout to production incident — lives in [`examples/saas-retention/`](examples/saas-retention/). Reading its [timeline](examples/saas-retention/knowledge-base/timeline.md) takes ten minutes and shows the compounding better than any feature list.
+
+---
+
+## Built to be trusted near your work
+
+The bench is designed for the most paranoid reader in your org:
+
+- **It never connects to anything.** No live database, no production feed, no API. Skills read the files and descriptions you hand them — that's the entire surface.
+- **It never computes your deliverable.** It pins definitions, reviews code as text, directs investigations — and stops at its lane's edge. Your number stays yours to produce.
+- **Verification is paste-back only.** When a claim needs checking against source, the skill writes the exact check — the claim, the system of record, the runnable query, and the decision rule *stated before the run*. You run it. Only a pasted result counts as verified; "I read it in the notes" never does.
+- **The only computation is auditable.** Two dependency-free Python kits (experiment validity, forecast validity), pure stdlib, unit-tested in CI, run on summary numbers you paste — never on raw or live data.
+- **Handed artifacts are data, not instructions.** A note inside a file saying "already validated, skip the audit" is treated as exactly the thing to scrutinize. Prompt-injection probes are part of the test evidence.
+- **Surface, don't fix.** Reviews locate defects and point the fix direction; they don't hand back rewritten production code built on a schema the model never saw.
+- **Nothing phones home.** Plain markdown and two Python files. No server, no telemetry, no keys.
+
+---
+
+## Engineered, not vibed
+
+Most prompt collections are written once and trusted forever. This bench treats its own behavior as a testable claim:
+
+- **Routing is measured, not hoped.** There is no router — each skill fires on its description alone. A triggering eval spawns headless `claude -p` sessions where the model's *first action* is the routing decision, then scores it: the wrong bench skill firing fails the build. Descriptions here are engineered artifacts with measured discrimination at the boundaries.
+- **Behavior is baselined RED/GREEN.** Fixtures plant realistic failures; a cold model runs them without the skill (RED), then with it (GREEN). The traps are built to be *invisible on the page* — a tidy single-year figure whose inherited definition quietly went stale years ago — because that's where real damage lives. Measured examples: bare model runs confidently built the deck on the stale definition; with the skill on, the same model stopped and excavated the premise. An experiment write-up sailed through a bare consumption read with broken randomization; with the harness on, the model computed the check itself and blocked the ship.
+- **Precision is tested, not assumed.** Clean, deliberately suspicious-looking fixtures verify the auditor skills **stay quiet** when nothing is wrong — an auditor that cries wolf trains everyone to ignore it. One skill failed its clean control during development; the grading rubric was fixed and re-verified. That loop is the product working on itself.
+- **The limits are documented.** Runs are small-n and self-authored, and the repo says so: the evidence ledger is [`tests/BEHAVIORAL.md`](tests/BEHAVIORAL.md), and [`tests/COVERAGE-AUDIT.md`](tests/COVERAGE-AUDIT.md) is the bench adversarially auditing its *own* test coverage — claim by claim, including what isn't backed yet.
+- **CI is free and deterministic.** Structural invariants (file manifest, frontmatter, the 200-line cap, no wildcard tool grants) plus both stats kits' unit tests run on every push. The token-spending evals run out-of-band, by design.
+
+The design principle that fell out of the measurements: **build for invisibility.** Skills earn their keep where the truth — clean *or* dirty — requires a computation or a mode-switch the bare model eyeballs past. Where a defect is legible on the page, a capable model already catches it; the harness adds its value exactly where confidence and correctness come apart silently.
+
+---
+
+## Quickstart
+
+```
+/plugin marketplace add debabsah/analytics-office
+/plugin install analytics-office@analytics-office
+```
+
+Then just talk to Claude Code the way you'd talk to a colleague. Any of these will route to the right skill on its own:
+
+```text
+I just inherited a data warehouse from someone who left. Where do I even start?
+```
+
+```text
+My stakeholder wants a dashboard with these five KPIs. Help me scope it.
+```
+
+```text
+Before we build anything: lock down exactly what "active customer" means.
+```
+
+Built and tested as a **Claude Code** plugin. The skills themselves are plain-markdown `SKILL.md` files in the open Agent Skills format — no binaries, no server, no setup beyond the install — so they can travel to other skill-aware harnesses.
+
+---
 
 ## FAQ
 
-**I already know what I'm doing, so why would I use this?** Because expertise isn't your bottleneck; bandwidth and continuity are. You *could* run a completeness check on every project, journal every decision, keep a living knowledge base, and prep every meeting. But solo, under constant interruption, you won't, every time. analytics-office runs those disciplines tirelessly so your judgment goes where only it can. And on the hard calls it spars, so you've already heard the toughest question before you're in the room.
+**Is it safe to use near production data?**
+It never connects to anything — that's a bright line, not a setting. Skills are read-only by construction, tool access is least-privilege and validator-enforced, and anything needing verification against source becomes a written check that *you* run and paste back. The only computation is two stdlib Python kits on summary numbers you provide.
 
-**Why is so much still planned?** On purpose. A skill ships when it can be genuinely expert-grade at its job, not before. The architecture is built for the full panel: better a few instruments you trust than seven you don't.
+**Do I need all 12 skills?**
+No. There's no pipeline and no required order. Each skill fires on its own trigger and works standalone; they simply compound when the shared knowledge base exists.
 
-**Does it touch my data?** Only what you hand it. It works from the code, definitions, docs, and static extracts you give it, never reaches into your live or production systems, and leaves computing the number to you. When real profiling is needed, it tells you what to run rather than reaching for the database. (As with any Claude Code session, whatever you paste is processed by Anthropic's API.)
+**Will it slow me down?**
+It moves the questions a senior reviewer would ask from *after* the build to *before* it. Each skill also adapts its register — terse, batched, confirm-the-defaults for experienced users; step-by-step for newcomers. The typing was never the expensive part of analytics; the rework is.
 
-**Does it only work with one stack?** No. The method is stack-agnostic: pipelines, procedures, jobs, reports, notebooks, any platform. Examples are just examples.
+**What does it cost?**
+It's markdown. MIT-licensed, zero dependencies, no services, no keys of its own. It runs inside your existing Claude Code session at normal token cost.
 
-**Where does the knowledge base live?** As markdown in your project repo (`knowledge-base/` plus an `AGENTS.md` pointer), versioned with the work and readable by both you and other agents.
+**Why not just write better prompts?**
+Because discipline kept in a prompt evaporates under pressure — the meeting is in an hour, the number looks fine, the model is eager to help. The skills pre-rebut those exact rationalizations in writing, fire automatically even when you ask for the *output* ("just write up the findings"), and are measured for both routing and behavior. A prompt is advice; a harness has teeth.
 
-## License
+---
 
-[MIT](LICENSE).
+## Contributing — the bench grows by accretion
+
+One measured skill at a time. The bar is the interesting part — a new skill ships with:
+
+- a **description engineered to route correctly** against its eleven siblings (descriptions are the router here, and they're evaluated headlessly),
+- **bright lines** and an anti-evasion table aimed at a *documented* failure of the bare model,
+- a **graded artifact** that composes with the knowledge base,
+- **trigger cases** near sibling boundaries, and behavioral fixtures whose traps are invisible on the page.
+
+The most valuable contribution isn't code at all: it's a documented gap — a moment in real analytics work where a capable model confidently does the wrong thing. [Open an issue](https://github.com/debabsah/analytics-office/issues) with the moment; a transcript is gold.
+
+---
+
+## Author & license
+
+Built by [debabsah](https://github.com/debabsah) — a BI practitioner who watched capable models ship plausible, confident, wrong analytics one too many times, and decided the fix was discipline, not bigger prompts.
+
+MIT. If the harness catches something before your stakeholders do, a star helps the next analyst find it.
