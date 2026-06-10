@@ -35,6 +35,8 @@ Exact checks to run against data not on hand. Each remains `unverified` until a 
 
 <Lead with the Blocking defect if any. Example: "invalid — SRM χ²=7.8 p=0.005; the comparison is untrustworthy until randomization/logging is audited.">
 
+**Re-audit when:** <the condition that invalidates this verdict — a rerun, N more weeks of data, an assignment-pipeline change. A verdict without an expiry is one that silently never expires.>
+
 ## Materiality verdict
 **`material` / `immaterial` / `straddles-MME` / `materiality-unverified`**
 

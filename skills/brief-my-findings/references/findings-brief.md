@@ -23,7 +23,7 @@ Each: observation → implication → action → watch-for. Tag every claim with
 | 1 | <the [needs decision] / unbuilt cut / unreconciled gap> | Open | <consequence if presented as resolved> | <owner> |
 
 ## Readiness
-- **Verdict carried:** <e.g. "not yet" from defense-sheet — do not present until the open items close | ready, with the caveats above>.
+- **Verdict carried:** <e.g. "not yet" from defense-sheet — do not present until the open items close | ready, with the caveats above> — **with its age:** <verdict date + whether its re-audit condition has been met; an expired verdict is not carried, it routes back to its audit>.
 - **Confidence:** <which claims are Supported vs Directional-only; what would move a Directional claim to Supported>.
 ```
 

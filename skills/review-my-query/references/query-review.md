@@ -15,6 +15,9 @@ Read-only: reviewed as text; not executed; no data or live system touched._
 |---|---|---|---|---|---|
 | 1 | <where> | <named failure mode> | <the wrong result> | Blocking / Latent / Advisory | <direction; one tiny fragment at most> |
 
+_A fixed finding gains `→ resolved <date> (<evidence>)` on its row — stamp, never delete
+(the lifecycle convention in groundwork's kb-core-templates)._
+
 ## Verdict
 - **Blocking:** <count> — must fix before this ships or gets defended.
 - **Latent:** <count> — will break under <conditions>.

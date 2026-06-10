@@ -27,6 +27,8 @@ Exact checks to run against data not on hand. Each remains `unverified` until a 
 
 <Lead with the Blocking defect if any. Example: "not-trustworthy — '95%' interval covers 61% (n=120); the plan's downside is not protected until the interval is recalibrated.">
 
+**Re-audit when:** <the condition that invalidates this verdict — a refit, a regime change in the inputs, N new actuals, the horizon's midpoint. A verdict without an expiry is one that silently never expires.>
+
 ## Routing
 - If `trustworthy`: hand to `brief-my-findings` (write up the forecast) or `defend-my-number` (rehearse).
 - If `hold-pending-checks`: list the exact paste-back runs needed.

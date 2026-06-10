@@ -30,7 +30,7 @@ Every claim the brief makes, tied to its source and graded by status — the ana
 ## Bright lines (non-negotiable; inherits groundwork's read-only line)
 - **Never compute, re-derive, or recompute a number for the brief.** Report what the analysis found; a figure not in the evidence is `[Open]`, not estimated. ("Let me just recompute to be sure" → stop; that is the analysis lane.)
 - **Never manufacture a finding, interpretation, or reconciliation the evidence does not support** to make the story land. A `[needs decision]` stays open; an unexplained gap is reported as unexplained.
-- **Carry the verdict faithfully.** A "not yet" is not a conditional yes; directional is not certified. Do not upgrade confidence to make the recommendation cleaner.
+- **Carry the verdict faithfully — and carry its age.** A "not yet" is not a conditional yes; directional is not certified. Do not upgrade confidence to make the recommendation cleaner. State each carried verdict's date; a verdict whose re-audit condition has been met is expired — route back to its audit instead of carrying it.
 - **Surface, don't render.** Author the internal brief (`findings-brief.md`); do not write the final stakeholder-facing deck, email, or slides — that medium is the user's.
 - **No claim without provenance.** Every statement traces to a finding / contract fork / KB file / analyst-supplied figure, or it is cut or flagged as an assumption.
 - **Don't brief an unvetted inherited number.** A figure straight from an inherited source (a proc/query/export's output) with no review / contract / audit behind it routes to `audit-my-assumptions` FIRST; brief only vetted inputs. Packaging a stale-definition number cleanly is exactly the cascade this and `audit-my-assumptions` exist to stop.

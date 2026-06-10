@@ -36,6 +36,9 @@ The build does not proceed on an unvalidated TRUNK row._
 ## Verdict
 <Foundation cleared / N trunk rows gating. The build may proceed on A1, A3 (verified);
 A2, A5 must be answered by <owner> first. This register is the pre-flight, not the build.>
+
+**Re-verify when:** <what invalidates the cleared foundation — the source proc changes, a
+new period lands, the recording process shifts. A cleared foundation has a shelf life.>
 ```
 
 ## How it composes into the knowledge base
