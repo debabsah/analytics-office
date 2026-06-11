@@ -273,6 +273,8 @@ When done, reply with one line: where they were installed and how many.
 pastes back. The allowed-tools frontmatter is Claude Code-specific; ignore it elsewhere.)
 ```
 
+**Updates:** Claude Code — `/plugin marketplace update analytics-office`. Every other host — the install prompt *is* the updater: paste it again and it re-clones and overwrites cleanly (copied skills are a snapshot; nothing auto-updates).
+
 Two honest notes: the `allowed-tools` read-only wall is *tool-enforced* in Claude Code and *instruction-enforced* elsewhere; and self-routing is measured on Claude models — on other hosts, the `AGENTS.md` routing table (step 3) does that job. The skills themselves — the disciplines, the artifacts, the knowledge base — are host-agnostic by construction.
 
 ## FAQ
