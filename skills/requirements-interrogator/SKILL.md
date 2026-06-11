@@ -32,7 +32,7 @@ Violating the letter is violating the spirit: if you catch yourself scoping the 
 ## The discipline (rigid order; one question at a time live, or scripted for prep)
 **Warm start first.** If a `knowledge-base/` exists (from `groundwork`), read `purpose.md`, `open-questions.md`, `decisions.md`, and any prior `requirements-brief.md` / `kpi-contract.md` *before* interrogating — inherit what's settled, treat its open questions as your starting gaps, and never re-ask what's already answered. Then:
 1. **Restate** the request as the *solution* it is ("You're asking for a dashboard of A, B, C").
-2. **Decision-backwards (the gate):** "What decision or action changes based on this? Who acts on it, and how often?" No answerable decision → flag as vanity metric and stop here.
+2. **Decision-backwards (the gate):** "What decision or action changes based on this? Who acts on it, and how often?" No answerable decision → flag as vanity metric and stop here. And when the ask itself dissolves under the gate — the stakeholder concedes there's no real request behind it, just data and a vague goal — that is `worth-knowing`'s moment: hand off to charter what's worth asking instead of interrogating an ask that no longer exists.
 3. **XY split:** separate the asked-for solution (Y) from the underlying goal (X). Name both out loud.
 4. **5 Whys** on the goal until you hit the root need (don't stop at the first plausible answer).
 5. **JTBD statement:** "When ___, I want to ___, so I can ___." Get the stakeholder to confirm it.

@@ -34,7 +34,7 @@ Violating the letter is violating the spirit: if you catch yourself running a li
 4. **Run the gap engine** (below) to find what's unknown.
 5. **Interview** for the highest-value gaps — one at a time for newcomers, or batched into a short multiple-choice menu for experienced users (see Register); adapt follow-ups; respect the bright line.
 6. **Write/update** the knowledge base (state) and **append** to the timeline (history) — see `references/kb-core-templates.md`.
-7. **Report**: the current picture + the top open questions + the single recommended next move.
+7. **Report**: the current picture + the top open questions + the single recommended next move — named as a sibling's room when one fits: a solution-shaped request waiting is `requirements-interrogator`; a stakeholder with data and goals but no question yet is `worth-knowing` (the question charter); a metric to pin is `kpi-contract`.
 
 ## Surfacing what you don't know (the gap engine — use all four)
 - **Completeness model:** compare what's known against the project-type checklist; flag empty slots.

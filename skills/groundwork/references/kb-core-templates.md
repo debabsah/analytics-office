@@ -172,6 +172,7 @@ index when none exists.
 | change-impact | change-impact.md | append unknowns | never | append | never | add link | copy manifest/DDL |
 | review-my-dashboard | dashboard-review.md | append findings | never | append | never | add link | copy exports/definitions |
 | prove-my-parity | parity-proof.md | append residuals | never | append | never | add link | copy extracts |
+| worth-knowing | question-charter.md | append landscape gaps + UNVERIFIED checks | append accept/decline calls | append | never | add link | copy landscape notes |
 
 ## knowledge-base/README.md (the index — start here)
 ```markdown

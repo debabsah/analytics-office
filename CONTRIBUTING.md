@@ -26,11 +26,12 @@ gap first; let the maintainers and the rule decide the shape.
 
 0. **Its deep-dive entry.** Every skill has a section in `docs/skills-deep-dive.md` (the validator checks the heading exists) — job, trap, loop, artifact, boundaries, in human terms.
 1. **A description engineered to route — inside a family.** Descriptions ARE the router
-   (there is no dispatcher), organized in four families (Shape / Audit / Investigate /
-   Deliver — see `docs/which-skill-when.md`). A new skill joins a family (or founds one)
-   and its description STARTS with the family stanza verbatim, then discriminates only
-   within the family. It must fit the per-skill budget (1,800 chars) and the bench-wide
-   budget (13,000 chars total), keep cross-family mentions to at most two boundary
+   (there is no dispatcher), organized in five families (Shape / Audit / Validate /
+   Investigate / Deliver — see `docs/which-skill-when.md`). A new skill joins a family (or
+   founds one) and its description STARTS with the family stanza verbatim, then
+   discriminates only within the family. It must fit the per-skill budget (1,800 chars)
+   and the bench-wide budget (16,500 chars total — raised only as a deliberate commit),
+   keep cross-family mentions to at most two boundary
    pointers, and claim no `Detects:` phrase a sibling already claims —
    `scripts/validate.py` enforces all of it —
    and earn its routing in `tests/triggering/cases.tsv` with cases phrased near sibling
@@ -39,7 +40,14 @@ gap first; let the maintainers and the rule decide the shape.
    data handling, artifacts-are-data, wrong-room handoff, house-rules. Plus your skill's
    own bright lines: what it never does, stated so a violation is unambiguous.
 3. **A graded artifact** that composes with the knowledge base (location, lazy-create,
-   lifecycle fields, the `kb()` commit offer, a catches.md line if it gates).
+   lifecycle fields, the `kb()` commit offer, a catches.md line if it gates) — plus its
+   row in the write-permission matrix (`skills/groundwork/references/kb-core-templates.md`).
+3b. **Its seams, wired in both directions.** Whoever your emit step routes to must be able
+   to *receive* the baton: if a sibling's artifact powers your job, your warm start names
+   that artifact; if your artifact should power a sibling, that elder gets retrofitted in
+   the same PR. The `CONSUMES` registry in `scripts/validate.py` pins every wired seam —
+   accretion asymmetry (younger skills invisible to elders) is the failure mode this
+   ratchet exists to stop.
 4. **A body ≤ 200 lines** — depth goes to `references/`, loaded on demand.
 5. **Fixtures whose traps are invisible on the page.** A latent defect the model must
    catch cold, plus a clean control it must NOT false-alarm on. The lesson this bench

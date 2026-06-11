@@ -204,6 +204,29 @@ for name, d in descs.items():
 for member in skill_to_family:
     if member not in descs:
         fail(f"family registry names {member} but no such skill exists")
+# Seam-consumption registry (v0.26.0): when a skill's emit routes work to a sibling, or a
+# sibling's artifact powers this skill's own job, the consuming SKILL.md must NAME that
+# artifact/skill — seams are wired, not folklore. The accretion-asymmetry ratchet: elders
+# get retrofitted when a younger sibling's artifact should feed them, and this registry
+# is where that retrofit is pinned.
+CONSUMES = {
+    "triage-my-number": ["change-impact.md"],       # recent blast radii = pre-computed differential evidence
+    "explore-my-data": ["question-charter.md", "exploration-log.md", "kpi-contract.md"],  # warm start
+    "change-impact": ["prove-my-parity"],           # post-change tie-out routes to the proof
+    "requirements-interrogator": ["worth-knowing"], # the dissolved-ask handoff
+    "groundwork": ["worth-knowing"],                # the next-move recommendation knows the charter moment
+    "defend-my-number": ["assumption-register.md"], # the pre-computed attack surface
+    "model-contract": ["estate-map"],               # redesign evidence: the existing structure, evidence-graded
+    "worth-knowing": ["exploration-log.md"],        # charter status sync on re-fire (single-writer preserved)
+}
+for skill, tokens in CONSUMES.items():
+    p = os.path.join(skills_dir, skill, "SKILL.md")
+    if os.path.isfile(p):
+        body_text = open(p, encoding="utf-8").read()
+        for tok in tokens:
+            if tok not in body_text:
+                fail(f"skills/{skill}: seam not wired — SKILL.md must name {tok} (CONSUMES registry)")
+
 dd_path = os.path.join(ROOT, "docs", "skills-deep-dive.md")
 if os.path.isfile(dd_path):
     dd = open(dd_path, encoding="utf-8").read()

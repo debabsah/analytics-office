@@ -3,6 +3,48 @@
 Notable changes to the analytics-office bench. Versions follow the plugin manifest;
 commit-level detail lives in git history.
 
+## [0.26.0] — 2026-06-11
+
+**The seam-wiring release** — a fresh-eyes connectivity audit of all 19 skills found the
+bench routes well but *composes* poorly: artifacts written by one skill were rarely read
+by the siblings they should power. Root cause: **accretion asymmetry** — every seam was
+authored at the younger skill's birth, and no elder was ever retrofitted to see the
+skills born after it. Six seams wired (body-only; zero description changes, zero routing
+surface):
+
+- **triage-my-number ← change-impact.md**: the differential's first check is now the
+  change record — a blast radius that *predicted* a SILENT-DRIFT on the broken metric is
+  a pre-computed prime suspect (still a suspect, not a conviction; the full differential
+  runs regardless).
+- **explore-my-data gains a warm start** (it had none): a routed `question-charter.md`
+  candidate arrives pre-registered and is adopted verbatim; prior `exploration-log.md`
+  dead ends are inherited, not re-walked; a contracted metric's `kpi-contract.md` pins
+  the definition being cut. Outcomes of charter candidates are recorded for sync —
+  `worth-knowing` re-fires now close the loop (single-writer ownership preserved: explore
+  writes its log, worth-knowing updates its own charter).
+- **change-impact → prove-my-parity**: the post-change tie-out routes to the proof by
+  name — the impacted contract metrics are its strata, the blast-radius nodes its
+  comparison list. The migration lifecycle (blast radius → ship → stratified proof) is
+  now a wired three-skill pipeline.
+- **requirements-interrogator → worth-knowing**: the vanity-gate dead end ("no answerable
+  decision → stop here") becomes a handoff when the ask itself dissolves — the mirror
+  pair is finally bidirectional. `groundwork`'s closing recommendation also names the
+  charter moment.
+- **defend-my-number ← assumption-register.md**: the armament harvest now reads the
+  pre-computed attack surface — every unfalsified load-bearing assumption is a question
+  the room will ask.
+- **model-contract ← estate-map.md**: redesigns read the evidence-graded existing
+  structure — dashed `[unverified]` edges are dependencies the new design must not lean
+  on.
+
+Plus: the **`CONSUMES` registry** in `scripts/validate.py` (RED-proven — 9 failures
+against the unwired bodies, green after) pins every wired seam so skill #20 can't
+reintroduce the gap; CONTRIBUTING gains the seams-both-directions bar item (3b) and
+fixes its own stale counts; the write-permission matrix gains the `worth-knowing` row
+missed in v0.25.0 (found by this audit). Healthy seams confirmed and left alone:
+kpi-contract as the 11-reader hub, brief's provenance gate, the triage→audit
+bidirectional seam, estate-map→change-impact/kb-reconcile.
+
 ## [0.25.0] — 2026-06-11
 
 **`worth-knowing`** — the 19th skill, Shape family's 5th member, and the mirror of
