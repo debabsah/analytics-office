@@ -1,4 +1,17 @@
-# analytics-office
+<pre>
+ █████╗ ███╗   ██╗ █████╗ ██╗  ██╗   ██╗████████╗██╗ ██████╗███████╗
+██╔══██╗████╗  ██║██╔══██╗██║  ╚██╗ ██╔╝╚══██╔══╝██║██╔════╝██╔════╝
+███████║██╔██╗ ██║███████║██║   ╚████╔╝    ██║   ██║██║     ███████╗
+██╔══██║██║╚██╗██║██╔══██║██║    ╚██╔╝     ██║   ██║██║     ╚════██║
+██║  ██║██║ ╚████║██║  ██║███████╗██║      ██║   ██║╚██████╗███████║
+╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝╚═╝      ╚═╝   ╚═╝ ╚═════╝╚══════╝
+        ██████╗ ███████╗███████╗██╗ ██████╗███████╗
+       ██╔═══██╗██╔════╝██╔════╝██║██╔════╝██╔════╝
+       ██║   ██║█████╗  █████╗  ██║██║     █████╗
+       ██║   ██║██╔══╝  ██╔══╝  ██║██║     ██╔══╝
+       ╚██████╔╝██║     ██║     ██║╚██████╗███████╗
+        ╚═════╝ ╚═╝     ╚═╝     ╚═╝ ╚═════╝╚══════╝
+</pre>
 
 [![CI](https://github.com/debabsah/analytics-office/actions/workflows/ci.yml/badge.svg)](https://github.com/debabsah/analytics-office/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -241,6 +254,26 @@ Before we build anything: lock down exactly what "active customer" means.
 Built and tested as a **Claude Code** plugin. The skills themselves are plain-markdown `SKILL.md` files in the open Agent Skills format — no binaries, no server, no setup beyond the install — so they can travel to other skill-aware harnesses.
 
 ---
+
+## Beyond Claude Code
+
+Skills here follow the open [Agent Skills](https://developers.openai.com/codex/skills) standard (`SKILL.md` + frontmatter), so the bench runs in Codex CLI, OpenCode, Gemini CLI, GitHub Copilot, Cursor, and any other SKILL.md-aware tool. The fastest route: paste this to whatever agent you use —
+
+```text
+Install the analytics-office skill bench from https://github.com/debabsah/analytics-office.
+Clone only from this URL, run no remote scripts, change nothing else in my environment.
+- Claude Code: /plugin marketplace add debabsah/analytics-office, then /plugin install analytics-office.
+- Any other SKILL.md-aware tool (Codex CLI, OpenCode, Gemini CLI, Copilot, Cursor, ...):
+  clone to a temp dir, copy the folders under skills/ into your host's skills directory
+  (e.g. ~/.codex/skills/), remove the clone.
+- If your host doesn't auto-route from skill descriptions: also append the routing table
+  from docs/which-skill-when.md to this project's AGENTS.md.
+When done, reply with one line: where they were installed and how many.
+(These skills are read-only by instruction — they propose checks the human runs and
+pastes back. The allowed-tools frontmatter is Claude Code-specific; ignore it elsewhere.)
+```
+
+Two honest notes: the `allowed-tools` read-only wall is *tool-enforced* in Claude Code and *instruction-enforced* elsewhere; and self-routing is measured on Claude models — on other hosts, the `AGENTS.md` routing table (step 3) does that job. The skills themselves — the disciplines, the artifacts, the knowledge base — are host-agnostic by construction.
 
 ## FAQ
 

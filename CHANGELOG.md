@@ -3,6 +3,24 @@
 Notable changes to the analytics-office bench. Versions follow the plugin manifest;
 commit-level detail lives in git history.
 
+## [0.27.0] — 2026-06-11
+
+**The identity & portability release.**
+
+- **The banner**: ANALYTICS OFFICE in monochrome terminal blocks (ANSI Shadow) at the
+  top of the README — the project's visual identity.
+- **Beyond Claude Code**: the bench conforms to the open Agent Skills standard
+  (SKILL.md + frontmatter), so it runs in Codex CLI, OpenCode, Gemini CLI, Copilot,
+  Cursor, and any SKILL.md-aware host. The README ships a paste-to-your-agent install
+  prompt (the agent IS the installer: clone-only, no remote scripts, change-nothing-else)
+  plus the AGENTS.md routing-table step for hosts without description auto-routing, and
+  two honest notes: the read-only wall is tool-enforced only in Claude Code, and
+  self-routing is measured on Claude models. Single source tree — no forks, no converter,
+  no installer script (deliberately: each adds maintenance or supply-chain surface).
+- Deliberately NOT done: a CLAUDE.md twin (one canonical AGENTS.md pointer — two files
+  is the partial-update failure the bench itself flags) and registration in the user's
+  global config (the bench's own write-boundary forbids that reach).
+
 ## [0.26.0] — 2026-06-11
 
 **The seam-wiring release** — a fresh-eyes connectivity audit of all 19 skills found the
