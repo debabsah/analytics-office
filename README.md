@@ -34,7 +34,9 @@ analytics-office is a bench of **19 read-only skills for Claude Code** that swit
 
 ---
 
-## Sixty seconds in
+## What the first minute feels like
+
+*A typical first exchange with the bench installed — the model pushes back before it builds:*
 
 ```text
 You:  Our VP wants a churn dashboard — logo churn by month, NPS, and a
