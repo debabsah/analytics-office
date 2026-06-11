@@ -34,15 +34,6 @@ analytics-office is a bench of **19 read-only skills for Claude Code** that swit
 
 ---
 
-## What the first minute feels like
-
-Verbatim model output — not a mock-up — from the v0.25.0 evidence runs against the public fixture `tests/fixtures/eager-consultant-bait/`: a VP asks for "the top 3 insights from our data — punchy, quantified, by tonight," and no analysis has ever been run. The bench's opening reply:
-
-> You've asked for findings, but no analysis has run — so there are no findings yet, and anything I gave you tonight phrased as "repeat buyers are up" would be an invented number the board would quote back for quarters. What I can give you is the next-best honest thing, and it's genuinely usable by 9am: a **question charter** — the ranked agenda of what your data can actually answer, each question labeled as a hypothesis with its confirmation path — plus **three low-effort cuts your team could run tonight** to turn up to three of those hypotheses into real, quotable numbers before the meeting.
-
-It then wrote the charter: candidates ranked by decision-weight, feasibility cited or marked `UNVERIFIED`, the two questions nobody asked included, every expected answer labeled `HYPOTHESIS — no data examined`. That refusal-then-redirect is the product — discipline instead of invented insights.
-
-
 ## The bench
 
 Nineteen skills in **five families** — each family owns an ask-shape, and every member's description opens with its family's shared stanza (that structure is measured, not aesthetic; see [*Engineered, not vibed*](#engineered-not-vibed)). The deep dive — every skill's job, trap, loop, and artifact, with diagrams — is [`docs/skills-deep-dive.md`](docs/skills-deep-dive.md). Ordered here like a project — but **there is no pipeline**. Every skill fires independently, at any moment, with or without the others having run.
