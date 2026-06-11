@@ -1,7 +1,7 @@
 # Security & data-handling posture
 
 This page exists so the most paranoid reader in your org can evaluate analytics-office
-without reading twelve skill files. Every claim here is either enforced mechanically (tool
+without reading nineteen skill files. Every claim here is either enforced mechanically (tool
 grants, the structural validator) or written as a non-negotiable instruction and hardened by
 adversarial tests — and this page says which is which.
 
@@ -24,7 +24,7 @@ adversarial tests — and this page says which is which.
 
 | Guarantee | Enforced by |
 |---|---|
-| Skills can only Read/Write files (Bash only on the kit-bearing skills — the two audits and triage — scoped to their tested kits) | `allowed-tools` frontmatter, applied by the Claude Code harness |
+| Skills can only Read/Write files (Bash only on the kit-bearing skills — the experiment/forecast audits, triage, and parity — scoped to their tested kits) | `allowed-tools` frontmatter, applied by the Claude Code harness (other SKILL.md hosts ignore this frontmatter — there the read-only line is instruction-enforced; see README › Beyond Claude Code) |
 | No skill ever holds a wildcard or MCP tool grant | `scripts/validate.py` fails the build on `*` or any `mcp` grant |
 | The write boundary and data-handling rules appear verbatim in every skill | `scripts/validate.py` greps each SKILL.md for the bench invariants |
 | Never connect / never execute / never compute the deliverable / artifacts-are-data | Written bright lines — instructions to the model, not a sandbox — hardened by adversarial RED/GREEN and injection probes (`tests/BEHAVIORAL.md`) |
